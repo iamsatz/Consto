@@ -79,6 +79,23 @@
     }
     .nav-link:hover, .nav-link.active { color: #E8732A; }
 
+    /* Try-demo pill button in nav */
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.4rem 0.85rem;
+      background: #E8732A;
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+      margin-left: 0.25rem;
+    }
+    .nav-cta:hover { background: #1A1612; transform: translateY(-1px); }
+
     /* Mobile nav */
     #mobileMenuBtn { transition: background-color 0.15s; }
     #mobileMenuBtn:hover { background-color: rgba(26,22,18,0.05); }
@@ -210,6 +227,7 @@
       <a href="#engage"      class="nav-link">Engage</a>
       <a href="#founder"     class="nav-link">Founder</a>
       <a href="#next"        class="nav-link">Next</a>
+      <a href="/experience.html" class="nav-cta">▶ Try Demo</a>
     </div>
 
     <!-- Mobile hamburger -->
@@ -235,6 +253,7 @@
       <a href="#engage"      class="mobile-nav-link">07 · Engage</a>
       <a href="#founder"     class="mobile-nav-link">08 · Founder</a>
       <a href="#next"        class="mobile-nav-link">10 · What's next</a>
+      <a href="/experience.html" class="mobile-nav-link" style="color:#E8732A; font-weight:600;">▶ Try the interactive demo</a>
     </div>
   </div>
 </nav>
@@ -1873,6 +1892,18 @@
       <p class="text-sm text-center mt-8 italic fade" style="color:rgba(250,245,237,0.65);max-width:42rem;margin-left:auto;margin-right:auto;">
         That's something Zepto, BigBasket, DMart structurally cannot do. Their widgets show what they want to sell. Consto's widget shows what <em style="color:#D4A843;font-style:normal;">you</em> probably want.
       </p>
+
+      <!-- Interactive demo CTA -->
+      <div class="mt-10 text-center fade">
+        <a href="/experience.html" class="inline-flex items-center gap-2.5 px-7 py-4 rounded-full font-semibold text-base transition-all" style="background:#E8732A;color:#fff;text-decoration:none;box-shadow:0 8px 24px rgba(232,115,42,0.35);">
+          <span style="font-size:1.1rem;">▶</span>
+          Walk through a day with each customer
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <p class="text-xs mt-4" style="color:rgba(250,245,237,0.55);">Interactive walkthrough · Pick a persona · See their widget, WhatsApp, in-store agent view, and receipt</p>
+      </div>
     </div>
 
     <!-- ── Architecture — which Consto OS products power it ── -->

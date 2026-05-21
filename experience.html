@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A day with Consto — Interactive Walkthrough</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'Georgia', 'serif'], sans: ['Inter', 'system-ui', 'sans-serif'] } } } }
+  </script>
+  <style>
+    :root {
+      --saffron: #E8732A;
+      --sage:    #4F6B55;
+      --cream:   #FAF5ED;
+      --deep:    #1A1612;
+      --gold:    #A8852E;
+      --terra:   #C4583A;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--cream);
+      color: var(--deep);
+      overflow-x: hidden;
+    }
+    h1, h2, h3, .serif { font-family: 'Playfair Display', Georgia, serif; }
+
+    /* Top nav */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: rgba(250, 245, 237, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(26, 22, 18, 0.08);
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(26, 22, 18, 0.7);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: var(--saffron); }
+
+    /* Hero / persona picker */
+    .persona-card {
+      background: #fff;
+      border: 1px solid rgba(26, 22, 18, 0.08);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      text-align: left;
+      width: 100%;
+    }
+    .persona-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(26, 22, 18, 0.1);
+      border-color: var(--saffron);
+    }
+    .persona-card .emoji { font-size: 2.5rem; line-height: 1; }
+    .persona-card .pct {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* Experience layout */
+    .experience-wrap {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.45s ease;
+    }
+    .experience-wrap.visible {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Persona header */
+    .persona-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      background: #fff;
+      border-radius: 1.5rem;
+      border: 1px solid rgba(26, 22, 18, 0.08);
+      flex-wrap: wrap;
+    }
+
+    /* Scene tabs */
+    .scene-tabs {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 0.25rem;
+    }
+    .scene-tabs::-webkit-scrollbar { display: none; }
+    .scene-tab {
+      flex-shrink: 0;
+      padding: 0.6rem 1rem;
+      background: transparent;
+      border: 1px solid rgba(26, 22, 18, 0.1);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(26, 22, 18, 0.65);
+      cursor: pointer;
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+    .scene-tab:hover {
+      color: var(--saffron);
+      border-color: rgba(232, 115, 42, 0.4);
+    }
+    .scene-tab.active {
+      background: var(--deep);
+      color: #fff;
+      border-color: var(--deep);
+    }
+
+    /* Scene content card */
+    .scene-card {
+      background: #fff;
+      border-radius: 1.75rem;
+      border: 1px solid rgba(26, 22, 18, 0.06);
+      box-shadow: 0 4px 20px rgba(26, 22, 18, 0.03);
+      padding: 2rem;
+      min-height: 480px;
+      animation: fadeUp 0.35s ease;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Phone frame (widget + whatsapp) */
+    .phone-frame {
+      background: #fff;
+      border-radius: 1.75rem;
+      box-shadow: 0 18px 50px rgba(26, 22, 18, 0.18), 0 0 0 8px #1A1612, 0 0 0 9px rgba(26, 22, 18, 0.5);
+      max-width: 22rem;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .phone-status {
+      background: #1A1612;
+      color: #FAF5ED;
+      padding: 0.5rem 1.25rem 0.4rem;
+      font-size: 0.7rem;
+      display: flex;
+      justify-content: space-between;
+      letter-spacing: 0.05em;
+    }
+    .widget-body {
+      padding: 1.25rem;
+    }
+    .widget-section {
+      margin-bottom: 1rem;
+    }
+    .widget-section:last-child { margin-bottom: 0; }
+    .widget-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .widget-content {
+      font-size: 0.85rem;
+      color: rgba(26, 22, 18, 0.78);
+      line-height: 1.45;
+    }
+    .pill-btn {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: var(--saffron);
+      color: #fff;
+      margin: 0.2rem 0.2rem 0 0;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.1s;
+    }
+    .pill-btn:active { transform: scale(0.95); }
+    .pill-btn.secondary {
+      background: rgba(26, 22, 18, 0.08);
+      color: var(--deep);
+    }
+
+    /* WhatsApp chat */
+    .wa-header {
+      background: #075E54;
+      color: #fff;
+      padding: 0.85rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .wa-avatar {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 999px;
+      background: var(--saffron);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      font-family: 'Playfair Display', serif;
+    }
+    .wa-body {
+      background: #E5DDD5;
+      padding: 1rem 0.75rem;
+      min-height: 14rem;
+    }
+    .wa-bubble {
+      background: #DCF8C6;
+      padding: 0.65rem 0.85rem;
+      border-radius: 0.65rem;
+      max-width: 88%;
+      font-size: 0.85rem;
+      line-height: 1.55;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.06);
+    }
+    .wa-time {
+      font-size: 0.65rem;
+      color: rgba(26, 22, 18, 0.45);
+      text-align: right;
+      margin-top: 0.2rem;
+    }
+
+    /* Agent dashboard (in-store) */
+    .agent-dashboard {
+      background: var(--deep);
+      color: var(--cream);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      max-width: 32rem;
+      margin: 0 auto;
+    }
+    .agent-row {
+      padding: 0.85rem 0;
+      border-top: 1px solid rgba(250, 245, 237, 0.08);
+    }
+    .agent-row:first-of-type { border-top: none; padding-top: 0; }
+    .agent-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 0.35rem;
+    }
+    .agent-value {
+      font-size: 0.85rem;
+      color: rgba(250, 245, 237, 0.88);
+      line-height: 1.55;
+    }
+    .nudge-pill {
+      display: inline-block;
+      background: rgba(232, 115, 42, 0.15);
+      color: var(--saffron);
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin: 0.2rem 0.2rem 0 0;
+    }
+
+    /* POS receipt */
+    .receipt {
+      background: #fff;
+      max-width: 22rem;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 8px 28px rgba(26, 22, 18, 0.08);
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      color: var(--deep);
+      position: relative;
+    }
+    .receipt::before,
+    .receipt::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background:
+        radial-gradient(circle at 4px 4px, var(--cream) 4px, transparent 4px) 0 0 / 12px 8px repeat-x;
+    }
+    .receipt::before { top: -1px; }
+    .receipt::after { bottom: -1px; transform: rotate(180deg); }
+    .receipt-header {
+      text-align: center;
+      padding: 0.5rem 0 0.75rem;
+      border-bottom: 1px dashed rgba(26, 22, 18, 0.2);
+      margin-bottom: 0.75rem;
+    }
+    .receipt-header h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--saffron);
+      font-size: 1.2rem;
+    }
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.3rem 0;
+    }
+    .receipt-total {
+      border-top: 1px dashed rgba(26, 22, 18, 0.2);
+      margin-top: 0.5rem;
+      padding-top: 0.6rem;
+      font-weight: 700;
+    }
+    .receipt-savings {
+      background: rgba(79, 107, 85, 0.1);
+      color: var(--sage);
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      margin-top: 0.75rem;
+      font-size: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    /* Commentary panel */
+    .commentary {
+      padding: 1.5rem;
+      background: var(--cream);
+      border-radius: 1.25rem;
+      border-left: 4px solid var(--saffron);
+    }
+    .commentary h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .commentary p {
+      font-size: 0.875rem;
+      color: rgba(26, 22, 18, 0.75);
+      line-height: 1.65;
+    }
+
+    /* Scene navigation */
+    .scene-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+    .nav-btn {
+      flex: 1;
+      max-width: 14rem;
+      padding: 0.85rem 1.25rem;
+      background: var(--deep);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .nav-btn:hover { background: var(--saffron); }
+    .nav-btn:active { transform: scale(0.98); }
+    .nav-btn:disabled {
+      background: rgba(26, 22, 18, 0.15);
+      color: rgba(26, 22, 18, 0.4);
+      cursor: not-allowed;
+    }
+    .nav-btn.secondary {
+      background: transparent;
+      color: var(--deep);
+      border: 1px solid rgba(26, 22, 18, 0.2);
+    }
+    .nav-btn.secondary:hover {
+      background: var(--cream);
+      border-color: var(--deep);
+    }
+
+    /* Progress bar */
+    .progress {
+      display: flex;
+      gap: 0.35rem;
+      margin: 1rem 0;
+    }
+    .progress-step {
+      flex: 1;
+      height: 3px;
+      background: rgba(26, 22, 18, 0.08);
+      border-radius: 999px;
+      transition: background 0.25s;
+    }
+    .progress-step.active { background: var(--saffron); }
+    .progress-step.done { background: var(--sage); }
+
+    /* Persona dot accent */
+    .persona-dot {
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 999px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── TOP NAV ──────────────────────────────────────────────────── -->
+<nav class="top-nav">
+  <div class="max-w-6xl mx-auto px-5 md:px-6 h-14 flex items-center justify-between">
+    <a href="/" class="back-link">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Back to concept
+    </a>
+    <div class="text-xs font-medium hidden sm:block" style="color: rgba(26, 22, 18, 0.55); letter-spacing: 0.08em; text-transform: uppercase;">
+      Interactive Walkthrough
+    </div>
+    <span class="font-serif font-bold text-lg" style="color: var(--saffron);">Consto</span>
+  </div>
+</nav>
+
+
+<!-- ─── HERO / PERSONA PICKER ─────────────────────────────────────── -->
+<section id="hero" class="min-h-screen flex items-center justify-center px-5 pt-20 pb-12">
+  <div class="max-w-5xl mx-auto w-full">
+    <div class="text-center mb-12">
+      <div class="text-xs font-bold tracking-widest uppercase mb-4" style="color: var(--saffron);">
+        A day with Consto · Interactive
+      </div>
+      <h1 class="serif font-bold mb-5" style="font-size: clamp(2rem, 5vw, 3.75rem); line-height: 1.15;">
+        Pick a customer. <br/>See how Consto knows them.
+      </h1>
+      <p class="mx-auto text-base md:text-lg" style="color: rgba(26, 22, 18, 0.6); max-width: 36rem; line-height: 1.65;">
+        Four people. Same store. Same morning. Four completely different experiences — composed in real time from each customer's memory profile. Tap any persona to walk through their day.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+      <button class="persona-card" onclick="selectPersona('priya')" data-persona="priya">
+        <div class="flex items-start justify-between mb-4">
+          <span class="emoji">👩‍👧‍👦</span>
+          <span class="pct" style="color: var(--saffron);">40%</span>
+        </div>
+        <h3 class="serif font-semibold text-xl mb-1">Priya</h3>
+        <p class="text-xs mb-3" style="color: rgba(26, 22, 18, 0.55);">Working mom · 35 · family of 4</p>
+        <p class="text-sm" style="color: rgba(26, 22, 18, 0.7); line-height: 1.55;">"40 mins every evening figuring out what to cook."</p>
+      </button>
+
+      <button class="persona-card" onclick="selectPersona('lakshmi')" data-persona="lakshmi">
+        <div class="flex items-start justify-between mb-4">
+          <span class="emoji">🙏</span>
+          <span class="pct" style="color: var(--sage);">20%</span>
+        </div>
+        <h3 class="serif font-semibold text-xl mb-1">Lakshmi Aunty</h3>
+        <p class="text-xs mb-3" style="color: rgba(26, 22, 18, 0.55);">Retiree · 55+ · lives alone</p>
+        <p class="text-sm" style="color: rgba(26, 22, 18, 0.7); line-height: 1.55;">"My grandson installed 4 apps. I can't use any."</p>
+      </button>
+
+      <button class="persona-card" onclick="selectPersona('raju')" data-persona="raju">
+        <div class="flex items-start justify-between mb-4">
+          <span class="emoji">🛵</span>
+          <span class="pct" style="color: var(--gold);">25%</span>
+        </div>
+        <h3 class="serif font-semibold text-xl mb-1">Raju</h3>
+        <p class="text-xs mb-3" style="color: rgba(26, 22, 18, 0.55);">Gig driver · 28 · single</p>
+        <p class="text-sm" style="color: rgba(26, 22, 18, 0.7); line-height: 1.55;">"Bank queue is 30 mins. I lose 2 rides."</p>
+      </button>
+
+      <button class="persona-card" onclick="selectPersona('arjun')" data-persona="arjun">
+        <div class="flex items-start justify-between mb-4">
+          <span class="emoji">💻</span>
+          <span class="pct" style="color: var(--sage);">15%</span>
+        </div>
+        <h3 class="serif font-semibold text-xl mb-1">Arjun</h3>
+        <p class="text-xs mb-3" style="color: rgba(26, 22, 18, 0.55);">Tech professional · 30</p>
+        <p class="text-sm" style="color: rgba(26, 22, 18, 0.7); line-height: 1.55;">"BigBasket is fine but I don't know what's fresh."</p>
+      </button>
+    </div>
+
+    <p class="text-center text-xs mt-10" style="color: rgba(26, 22, 18, 0.45);">
+      Click any persona to begin · <a href="/" style="color: var(--saffron); text-decoration: none; font-weight: 500;">Read the full concept doc →</a>
+    </p>
+  </div>
+</section>
+
+
+<!-- ─── EXPERIENCE (hidden initially) ─────────────────────────────── -->
+<section id="experience" class="experience-wrap min-h-screen pt-20 pb-12 px-5">
+  <div class="max-w-5xl mx-auto">
+
+    <!-- Persona header -->
+    <div class="persona-header mb-4">
+      <div class="flex items-center gap-3">
+        <span id="ph-emoji" class="text-3xl"></span>
+        <div>
+          <h3 id="ph-name" class="serif font-semibold text-lg leading-tight"></h3>
+          <p id="ph-role" class="text-xs" style="color: rgba(26, 22, 18, 0.55);"></p>
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <button class="nav-btn secondary" onclick="resetToHero()" style="padding: 0.55rem 1rem; font-size: 0.8rem;">
+          ← Pick another
+        </button>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress" id="progress"></div>
+
+    <!-- Scene tabs -->
+    <div class="scene-tabs mb-5" id="sceneTabs"></div>
+
+    <!-- Scene container -->
+    <div id="sceneContainer"></div>
+
+    <!-- Scene navigation -->
+    <div class="scene-nav">
+      <button class="nav-btn secondary" id="prevBtn" onclick="prevScene()">← Previous</button>
+      <button class="nav-btn" id="nextBtn" onclick="nextScene()">Next scene →</button>
+    </div>
+
+    <!-- Footer link -->
+    <p class="text-center text-xs mt-12" style="color: rgba(26, 22, 18, 0.5);">
+      Want the full strategic context? <a href="/" style="color: var(--saffron); text-decoration: none; font-weight: 500;">Read the concept doc →</a>
+    </p>
+  </div>
+</section>
+
+
+<script>
+// ─── PERSONA DATA ────────────────────────────────────────────────
+const personas = {
+  priya: {
+    name: 'Priya',
+    role: 'Working mom · 35 · family of 4',
+    emoji: '👩‍👧‍👦',
+    color: '#E8732A',
+    memberSince: '6 months',
+    widget: {
+      time: '7:14 AM · Tuesday',
+      sections: [
+        { icon: '🌿', label: 'Fresh paneer just in', color: '#4F6B55', text: 'Your usual ₹85 for 250g' },
+        { icon: '📦', label: "Tomorrow's delivery", color: '#E8732A', text: 'Milk + batter + 6 eggs confirmed', buttons: ['+ Coriander', '+ Tomato', '+ Other'] },
+        { icon: '🎯', label: 'Your usuals on deal', color: '#A8852E', text: 'Maggi 4-pack ₹52 (was ₹68) — Aarav\'s lunchbox' },
+        { icon: '🎂', label: "Aarav's birthday in 8 days", color: '#C4583A', text: 'Gift ideas under ₹500?' }
+      ]
+    },
+    whatsapp: {
+      time: '6:30 PM',
+      messages: [
+        { text: 'Priya, fresh paneer just came in 🌿 — kept your usual ₹85/250g for tonight\'s paneer butter masala.\n\nTomorrow\'s milk + batter + eggs already confirmed. Want me to add coriander? Iron-rich greens just came in too 🥬' }
+      ]
+    },
+    instore: {
+      header: 'Customer just walked in · 6:42 PM',
+      rows: [
+        { label: 'Customer', value: 'Priya · Family of 4 · Member 6 months' },
+        { label: 'Recent rhythm', value: 'Weekly paneer (Wed + Sat) · Aashirvaad atta · Maggi 4pk · Fresh greens · Idli batter Sun + Wed' },
+        { label: 'Family context', value: 'Husband Ravi · Son Aarav (10) · Daughter Diya (6)' },
+        { label: 'Festivals', value: 'Ugadi (last year bought pachadi kit) · Sankranti · Diwali · Aarav\'s birthday in 8 days' }
+      ],
+      nudges: ['Mention iron-rich greens', 'Show birthday gifts under ₹500', 'Confirm tomorrow batter order']
+    },
+    checkout: {
+      items: [
+        { name: 'Amul milk 2L', price: 130 },
+        { name: 'Fresh paneer 250g', price: 85 },
+        { name: 'Coriander bunch', price: 15 },
+        { name: 'Maggi 4-pack', price: 52 },
+        { name: 'Lemon 4 pc', price: 20 },
+        { name: 'Fresh palak 500g', price: 38 }
+      ],
+      total: 340,
+      savings: 'Saved ₹22 vs Zepto · Earned 12 loyalty pts',
+      footer: 'Pre-confirmed delivery tomorrow 7am — milk + batter + eggs'
+    }
+  },
+
+  lakshmi: {
+    name: 'Lakshmi Aunty',
+    role: 'Retiree · 55+ · lives alone',
+    emoji: '🙏',
+    color: '#4F6B55',
+    memberSince: '8 months',
+    widget: null,  // Doesn't use widget — WhatsApp only
+    whatsapp: {
+      time: '7:02 AM',
+      messages: [
+        { text: 'Lakshmi gaaru, baagunnara? 🙏\n\n🌿 Fresh tulsi arrived this morning\n☕ Your Horlicks back in stock — ₹235\n🕉 Ekadashi tomorrow — kept your usual tulsi bundle ₹40\n\nMonth-end ledger ready when you come. Take your time.' }
+      ]
+    },
+    instore: {
+      header: 'Customer just walked in · 10:18 AM',
+      rows: [
+        { label: 'Customer', value: 'Lakshmi gaaru · Lives alone · Member 8 months' },
+        { label: 'Recent rhythm', value: 'Weekly Horlicks · Daily milk 500ml · Agarbatti · Camphor · Tulsi (Ekadashi)' },
+        { label: 'Language', value: 'Telugu preferred · Greet slowly · Speak loudly (mild hearing difficulty)' },
+        { label: 'Credit cycle', value: 'Pension day 1st of month · Currently 4 days into credit · Trusted, never missed' }
+      ],
+      nudges: ['Greet by name in Telugu', 'Help carry the bag', 'Confirm Ekadashi items kept aside', 'Mention pension day Saturday']
+    },
+    checkout: {
+      items: [
+        { name: 'Amul milk 500ml', price: 32 },
+        { name: 'Horlicks 500g', price: 235 },
+        { name: 'Tulsi bundle', price: 40 },
+        { name: 'Agarbatti pack', price: 45 },
+        { name: 'Camphor 25g', price: 35 }
+      ],
+      total: 387,
+      savings: 'On credit · Settles 1st of month with pension',
+      footer: 'No follow-up scheduled — Lakshmi prefers minimal contact'
+    }
+  },
+
+  raju: {
+    name: 'Raju',
+    role: 'Gig driver · 28 · single',
+    emoji: '🛵',
+    color: '#A8852E',
+    memberSince: '4 months',
+    widget: {
+      time: '11:42 AM · between rides',
+      sections: [
+        { icon: '⚡', label: 'Quick today', color: '#E8732A', text: 'Red Bull ₹125 · Banana 6 ₹35 · Boiled egg 2 ₹40' },
+        { icon: '💊', label: 'ORS sachets ₹25', color: '#4F6B55', text: 'You bought last week — usually need fresh ones now' },
+        { icon: '💰', label: 'AEPS open till 9pm', color: '#A8852E', text: 'No queue right now — 90-second cash out' },
+        { icon: '📞', label: 'Jio recharge due Thursday', color: '#C4583A', text: '₹239 plan · Tap to pre-set autopay' }
+      ]
+    },
+    whatsapp: {
+      time: 'Yesterday 11pm',
+      messages: [
+        { text: 'Bhai, AEPS counter open tomorrow 7am — no queue till 9. ⚡\n\nEnergy drinks restocked (Red Bull, Sting). ORS sachets also in.\n\nStay safe out there 🛵' }
+      ]
+    },
+    instore: {
+      header: 'Customer just walked in · 11:48 AM',
+      rows: [
+        { label: 'Customer', value: 'Raju · Gig driver (Swiggy + Uber) · Member 4 months' },
+        { label: 'Recent rhythm', value: 'AEPS 2-3×/week (avg ₹2000) · Energy drinks · Banana · ORS · Quick exit' },
+        { label: 'Mission', value: 'Wants in/out in under 3 mins. Loses ₹80-100 per ride waiting.' },
+        { label: 'Recharge', value: 'Jio ₹239 plan · Due Thursday · No autopay yet' }
+      ],
+      nudges: ['Process AEPS first — speed > friendly chat', 'Pre-pack his usual snacks', 'Suggest Jio autopay (one less thing)']
+    },
+    checkout: {
+      items: [
+        { name: 'AEPS withdraw ₹2000', price: 0 },
+        { name: 'Service fee (AEPS)', price: 20 },
+        { name: 'Red Bull 250ml', price: 125 },
+        { name: 'Banana 6 pc', price: 35 },
+        { name: 'ORS 2 sachets', price: 50 },
+        { name: 'Jio recharge ₹239', price: 239 }
+      ],
+      total: 469,
+      savings: 'Time at store: 2 min 14 sec · Beat next-ride window',
+      footer: 'No follow-up message — Raju prefers minimal contact'
+    }
+  },
+
+  arjun: {
+    name: 'Arjun',
+    role: 'Tech professional · 30',
+    emoji: '💻',
+    color: '#4F6B55',
+    memberSince: '3 months',
+    widget: {
+      time: '6:48 AM · Tuesday',
+      sections: [
+        { icon: '🥗', label: "Tomorrow's keto basket ready", color: '#4F6B55', text: 'Spinach, broccoli, paneer, makhana — ₹340 · subscribed' },
+        { icon: '🥥', label: 'Cold-pressed coconut oil in', color: '#E8732A', text: 'Your brand · KCMR farm · ₹420' },
+        { icon: '🌾', label: 'Quinoa restocked', color: '#A8852E', text: '₹220 for 500g organic' },
+        { icon: '🎯', label: 'Roasted almonds 250g', color: '#C4583A', text: '₹240 (was ₹275) — your usual brand' }
+      ]
+    },
+    whatsapp: {
+      time: '6:00 PM yesterday',
+      messages: [
+        { text: 'Arjun, your keto basket ready for tomorrow morning 7-8am pickup window 🥗\n\nCold-pressed coconut oil from KCMR just came in — your brand, ₹420. Want me to add it to tomorrow\'s pickup?' }
+      ]
+    },
+    instore: {
+      header: 'Customer arrived for pickup · 7:42 AM',
+      rows: [
+        { label: 'Customer', value: 'Arjun · Tech professional (Hitec City) · Member 3 months' },
+        { label: 'Diet', value: 'Keto · prefers organic + cold-pressed · premium brands · health-conscious' },
+        { label: 'Recent rhythm', value: 'Weekly subscribed basket · Pickup window 7-8am Mon-Fri · Cancelled BigBasket 2 weeks ago' },
+        { label: 'Subscription', value: 'Weekly keto basket (₹340) — paid this month, eligible for 8% discount on lock-in' }
+      ],
+      nudges: ['Have basket pre-packed at counter', 'Mention new keto-friendly arrivals', 'Pitch lock-in subscription discount']
+    },
+    checkout: {
+      items: [
+        { name: 'Organic spinach 500g', price: 65 },
+        { name: 'Broccoli 400g', price: 95 },
+        { name: 'Paneer 250g', price: 85 },
+        { name: 'Makhana 200g', price: 95 },
+        { name: 'Cold-pressed coconut oil', price: 420 },
+        { name: 'Roasted almonds 250g', price: 240 }
+      ],
+      total: 1000,
+      savings: 'Premium tier · Eligible for 8% subscription lock-in (save ₹80/mo)',
+      footer: 'Picked up in 3 min 18 sec · Walk-out checkout used'
+    }
+  }
+};
+
+// ─── SCENE DEFINITIONS ───────────────────────────────────────────
+const sceneOrder = ['widget', 'whatsapp', 'instore', 'checkout'];
+const sceneLabels = {
+  widget:   'Morning · Widget',
+  whatsapp: 'Earlier · WhatsApp',
+  instore:  'In-store · Agent view',
+  checkout: 'Checkout · Receipt'
+};
+const sceneCommentary = {
+  widget: {
+    title: 'The widget composes itself.',
+    text: "Every line here is generated for this customer alone — from their memory profile, today's store stock, recurring rhythms, and the festival calendar. Generic deals never appear."
+  },
+  whatsapp: {
+    title: 'Brand voice in their language.',
+    text: 'The agent message uses the customer\'s name, their language preference, their family context, and their actual purchase history. Drafted by AI, reviewed by a human, sent only with consent.'
+  },
+  instore: {
+    title: 'The moment of human magic.',
+    text: 'When the customer walks in, the agent sees their full context on a tablet — what to mention, what just came in, what their family needs. The warmth is human; the memory is AI.'
+  },
+  checkout: {
+    title: 'The transaction is the smallest part.',
+    text: 'POS captures the receipt, but the value was already delivered — the personalized greeting, the items kept aside, the future visit pre-confirmed. The receipt is the closing artefact.'
+  }
+};
+
+// ─── STATE ───────────────────────────────────────────────────────
+let state = { persona: null, sceneIdx: 0 };
+
+// ─── RENDERING ───────────────────────────────────────────────────
+function selectPersona(id) {
+  state.persona = id;
+  state.sceneIdx = 0;
+  // skip widget scene for Lakshmi (she's WhatsApp-only)
+  if (id === 'lakshmi') state.sceneIdx = 1;
+
+  const hero = document.getElementById('hero');
+  const exp  = document.getElementById('experience');
+
+  hero.style.display = 'none';
+  exp.classList.add('visible');
+  window.scrollTo({ top: 0, behavior: 'instant' });
+
+  const p = personas[id];
+  document.getElementById('ph-emoji').textContent = p.emoji;
+  document.getElementById('ph-name').textContent  = p.name;
+  document.getElementById('ph-role').textContent  = `${p.role} · Member ${p.memberSince}`;
+  document.querySelector('#ph-name').style.color = p.color;
+
+  renderTabs();
+  renderProgress();
+  renderScene();
+}
+
+function resetToHero() {
+  state.persona = null;
+  state.sceneIdx = 0;
+  document.getElementById('experience').classList.remove('visible');
+  document.getElementById('hero').style.display = 'flex';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderTabs() {
+  const tabs = document.getElementById('sceneTabs');
+  const p = personas[state.persona];
+  tabs.innerHTML = '';
+  sceneOrder.forEach((scene, idx) => {
+    // Skip widget tab for Lakshmi
+    if (state.persona === 'lakshmi' && scene === 'widget') return;
+    const btn = document.createElement('button');
+    btn.className = 'scene-tab' + (idx === state.sceneIdx ? ' active' : '');
+    btn.textContent = sceneLabels[scene];
+    btn.onclick = () => { state.sceneIdx = idx; renderScene(); renderTabs(); renderProgress(); };
+    tabs.appendChild(btn);
+  });
+}
+
+function renderProgress() {
+  const wrap = document.getElementById('progress');
+  wrap.innerHTML = '';
+  const visibleScenes = state.persona === 'lakshmi'
+    ? sceneOrder.filter(s => s !== 'widget')
+    : sceneOrder;
+  const currentVisibleIdx = state.persona === 'lakshmi'
+    ? sceneOrder.slice(0, state.sceneIdx + 1).filter(s => s !== 'widget').length - 1
+    : state.sceneIdx;
+  visibleScenes.forEach((_, i) => {
+    const step = document.createElement('div');
+    step.className = 'progress-step';
+    if (i === currentVisibleIdx) step.classList.add('active');
+    else if (i < currentVisibleIdx) step.classList.add('done');
+    wrap.appendChild(step);
+  });
+}
+
+function renderScene() {
+  const sceneName = sceneOrder[state.sceneIdx];
+  const p = personas[state.persona];
+  const container = document.getElementById('sceneContainer');
+
+  let sceneHtml = '';
+  if (sceneName === 'widget') sceneHtml = renderWidget(p);
+  else if (sceneName === 'whatsapp') sceneHtml = renderWhatsApp(p);
+  else if (sceneName === 'instore') sceneHtml = renderInStore(p);
+  else if (sceneName === 'checkout') sceneHtml = renderCheckout(p);
+
+  const c = sceneCommentary[sceneName];
+  container.innerHTML = `
+    <div class="scene-card grid lg:grid-cols-5 gap-6 items-start">
+      <div class="lg:col-span-3">${sceneHtml}</div>
+      <div class="lg:col-span-2 commentary">
+        <h4>${c.title}</h4>
+        <p>${c.text}</p>
+      </div>
+    </div>
+  `;
+
+  // Update navigation buttons
+  document.getElementById('prevBtn').disabled =
+    (state.sceneIdx === 0) ||
+    (state.persona === 'lakshmi' && state.sceneIdx === 1);
+  document.getElementById('nextBtn').disabled = state.sceneIdx >= sceneOrder.length - 1;
+  document.getElementById('nextBtn').textContent =
+    state.sceneIdx >= sceneOrder.length - 1 ? '✓ Walkthrough complete' : 'Next scene →';
+}
+
+function renderWidget(p) {
+  if (!p.widget) {
+    return `
+      <div style="text-align:center; padding: 4rem 2rem; color: rgba(26, 22, 18, 0.55);">
+        <div class="text-3xl mb-3">🚫📱</div>
+        <p style="font-style: italic; font-size: 0.95rem;">Lakshmi doesn't use a smartphone widget. She gets the same information as a WhatsApp message from her grandson's number — the next scene shows that.</p>
+        <button class="nav-btn mt-5" style="background: var(--saffron);" onclick="nextScene()">See her WhatsApp message →</button>
+      </div>
+    `;
+  }
+  return `
+    <div class="phone-frame">
+      <div class="phone-status">
+        <span>${p.widget.time}</span>
+        <span>●●●●● 100%</span>
+      </div>
+      <div class="widget-body">
+        <div class="widget-section" style="padding-bottom: 0.65rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(26, 22, 18, 0.08); display: flex; justify-content: space-between; align-items: center;">
+          <span class="serif font-bold text-base" style="color: var(--saffron);">Consto · Today</span>
+          <span class="text-xs" style="color: rgba(26, 22, 18, 0.45);">Beeramguda</span>
+        </div>
+        ${p.widget.sections.map(s => `
+          <div class="widget-section">
+            <div class="widget-label" style="color: ${s.color};">
+              <span style="font-size: 1rem;">${s.icon}</span> ${s.label}
+            </div>
+            <div class="widget-content">${s.text}</div>
+            ${s.buttons ? `<div style="margin-top: 0.5rem;">${s.buttons.map((b, i) => `<button class="pill-btn ${i === s.buttons.length - 1 ? 'secondary' : ''}">${b}</button>`).join('')}</div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderWhatsApp(p) {
+  return `
+    <div class="phone-frame">
+      <div class="phone-status">
+        <span>${p.whatsapp.time}</span>
+        <span>●●●●● 100%</span>
+      </div>
+      <div class="wa-header">
+        <div class="wa-avatar">C</div>
+        <div>
+          <div style="font-size: 0.9rem; font-weight: 600;">Consto Agent</div>
+          <div style="font-size: 0.7rem; opacity: 0.8;">online · typing for ${p.name}</div>
+        </div>
+      </div>
+      <div class="wa-body">
+        ${p.whatsapp.messages.map(m => `
+          <div class="wa-bubble">
+            ${m.text.replace(/\n/g, '<br/>')}
+            <div class="wa-time">${p.whatsapp.time} ✓✓</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderInStore(p) {
+  return `
+    <div class="agent-dashboard">
+      <div class="text-xs font-semibold tracking-widest uppercase mb-4" style="color: var(--saffron);">
+        ${p.instore.header}
+      </div>
+      ${p.instore.rows.map(r => `
+        <div class="agent-row">
+          <div class="agent-label">${r.label}</div>
+          <div class="agent-value">${r.value}</div>
+        </div>
+      `).join('')}
+      <div class="agent-row">
+        <div class="agent-label">What to mention right now</div>
+        <div style="margin-top: 0.3rem;">
+          ${p.instore.nudges.map(n => `<span class="nudge-pill">→ ${n}</span>`).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderCheckout(p) {
+  const total = p.checkout.items.reduce((sum, it) => sum + it.price, 0);
+  return `
+    <div class="receipt">
+      <div class="receipt-header">
+        <h4>Consto · Beeramguda</h4>
+        <div style="font-size: 0.7rem; color: rgba(26, 22, 18, 0.55); margin-top: 0.25rem;">Customer: ${p.name} · Member ${p.memberSince}</div>
+      </div>
+      ${p.checkout.items.map(it => `
+        <div class="receipt-row">
+          <span>${it.name}</span>
+          <span>${it.price === 0 ? '—' : '₹' + it.price}</span>
+        </div>
+      `).join('')}
+      <div class="receipt-row receipt-total">
+        <span>TOTAL</span>
+        <span>₹${total}</span>
+      </div>
+      <div class="receipt-savings">${p.checkout.savings}</div>
+      <div style="font-size: 0.7rem; color: rgba(26, 22, 18, 0.55); margin-top: 0.75rem; text-align: center; font-family: 'Inter', sans-serif;">
+        ${p.checkout.footer}
+      </div>
+    </div>
+  `;
+}
+
+function nextScene() {
+  if (state.sceneIdx < sceneOrder.length - 1) {
+    state.sceneIdx++;
+    renderScene();
+    renderTabs();
+    renderProgress();
+  }
+}
+
+function prevScene() {
+  // Lakshmi skips the widget — don't let her go back to it
+  const minIdx = state.persona === 'lakshmi' ? 1 : 0;
+  if (state.sceneIdx > minIdx) {
+    state.sceneIdx--;
+    renderScene();
+    renderTabs();
+    renderProgress();
+  }
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('experience').classList.contains('visible')) return;
+  if (e.key === 'ArrowRight') nextScene();
+  if (e.key === 'ArrowLeft') prevScene();
+  if (e.key === 'Escape') resetToHero();
+});
+</script>
+
+</body>
+</html>
