@@ -750,6 +750,209 @@
       </div>
     </div>
 
+    <!-- ── Inside the Memory Engine ── -->
+    <div class="mt-20 fade">
+      <div class="section-label mb-3" style="color:#E8732A;">Inside the Memory Engine</div>
+      <h3 class="font-serif text-2xl md:text-3xl font-semibold mb-3" style="color:#1A1612;max-width:42rem;line-height:1.25;">
+        How the AI agent actually learns each customer.
+      </h3>
+      <p class="mb-3" style="color:rgba(26,22,18,0.7);font-size:0.95rem;max-width:44rem;line-height:1.65;">
+        The Memory Layer isn't magic. It's a deliberate learning system with <em style="color:#1A1612;font-style:normal;font-weight:500;">two inputs</em> and <em style="color:#1A1612;font-style:normal;font-weight:500;">three outputs</em>. The AI agent that knows Priya didn't start knowing her. Day 1, it had her phone number and her first name. Two years later, it knows when her son's exams are.
+      </p>
+      <p class="mb-12" style="color:rgba(26,22,18,0.6);font-size:0.95rem;max-width:44rem;line-height:1.65;">
+        That depth is earned, not pre-loaded. Here's how.
+      </p>
+
+      <!-- Two Inputs -->
+      <div class="mb-14">
+        <div class="text-xs font-bold tracking-widest uppercase mb-4" style="color:#A8552A;">Two inputs feed the engine</div>
+        <div class="grid md:grid-cols-2 gap-5 stagger">
+
+          <!-- Input A: Company training -->
+          <div class="rounded-2xl p-7 fade" style="background:#FAF5ED;border:1px solid rgba(232,115,42,0.2);position:relative;">
+            <div class="absolute top-5 right-5 text-3xl font-serif font-bold" style="color:rgba(232,115,42,0.18);">A</div>
+            <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#E8732A;">Input A · The baseline we train</div>
+            <h4 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">What Consto tells the AI on Day 0.</h4>
+            <p class="text-sm mb-4" style="color:rgba(26,22,18,0.7);line-height:1.6;">
+              Before any customer ever walks in, the AI is trained on the rules of how to think, talk, and act on Consto's behalf. This is the seed knowledge.
+            </p>
+            <ul class="space-y-2.5 text-sm" style="color:rgba(26,22,18,0.75);">
+              <li class="flex gap-2.5"><span style="color:#E8732A;">▸</span><span><strong style="color:#1A1612;">Brand voice rules</strong> — always use the customer's name, never ALL CAPS, Telugu phrases where natural, under 40 words per message</span></li>
+              <li class="flex gap-2.5"><span style="color:#E8732A;">▸</span><span><strong style="color:#1A1612;">Festival calendar</strong> — every Telugu festival with the stock that should pre-rotate (Ugadi pachadi kit, Sankranti ellu &amp; jaggery, Bonalu items)</span></li>
+              <li class="flex gap-2.5"><span style="color:#E8732A;">▸</span><span><strong style="color:#1A1612;">Persona archetypes</strong> — what working moms typically care about, what retirees need, what gig drivers value</span></li>
+              <li class="flex gap-2.5"><span style="color:#E8732A;">▸</span><span><strong style="color:#1A1612;">Cultural sensitivities</strong> — what to never push (expensive items at retirees), when to never message (before 7am or after 9pm)</span></li>
+              <li class="flex gap-2.5"><span style="color:#E8732A;">▸</span><span><strong style="color:#1A1612;">Inventory + pricing data</strong> — what's in stock today, what's on offer, what just came in fresh</span></li>
+            </ul>
+            <p class="text-xs mt-5 pt-4" style="border-top:1px solid rgba(232,115,42,0.15);color:rgba(26,22,18,0.55);font-style:italic;line-height:1.6;">
+              This is the "kindergarten" the AI graduates from before meeting its first customer.
+            </p>
+          </div>
+
+          <!-- Input B: Customer behavior -->
+          <div class="rounded-2xl p-7 fade" style="background:#FAF5ED;border:1px solid rgba(79,107,85,0.3);position:relative;">
+            <div class="absolute top-5 right-5 text-3xl font-serif font-bold" style="color:rgba(79,107,85,0.22);">B</div>
+            <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#4F6B55;">Input B · The signal each customer emits</div>
+            <h4 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">What the customer teaches it over time.</h4>
+            <p class="text-sm mb-4" style="color:rgba(26,22,18,0.7);line-height:1.6;">
+              Every interaction becomes data. The agent learns from purchases, timing, conversations, and what was asked but missing — not from surveys.
+            </p>
+            <ul class="space-y-2.5 text-sm" style="color:rgba(26,22,18,0.75);">
+              <li class="flex gap-2.5"><span style="color:#4F6B55;">▸</span><span><strong style="color:#1A1612;">Purchase history</strong> — every item, every quantity, every brand, logged per customer</span></li>
+              <li class="flex gap-2.5"><span style="color:#4F6B55;">▸</span><span><strong style="color:#1A1612;">Timing patterns</strong> — Priya shops 6pm Tuesday, Lakshmi visits Sunday morning, Raju does AEPS twice a week</span></li>
+              <li class="flex gap-2.5"><span style="color:#4F6B55;">▸</span><span><strong style="color:#1A1612;">Frequency &amp; rhythm</strong> — milk every day, batter twice a week, paneer every Wednesday + Saturday</span></li>
+              <li class="flex gap-2.5"><span style="color:#4F6B55;">▸</span><span><strong style="color:#1A1612;">Family + life signals</strong> — mentioned son's birthday once, festival routine, allergies, language preference</span></li>
+              <li class="flex gap-2.5"><span style="color:#4F6B55;">▸</span><span><strong style="color:#1A1612;">Misses &amp; requests</strong> — what they asked for that we didn't have. Every miss is a signal.</span></li>
+              <li class="flex gap-2.5"><span style="color:#4F6B55;">▸</span><span><strong style="color:#1A1612;">Response patterns</strong> — which messages they engaged with, which they ignored — the AI learns what works for each person</span></li>
+            </ul>
+            <p class="text-xs mt-5 pt-4" style="border-top:1px solid rgba(79,107,85,0.2);color:rgba(26,22,18,0.55);font-style:italic;line-height:1.6;">
+              No data is invented. Every line in the customer's profile is something they actually did or said.
+            </p>
+          </div>
+        </div>
+
+        <!-- Combination note -->
+        <div class="mt-5 rounded-xl p-5 fade" style="background:#1A1612;text-align:center;">
+          <p class="text-sm" style="color:#FAF5ED;line-height:1.6;">
+            <strong style="color:#E8732A;">A + B = personalization.</strong> <span style="color:rgba(250,245,237,0.75);">The baseline gives the agent a brain. The signal makes it specifically <em style="font-style:italic;">about you</em>. The mix is what makes the experience feel like "Consto knows me."</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Learning curve timeline -->
+      <div class="mb-14">
+        <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#A8552A;">The learning curve</div>
+        <h4 class="font-serif text-xl font-semibold mb-3" style="color:#1A1612;">From phone number to family memory — 2 years of compounding.</h4>
+        <p class="mb-8" style="color:rgba(26,22,18,0.65);font-size:0.9rem;max-width:42rem;line-height:1.65;">
+          The agent's understanding deepens with every interaction. Day 1 it knows almost nothing. Two years in, it knows the customer the way an old kirana shopkeeper knows their regulars.
+        </p>
+
+        <div class="rounded-2xl overflow-hidden fade" style="background:#fff;border:1px solid rgba(26,22,18,0.08);">
+          <!-- Timeline rows -->
+          <div class="grid grid-cols-12 gap-3 px-5 md:px-7 py-4 items-start" style="background:rgba(232,115,42,0.06);border-bottom:1px solid rgba(26,22,18,0.06);">
+            <div class="col-span-3 md:col-span-2 font-serif font-bold text-base" style="color:#E8732A;">Day 1</div>
+            <div class="col-span-9 md:col-span-10 text-sm" style="color:rgba(26,22,18,0.75);line-height:1.55;">
+              <strong style="color:#1A1612;">Phone number + first name only.</strong> The agent uses persona archetype guesses. Generic "welcome to Consto" tone. No personalization possible yet.
+            </div>
+          </div>
+          <div class="grid grid-cols-12 gap-3 px-5 md:px-7 py-4 items-start" style="border-bottom:1px solid rgba(26,22,18,0.06);">
+            <div class="col-span-3 md:col-span-2 font-serif font-bold text-base" style="color:#A8552A;">Week 1</div>
+            <div class="col-span-9 md:col-span-10 text-sm" style="color:rgba(26,22,18,0.75);line-height:1.55;">
+              Knows your <strong style="color:#1A1612;">first few purchases</strong>. Can recommend basics from those categories. Greeting still feels neutral.
+            </div>
+          </div>
+          <div class="grid grid-cols-12 gap-3 px-5 md:px-7 py-4 items-start" style="background:rgba(232,115,42,0.04);border-bottom:1px solid rgba(26,22,18,0.06);">
+            <div class="col-span-3 md:col-span-2 font-serif font-bold text-base" style="color:#A8552A;">Month 1</div>
+            <div class="col-span-9 md:col-span-10 text-sm" style="color:rgba(26,22,18,0.75);line-height:1.55;">
+              Knows your <strong style="color:#1A1612;">shopping rhythm</strong>. "Priya usually visits Wednesday evening." Predicts next visit. Begins suggesting items before they run out.
+            </div>
+          </div>
+          <div class="grid grid-cols-12 gap-3 px-5 md:px-7 py-4 items-start" style="border-bottom:1px solid rgba(26,22,18,0.06);">
+            <div class="col-span-3 md:col-span-2 font-serif font-bold text-base" style="color:#5A7860;">Month 3</div>
+            <div class="col-span-9 md:col-span-10 text-sm" style="color:rgba(26,22,18,0.75);line-height:1.55;">
+              Knows your <strong style="color:#1A1612;">brand preferences and substitutes</strong>. Catches when you switch brands. Offers your preferred brand back if it's out, alternatives when needed.
+            </div>
+          </div>
+          <div class="grid grid-cols-12 gap-3 px-5 md:px-7 py-4 items-start" style="background:rgba(79,107,85,0.06);border-bottom:1px solid rgba(26,22,18,0.06);">
+            <div class="col-span-3 md:col-span-2 font-serif font-bold text-base" style="color:#5A7860;">Month 6</div>
+            <div class="col-span-9 md:col-span-10 text-sm" style="color:rgba(26,22,18,0.75);line-height:1.55;">
+              Knows your <strong style="color:#1A1612;">family context and festival routine</strong>. Mentions your son's lunchbox brand. Pre-books Ugadi items. Now <em style="font-style:italic;">genuinely</em> useful — the relationship begins.
+            </div>
+          </div>
+          <div class="grid grid-cols-12 gap-3 px-5 md:px-7 py-4 items-start" style="border-bottom:1px solid rgba(26,22,18,0.06);">
+            <div class="col-span-3 md:col-span-2 font-serif font-bold text-base" style="color:#D4A843;">Year 1</div>
+            <div class="col-span-9 md:col-span-10 text-sm" style="color:rgba(26,22,18,0.75);line-height:1.55;">
+              Knows your <strong style="color:#1A1612;">life context</strong>. Anticipates needs days in advance. "Your son's exams are in two weeks — should I keep extra Horlicks?" Anniversaries, birthdays, recurring events all tracked.
+            </div>
+          </div>
+          <div class="grid grid-cols-12 gap-3 px-5 md:px-7 py-4 items-start" style="background:rgba(232,115,42,0.08);">
+            <div class="col-span-3 md:col-span-2 font-serif font-bold text-base" style="color:#E8732A;">Year 2+</div>
+            <div class="col-span-9 md:col-span-10 text-sm" style="color:rgba(26,22,18,0.78);line-height:1.55;">
+              Knows you <strong style="color:#1A1612;">the way a kirana shopkeeper knows family customers</strong>. The switching cost is no longer price — it's emotional. The customer can't easily explain Consto to a friend without saying <em style="font-style:italic;">"they just know me."</em>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-xs italic mt-5" style="color:rgba(26,22,18,0.55);max-width:42rem;line-height:1.6;">
+          This is the moat. Every day a customer stays with Consto deepens their profile. Every deepening makes leaving harder. Compounding starts on day one.
+        </p>
+      </div>
+
+      <!-- Three outputs -->
+      <div>
+        <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#A8552A;">Three outputs</div>
+        <h4 class="font-serif text-xl font-semibold mb-3" style="color:#1A1612;">What the engine actually produces.</h4>
+        <p class="mb-8" style="color:rgba(26,22,18,0.65);font-size:0.9rem;max-width:42rem;line-height:1.65;">
+          The AI agent doesn't just send customer messages. It generates three distinct streams of value — one for customers, one for the central team, one for human staff.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-5 stagger">
+
+          <!-- Output 1: Customer-facing -->
+          <div class="rounded-2xl p-6 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.08);">
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background:rgba(232,115,42,0.1);">
+              <span style="font-size:1.5rem;">📱</span>
+            </div>
+            <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#E8732A;">Output 01 · For the customer</div>
+            <h5 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">Personalized suggestions</h5>
+            <p class="text-sm mb-4" style="color:rgba(26,22,18,0.7);line-height:1.55;">
+              The widget content. The WhatsApp message draft. The "what to mention" prompts to in-store staff. The pre-booked festival items list. Every customer touchpoint is composed in real time from their profile.
+            </p>
+            <p class="text-xs pt-3 italic" style="border-top:1px solid rgba(26,22,18,0.08);color:rgba(26,22,18,0.55);line-height:1.55;">
+              Frequency: continuous. Updates 2× daily for widget, on-demand for in-store, contextually for WhatsApp.
+            </p>
+          </div>
+
+          <!-- Output 2: Weekly insights -->
+          <div class="rounded-2xl p-6 fade" style="background:#fff;border:2px solid #1A1612;">
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background:rgba(26,22,18,0.08);">
+              <span style="font-size:1.5rem;">📊</span>
+            </div>
+            <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#1A1612;">Output 02 · For the central team</div>
+            <h5 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">Weekly category insights</h5>
+            <p class="text-sm mb-3" style="color:rgba(26,22,18,0.7);line-height:1.55;">
+              Every week, the AI aggregates signal across all customers and surfaces patterns to the central operations team — organised by category head.
+            </p>
+            <div class="rounded-lg p-3 mb-3 text-xs italic" style="background:#FAF5ED;color:rgba(26,22,18,0.75);line-height:1.55;">
+              "27 working-mom customers asked for organic ragi flour this week — currently we stock 0. Pattern starting."
+            </div>
+            <div class="rounded-lg p-3 mb-3 text-xs italic" style="background:#FAF5ED;color:rgba(26,22,18,0.75);line-height:1.55;">
+              "5 households switched from sunflower to groundnut oil in colony 4 — recommend stocking 30% more."
+            </div>
+            <p class="text-xs pt-3 italic" style="border-top:1px solid rgba(26,22,18,0.08);color:rgba(26,22,18,0.55);line-height:1.55;">
+              Frequency: weekly digest. Cross-store learning compounds across the network.
+            </p>
+          </div>
+
+          <!-- Output 3: AI-suggested tasks -->
+          <div class="rounded-2xl p-6 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.08);">
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background:rgba(79,107,85,0.12);">
+              <span style="font-size:1.5rem;">✅</span>
+            </div>
+            <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#4F6B55;">Output 03 · For human staff</div>
+            <h5 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">AI-suggested tasks</h5>
+            <p class="text-sm mb-3" style="color:rgba(26,22,18,0.7);line-height:1.55;">
+              The agent doesn't just suggest things to customers — it suggests <em style="color:#1A1612;font-style:italic;">tasks to humans</em>. Things the human team should do, in the next hour, day, or week.
+            </p>
+            <div class="space-y-2 mb-3">
+              <div class="text-xs px-3 py-2 rounded-lg" style="background:#FAF5ED;color:rgba(26,22,18,0.75);"><strong style="color:#1A1612;">→ Staff:</strong> "Mention Aarav's birthday to Priya when she visits today"</div>
+              <div class="text-xs px-3 py-2 rounded-lg" style="background:#FAF5ED;color:rgba(26,22,18,0.75);"><strong style="color:#1A1612;">→ Inventory:</strong> "Restock ragi flour — 5 customers asked this week"</div>
+              <div class="text-xs px-3 py-2 rounded-lg" style="background:#FAF5ED;color:rgba(26,22,18,0.75);"><strong style="color:#1A1612;">→ Owner:</strong> "Bonalu festival range demand up 30% — expand next year"</div>
+            </div>
+            <p class="text-xs pt-3 italic" style="border-top:1px solid rgba(26,22,18,0.08);color:rgba(26,22,18,0.55);line-height:1.55;">
+              Frequency: real-time + daily digest. The AI becomes the smartest junior teammate the store has ever had.
+            </p>
+          </div>
+        </div>
+
+        <!-- Human-in-the-loop note -->
+        <div class="mt-8 rounded-xl p-5 fade" style="background:rgba(232,115,42,0.06);border-left:4px solid #E8732A;">
+          <p class="text-sm" style="color:rgba(26,22,18,0.78);line-height:1.65;">
+            <strong style="color:#1A1612;">Important — human in the loop, always.</strong> The AI <em style="font-style:italic;">drafts.</em> Humans <em style="font-style:italic;">review and decide.</em> Every customer message gets reviewed by a trained agent before sending. Every task suggestion is just that — a suggestion. The AI is a brilliant junior teammate, never a manager.
+          </p>
+        </div>
+      </div>
+    </div>
+
     <!-- Consto OS -->
     <div class="fade">
       <div class="section-label mb-1.5">Consto OS</div>
