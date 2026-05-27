@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Consto — India's Neighbourhood Store</title>
-  <meta name="description" content="India's first AI-backed neighbourhood store. The warmth of a kirana, the discipline of a 7-Eleven, and an AI memory that never forgets. Pick a path — demo, concept, or full portfolio.">
-  <meta name="theme-color" content="#E8732A">
+  <meta name="description" content="India's first AI-backed neighbourhood store. The warmth of a kirana, the discipline of a 7-Eleven, an AI memory that never forgets.">
+  <meta name="theme-color" content="#F8F5F0">
   <meta name="author" content="Sateesh">
 
   <!-- Open Graph -->
@@ -22,582 +22,524 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
   <style>
-    /* ─── Reset ────────────────────────────────────────────────── */
+    /* ─── Reset ───────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Inclusive Sans', system-ui, -apple-system, sans-serif;
-      background: #FAF5ED;
-      color: #1A1612;
-      min-height: 100vh;
-      overflow-x: hidden;
-      line-height: 1.5;
-      font-feature-settings: 'kern' 1;
+      background: var(--bg);
+      color: var(--text);
+      font-weight: 400;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-feature-settings: 'kern' 1, 'liga' 1;
     }
     a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
 
-    /* ─── Variables ───────────────────────────────────────────── */
+    /* ─── Tokens ─────────────────────────────────────────── */
     :root {
-      --ink:     #1A1612;
-      --cream:   #FAF5ED;
-      --saffron: #E8732A;
-      --gold:    #D4A843;
-      --terra:   #C4583A;
-      --sage:    #4F6B55;
-      --lime:    #C8EE5C;
-      --shadow:  6px 6px 0 var(--ink);
-      --shadow-lg: 10px 10px 0 var(--ink);
-      --shadow-hover: 12px 12px 0 var(--ink);
+      --bg:     #F8F5F0;
+      --surf:   #FFFFFF;
+      --text:   #1A1612;
+      --text-2: #5A5651;
+      --text-3: #A8A39C;
+      --border: #E5E1D9;
+      --accent: #C76737;
+      --accent-soft: #F4D9C7;
     }
 
-    /* ─── Marquee ticker ──────────────────────────────────────── */
-    .ticker {
-      background: var(--ink);
-      color: var(--cream);
-      padding: 0.6rem 0;
-      overflow: hidden;
-      white-space: nowrap;
-      border-bottom: 4px solid var(--ink);
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-    .ticker-track {
-      display: inline-block;
-      animation: scroll 25s linear infinite;
-      padding-left: 100%;
-    }
-    .ticker-track span {
-      margin-right: 3rem;
-    }
-    .ticker-dot { color: var(--saffron); margin-right: 3rem; }
-    @keyframes scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
-
-    /* ─── Hero ────────────────────────────────────────────────── */
-    .hero {
-      background: var(--saffron);
-      padding: clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem) clamp(2rem, 5vw, 4rem);
-      border-bottom: 5px solid var(--ink);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50px;
-      right: -50px;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background: var(--gold);
-      border: 5px solid var(--ink);
-      z-index: 0;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -80px;
-      left: -40px;
-      width: 160px;
-      height: 160px;
-      background: var(--terra);
-      border: 5px solid var(--ink);
-      transform: rotate(15deg);
-      z-index: 0;
-    }
-    .hero-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
-    }
-    .badge {
-      background: var(--ink);
-      color: var(--cream);
-      padding: 0.4rem 0.85rem;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border: 3px solid var(--ink);
-      box-shadow: 3px 3px 0 var(--cream);
-    }
-    .badge.alt {
-      background: var(--cream);
-      color: var(--ink);
-      box-shadow: 3px 3px 0 var(--ink);
-    }
-
-    .massive {
-      font-size: clamp(4.5rem, 19vw, 16rem);
-      font-weight: 700;
-      line-height: 0.85;
-      letter-spacing: -0.05em;
-      color: var(--ink);
-      margin-bottom: clamp(1rem, 3vw, 2rem);
-      word-break: break-word;
-    }
-    .massive .star {
-      display: inline-block;
-      font-size: 0.5em;
-      color: var(--cream);
-      vertical-align: middle;
-      transform: translateY(-15%);
-      margin: 0 0.05em;
-    }
-
-    .tagline {
-      font-size: clamp(1.1rem, 2.5vw, 1.8rem);
-      font-weight: 600;
-      max-width: 38rem;
-      color: var(--ink);
-      line-height: 1.3;
-    }
-    .tagline .underline {
-      background: var(--ink);
-      color: var(--saffron);
-      padding: 0.05em 0.3em;
-    }
-
-    /* ─── Section: pick your path ─────────────────────────────── */
-    .paths {
-      padding: clamp(3rem, 6vw, 6rem) clamp(1.25rem, 5vw, 4rem);
-      max-width: 1300px;
-      margin: 0 auto;
-    }
-    .paths-header {
-      display: flex;
-      align-items: baseline;
-      gap: 1rem;
-      margin-bottom: clamp(2rem, 4vw, 3.5rem);
-      flex-wrap: wrap;
-    }
-    .paths-title {
-      font-size: clamp(2rem, 5vw, 3.75rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.05;
-    }
-    .paths-title .accent {
-      background: var(--lime);
-      padding: 0 0.3em;
-      border: 3px solid var(--ink);
-      display: inline-block;
-    }
-    .paths-sub {
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--ink);
-      opacity: 0.7;
-    }
-    .arrow-down {
-      display: inline-block;
-      font-size: 1.5rem;
-      margin-left: 0.5rem;
-      transform: rotate(45deg);
-      font-weight: 700;
-    }
-
-    /* ─── Cards ───────────────────────────────────────────────── */
-    .cards {
-      display: grid;
-      gap: clamp(1.25rem, 2.5vw, 2rem);
-      grid-template-columns: 1fr;
-    }
-    @media (min-width: 720px) { .cards { grid-template-columns: repeat(3, 1fr); } }
-
-    .card {
-      border: 4px solid var(--ink);
-      box-shadow: var(--shadow-lg);
-      padding: clamp(1.5rem, 3vw, 2.5rem);
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-      position: relative;
-      min-height: 24rem;
-    }
-    .card:hover {
-      transform: translate(-4px, -4px);
-      box-shadow: var(--shadow-hover);
-    }
-    .card:active {
-      transform: translate(2px, 2px);
-      box-shadow: 4px 4px 0 var(--ink);
-    }
-
-    .card-demo {
-      background: var(--saffron);
-      color: var(--ink);
-    }
-    .card-concept {
-      background: var(--cream);
-      color: var(--ink);
-      transform: rotate(-0.5deg);
-    }
-    .card-concept:hover { transform: translate(-4px, -4px) rotate(-0.5deg); }
-    .card-portfolio {
-      background: var(--ink);
-      color: var(--cream);
-    }
-
-    .card-num {
-      font-size: clamp(3.5rem, 7vw, 5.5rem);
-      font-weight: 700;
-      line-height: 0.9;
-      letter-spacing: -0.04em;
-      margin-bottom: 0.25rem;
-    }
-    .card-icon-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.5rem;
-    }
-    .card-icon {
-      font-size: 1.75rem;
-      width: 3rem;
-      height: 3rem;
-      border: 3px solid currentColor;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: transparent;
-    }
-    .card-demo .card-icon { background: var(--ink); color: var(--saffron); }
-    .card-concept .card-icon { background: var(--saffron); color: var(--cream); border-color: var(--ink); }
-    .card-portfolio .card-icon { background: var(--gold); color: var(--ink); border-color: var(--gold); }
-
-    .card-time-tag {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      background: var(--ink);
-      color: var(--cream);
-      padding: 0.3rem 0.7rem;
-      border: 2px solid var(--ink);
-    }
-    .card-portfolio .card-time-tag {
-      background: var(--cream);
-      color: var(--ink);
-    }
-
-    .card h3 {
-      font-size: clamp(2rem, 4.5vw, 2.75rem);
-      font-weight: 700;
-      line-height: 0.95;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.25rem;
-    }
-
-    .card-desc {
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.5;
-      flex-grow: 1;
-    }
-    .card-demo .card-desc,
-    .card-concept .card-desc { color: var(--ink); }
-    .card-portfolio .card-desc { color: rgba(250, 245, 237, 0.85); }
-
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-size: 0.9rem;
-      border: 3px solid currentColor;
-      padding: 0.85rem 1.25rem;
-      margin-top: 0.5rem;
-      align-self: flex-start;
-      background: transparent;
-      transition: all 0.15s;
-    }
-    .card:hover .cta {
-      background: var(--ink);
-      color: var(--cream);
-      border-color: var(--ink);
-    }
-    .card-portfolio:hover .cta {
-      background: var(--saffron);
-      color: var(--ink);
-      border-color: var(--saffron);
-    }
-    .cta-arrow {
-      font-size: 1.1rem;
-      line-height: 1;
-      transition: transform 0.15s;
-    }
-    .card:hover .cta-arrow { transform: translateX(4px); }
-
-    /* ─── About strip ─────────────────────────────────────────── */
-    .about {
-      background: var(--ink);
-      color: var(--cream);
-      padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem);
-      border-top: 5px solid var(--ink);
-    }
-    .about-inner {
+    /* ─── Container ──────────────────────────────────────── */
+    .container {
       max-width: 1100px;
       margin: 0 auto;
-      display: grid;
-      gap: clamp(1.5rem, 3vw, 3rem);
-      grid-template-columns: 1fr;
+      padding: 0 clamp(1.5rem, 5vw, 3rem);
     }
-    @media (min-width: 720px) { .about-inner { grid-template-columns: 1fr 1fr; } }
-    .about-title {
-      font-size: clamp(1.75rem, 4vw, 2.75rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
+
+    /* ─── Nav ────────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(248, 245, 240, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1.1rem;
+      padding-bottom: 1.1rem;
+      gap: 1.5rem;
+    }
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      color: var(--text);
+    }
+    .brand .dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      margin-right: 0.5rem;
+      vertical-align: middle;
+      transform: translateY(-2px);
+    }
+    .nav-links {
+      display: flex;
+      gap: clamp(1rem, 3vw, 2rem);
+    }
+    .nav-link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-2);
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-link:hover { color: var(--text); }
+    .nav-link.is-current {
+      color: var(--text);
+    }
+    .nav-link.is-current::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      right: 0;
+      height: 1.5px;
+      background: var(--accent);
+    }
+
+    /* ─── Hero ───────────────────────────────────────────── */
+    .hero {
+      padding: clamp(5rem, 11vw, 10rem) 0 clamp(4rem, 8vw, 8rem);
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+    }
+    .eyebrow .pulse {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      margin-right: 0.45rem;
+      vertical-align: middle;
+      transform: translateY(-1px);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero-title {
+      font-size: clamp(2.75rem, 8vw, 6.5rem);
+      font-weight: 500;
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+      margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem);
+      max-width: 18ch;
+    }
+    .hero-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent);
+    }
+    .hero-tagline {
+      font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+      color: var(--text-2);
+      line-height: 1.55;
+      max-width: 38rem;
+      font-weight: 400;
+    }
+
+    /* ─── Section base ───────────────────────────────────── */
+    section.block {
+      padding: clamp(5rem, 10vw, 9rem) 0;
+      border-top: 1px solid var(--border);
+    }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-bottom: clamp(3rem, 5vw, 5rem);
+      flex-wrap: wrap;
+    }
+    .section-title {
+      font-size: clamp(1.85rem, 4vw, 3rem);
+      font-weight: 500;
+      letter-spacing: -0.025em;
       line-height: 1.1;
-      margin-bottom: 1rem;
+      max-width: 22ch;
     }
-    .about-title .hl {
-      background: var(--saffron);
-      color: var(--ink);
-      padding: 0 0.25em;
+    .section-sub {
+      font-size: 0.875rem;
+      color: var(--text-3);
+      font-weight: 500;
+    }
+
+    /* ─── Paths ──────────────────────────────────────────── */
+    .paths {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(1.25rem, 2vw, 1.75rem);
+    }
+    @media (min-width: 880px) {
+      .paths { grid-template-columns: repeat(3, 1fr); }
+    }
+    .path {
+      background: var(--surf);
+      border: 1px solid var(--border);
+      padding: clamp(2rem, 3vw, 2.75rem);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: border-color 0.25s, transform 0.25s, background 0.25s;
+      min-height: clamp(20rem, 26vw, 24rem);
+      position: relative;
+    }
+    .path:hover {
+      border-color: var(--text);
+      transform: translateY(-6px);
+    }
+    .path-time {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .path-title {
+      font-size: clamp(1.55rem, 2.3vw, 1.95rem);
+      font-weight: 500;
+      letter-spacing: -0.022em;
+      line-height: 1.12;
+    }
+    .path-desc {
+      color: var(--text-2);
+      font-size: 0.975rem;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+    .path-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: -0.005em;
+      margin-top: 0.5rem;
+    }
+    .path-arrow .glyph {
+      transition: transform 0.25s;
+      font-size: 1.1rem;
+    }
+    .path:hover .path-arrow .glyph { transform: translateX(6px); }
+
+    /* ─── About ──────────────────────────────────────────── */
+    .about-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(3rem, 5vw, 5rem);
+      align-items: start;
+    }
+    @media (min-width: 880px) {
+      .about-row { grid-template-columns: 1fr 1fr; }
     }
     .about-text {
-      color: rgba(250, 245, 237, 0.8);
-      font-size: 1rem;
-      line-height: 1.65;
+      font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+      color: var(--text);
+      line-height: 1.5;
+      font-weight: 400;
+      letter-spacing: -0.012em;
+    }
+    .about-text em {
+      font-style: normal;
+      color: var(--accent);
     }
     .stats {
       display: grid;
-      gap: 1rem;
       grid-template-columns: repeat(2, 1fr);
+      gap: 2rem clamp(1.5rem, 3vw, 2.5rem);
     }
     .stat {
-      border: 3px solid var(--cream);
-      padding: 1.25rem;
-      background: transparent;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
     }
     .stat-num {
-      font-size: 2.5rem;
-      font-weight: 700;
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-      color: var(--saffron);
+      font-size: clamp(1.9rem, 3vw, 2.5rem);
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
     }
     .stat-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(250, 245, 237, 0.7);
-      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-3);
+      line-height: 1.5;
+      letter-spacing: 0.01em;
     }
 
-    /* ─── Footer ──────────────────────────────────────────────── */
-    footer {
-      background: var(--saffron);
-      color: var(--ink);
-      padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 5vw, 4rem);
-      border-top: 5px solid var(--ink);
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .footer-inner {
-      max-width: 1200px;
+    /* ─── Quiet quote ────────────────────────────────────── */
+    .pull {
+      max-width: 50rem;
       margin: 0 auto;
+      text-align: center;
+    }
+    .pull-text {
+      font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 1.25;
+      color: var(--text);
+    }
+    .pull-text em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    .pull-attr {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-top: 2rem;
+    }
+
+    /* ─── Footer ─────────────────────────────────────────── */
+    footer {
+      padding: clamp(4rem, 6vw, 6rem) 0 clamp(2rem, 4vw, 3rem);
+      border-top: 1px solid var(--border);
+    }
+    .footer-row {
       display: flex;
       justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
       flex-wrap: wrap;
+      margin-bottom: clamp(3rem, 5vw, 5rem);
+    }
+    .footer-brand {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+    .footer-tag {
+      font-size: 0.875rem;
+      color: var(--text-3);
+    }
+    .footer-links {
+      display: flex;
+      gap: clamp(1rem, 2vw, 2rem);
+      flex-wrap: wrap;
+    }
+    .footer-link {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      padding-bottom: 0.25rem;
+      border-bottom: 1px solid var(--text);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .footer-link:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
       gap: 1rem;
-      align-items: center;
-    }
-    .footer-inner a:hover { text-decoration: underline; text-underline-offset: 4px; }
-
-    /* ─── Small accents ──────────────────────────────────────── */
-    .sticker {
-      display: inline-block;
-      background: var(--lime);
-      color: var(--ink);
-      padding: 0.4rem 0.85rem;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border: 3px solid var(--ink);
-      transform: rotate(-3deg);
-      box-shadow: 3px 3px 0 var(--ink);
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+      color: var(--text-3);
+      letter-spacing: 0.05em;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
     }
 
-    /* Reveal animation */
+    /* ─── Reveal ──────────────────────────────────────── */
     .reveal {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .reveal.in {
       opacity: 1;
       transform: translateY(0);
     }
+    .reveal-stagger-1 { transition-delay: 0.08s; }
+    .reveal-stagger-2 { transition-delay: 0.16s; }
+    .reveal-stagger-3 { transition-delay: 0.24s; }
   </style>
 </head>
 <body>
 
-<!-- ─── TOP TICKER ──────────────────────────────────────────────── -->
-<div class="ticker">
-  <div class="ticker-track">
-    <span>★ CONSTO</span><span class="ticker-dot">•</span>
-    <span>INDIA'S NEIGHBOURHOOD STORE</span><span class="ticker-dot">•</span>
-    <span>PRE-LAUNCH 2026</span><span class="ticker-dot">•</span>
-    <span>BEERAMGUDA, HYDERABAD</span><span class="ticker-dot">•</span>
-    <span>AI-BACKED PHYSICAL RETAIL</span><span class="ticker-dot">•</span>
-    <span>★ CONSTO</span><span class="ticker-dot">•</span>
-    <span>INDIA'S NEIGHBOURHOOD STORE</span><span class="ticker-dot">•</span>
-    <span>PRE-LAUNCH 2026</span><span class="ticker-dot">•</span>
-  </div>
-</div>
-
-
-<!-- ─── HERO ────────────────────────────────────────────────────── -->
-<section class="hero">
-  <div class="hero-inner">
-    <div class="badge-row">
-      <span class="badge">INDIA · 2026</span>
-      <span class="badge alt">PRE-LAUNCH</span>
-      <span class="badge">FOUNDER: SATEESH</span>
+<!-- ─── NAV ──────────────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="container">
+    <a href="/" class="brand"><span class="dot"></span>Consto</a>
+    <div class="nav-links">
+      <a href="/concept.html" class="nav-link">Concept</a>
+      <a href="/portfolio.html" class="nav-link">Portfolio</a>
+      <a href="/experience.html" class="nav-link">Demo</a>
     </div>
+  </div>
+</nav>
 
-    <h1 class="massive">CONS<span class="star">★</span>TO</h1>
 
-    <p class="tagline">
-      India's neighbourhood store.<br/>
-      Where every customer is <span class="underline">remembered like family.</span>
+<!-- ─── HERO ─────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow reveal"><span class="pulse"></span>India · Hyderabad · 2026 · Pre-launch</span>
+    <h1 class="hero-title reveal">
+      Building <em>Consto</em> — India's neighbourhood store.
+    </h1>
+    <p class="hero-tagline reveal">
+      The first AI-backed physical retail format built for Indian suburbs. The warmth of a kirana, the discipline of a 7-Eleven, and an AI memory that never forgets.
     </p>
   </div>
 </section>
 
 
-<!-- ─── PICK YOUR PATH ─────────────────────────────────────────── -->
-<section class="paths">
-  <div class="paths-header reveal">
-    <h2 class="paths-title">
-      Pick your <span class="accent">path</span>
-      <span class="arrow-down">↓</span>
-    </h2>
-    <span class="paths-sub">Three ways to explore the work.</span>
-  </div>
+<!-- ─── PATHS ────────────────────────────────────────────────── -->
+<section class="block">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2 class="section-title">Three ways to explore.</h2>
+      <span class="section-sub">Pick the one that fits your time.</span>
+    </div>
 
-  <div class="cards">
+    <div class="paths">
+      <a href="/experience.html" class="path reveal reveal-stagger-1">
+        <span class="path-time">3 minutes · Interactive</span>
+        <h3 class="path-title">Try the demo.</h3>
+        <p class="path-desc">
+          Pick a customer — Priya, Lakshmi Aunty, Raju, or Arjun. See exactly how Consto knows them: the widget on their phone, the WhatsApp from the agent, what the in-store staff sees, the receipt.
+        </p>
+        <span class="path-arrow">Open the demo <span class="glyph">→</span></span>
+      </a>
 
-    <!-- DEMO CARD -->
-    <a href="/experience.html" class="card card-demo reveal">
-      <div class="card-icon-row">
-        <div class="card-icon">▶</div>
-        <span class="card-time-tag">3 MIN · INTERACTIVE</span>
-      </div>
-      <div class="card-num">01</div>
-      <h3>DEMO</h3>
-      <p class="card-desc">
-        Pick a customer — Priya, Lakshmi Aunty, Raju, or Arjun. See exactly how Consto knows them: their morning widget, the WhatsApp from the agent, what the in-store staff sees on their tablet, the checkout receipt.
-      </p>
-      <span class="cta">
-        TRY IT <span class="cta-arrow">→</span>
-      </span>
-    </a>
+      <a href="/concept.html" class="path reveal reveal-stagger-2">
+        <span class="path-time">5 minutes · Pitch read</span>
+        <h3 class="path-title">Read the concept.</h3>
+        <p class="path-desc">
+          The punch version. Problem, opportunity, solution, founder, ask. Written for investors and partners who need the story in one sitting without 15 minutes of scrolling.
+        </p>
+        <span class="path-arrow">Read the pitch <span class="glyph">→</span></span>
+      </a>
 
-    <!-- CONCEPT CARD -->
-    <a href="/concept.html" class="card card-concept reveal">
-      <div class="card-icon-row">
-        <div class="card-icon">★</div>
-        <span class="card-time-tag">5 MIN · PITCH</span>
-      </div>
-      <div class="card-num">02</div>
-      <h3>CONCEPT</h3>
-      <p class="card-desc">
-        The punch version. Problem, opportunity, solution, founder, ask — written for investors, partners, and decision-makers who need the story in one sitting. No fluff. No reading 20 minutes to get to the point.
-      </p>
-      <span class="cta">
-        READ IT <span class="cta-arrow">→</span>
-      </span>
-    </a>
-
-    <!-- PORTFOLIO CARD -->
-    <a href="/portfolio.html" class="card card-portfolio reveal">
-      <div class="card-icon-row">
-        <div class="card-icon">▦</div>
-        <span class="card-time-tag">15 MIN · DEEP DIVE</span>
-      </div>
-      <div class="card-num">03</div>
-      <h3>PORTFOLIO</h3>
-      <p class="card-desc">
-        Full case study. The research methods, the eight insights from 50+ interviews, the four personas, three pillars, three formats, the AI memory engine — every design decision traceable back to a documented customer interview.
-      </p>
-      <span class="cta">
-        EXPLORE <span class="cta-arrow">→</span>
-      </span>
-    </a>
-
+      <a href="/portfolio.html" class="path reveal reveal-stagger-3">
+        <span class="path-time">15 minutes · Deep dive</span>
+        <h3 class="path-title">Explore the portfolio.</h3>
+        <p class="path-desc">
+          Full case study. Research methods, eight insights from 50+ interviews, four personas, three pillars, the AI Memory Engine — every design decision traceable to a documented customer interview.
+        </p>
+        <span class="path-arrow">Open the case study <span class="glyph">→</span></span>
+      </a>
+    </div>
   </div>
 </section>
 
 
-<!-- ─── ABOUT STRIP ────────────────────────────────────────────── -->
-<section class="about">
-  <div class="about-inner reveal">
-    <div>
-      <span class="sticker">★ ONE-LINER</span>
-      <h3 class="about-title" style="margin-top: 1.25rem;">
-        India's first <span class="hl">AI-backed</span> physical retail format, built for Tier 2-3 suburbs.
-      </h3>
-      <p class="about-text">
-        Combines the warmth of a kirana, the operational discipline of a 7-Eleven, and an AI memory layer that genuinely remembers each customer's family, festivals, and rhythm. Three format variants — Daily, Home, Hub — adapt to where each store sits. The model replicates region-by-region across India.
-      </p>
+<!-- ─── ABOUT ────────────────────────────────────────────────── -->
+<section class="block">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2 class="section-title">About this work.</h2>
+      <span class="section-sub">A note before you start reading.</span>
     </div>
 
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-num">$950B</div>
-        <div class="stat-label">Indian retail market</div>
+    <div class="about-row">
+      <div class="about-text reveal">
+        Consto is a <em>1,000-1,500 sqft</em> physical neighbourhood store. Three format variants — Daily, Home, Hub — adapt to where each store sits. An <em>AI memory layer</em> at the centre that genuinely remembers each customer's family, festivals, and rhythm over years of compounding interaction.
+        <br/><br/>
+        The work is grounded in <em>15 years</em> inside a family kirana, <em>~18 years</em> of structured retail observation across India and Asia, and <em>50+</em> customer interviews in Beeramguda, Hyderabad. Not theory.
       </div>
-      <div class="stat">
-        <div class="stat-num">ZERO</div>
-        <div class="stat-label">Organized convenience chains</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">50+</div>
-        <div class="stat-label">Customer interviews</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">15 YRS</div>
-        <div class="stat-label">Inside a kirana, ages 7-22</div>
+
+      <div class="stats reveal">
+        <div class="stat">
+          <div class="stat-num">$950B</div>
+          <div class="stat-label">Indian retail market — 88% unorganized</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Zero</div>
+          <div class="stat-label">Organized neighbourhood-store chains in India today</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">In-person customer interviews in Beeramguda</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">15 yrs</div>
+          <div class="stat-label">Inside the family kirana, ages 7 to 22</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- ─── FOOTER ─────────────────────────────────────────────────── -->
+<!-- ─── PULL QUOTE ───────────────────────────────────────────── -->
+<section class="block">
+  <div class="container">
+    <div class="pull reveal">
+      <p class="pull-text">
+        "Most retail-tech founders come from tech and try to digitise kiranas from the outside.<br/>
+        <em>I come from inside the kirana.</em>"
+      </p>
+      <p class="pull-attr">Sateesh · Founder · Hyderabad</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── FOOTER ───────────────────────────────────────────────── -->
 <footer>
-  <div class="footer-inner">
-    <div>SATEESH · HYDERABAD · 2026</div>
-    <a href="https://github.com/iamsatz/Consto" target="_blank" rel="noopener">GITHUB.COM/IAMSATZ/CONSTO</a>
+  <div class="container">
+    <div class="footer-row">
+      <div>
+        <div class="footer-brand">Consto.</div>
+        <div class="footer-tag">India's Neighbourhood Store · 2026</div>
+      </div>
+      <div class="footer-links">
+        <a href="/concept.html" class="footer-link">Concept</a>
+        <a href="/portfolio.html" class="footer-link">Portfolio</a>
+        <a href="/experience.html" class="footer-link">Demo</a>
+        <a href="mailto:satishkumar.2163@gmail.com" class="footer-link">Email</a>
+        <a href="https://github.com/iamsatz/Consto" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <span>DESIGNED BY SATEESH</span>
+      <span>HYDERABAD · 2026</span>
+    </div>
   </div>
 </footer>
 
 
 <script>
-  // Simple fade-in reveal
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -605,7 +547,7 @@
         obs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 
