@@ -1,0 +1,2421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consto — India's Neighbourhood Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            saffron: '#E8732A',
+            sage:    '#6B8F71',
+            cream:   '#FAF5ED',
+            'deep':  '#1A1612',
+            gold:    '#D4A843',
+            terra:   '#C4583A',
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans:  ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background-color: #FAF5ED; color: #1A1612; }
+
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #E8732A;
+    }
+
+    /* Fade-in on scroll */
+    .fade {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered children */
+    .stagger .fade:nth-child(1) { transition-delay: 0ms; }
+    .stagger .fade:nth-child(2) { transition-delay: 80ms; }
+    .stagger .fade:nth-child(3) { transition-delay: 160ms; }
+    .stagger .fade:nth-child(4) { transition-delay: 240ms; }
+    .stagger .fade:nth-child(5) { transition-delay: 320ms; }
+    .stagger .fade:nth-child(6) { transition-delay: 400ms; }
+    .stagger .fade:nth-child(7) { transition-delay: 480ms; }
+    .stagger .fade:nth-child(8) { transition-delay: 560ms; }
+
+    /* Nav */
+    #nav {
+      transition: background-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    #nav.scrolled {
+      background-color: rgba(250,245,237,0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 1px 0 rgba(26,22,18,0.08);
+    }
+    .nav-link {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(26,22,18,0.55);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-link:hover, .nav-link.active { color: #E8732A; }
+
+    /* Try-demo pill button in nav */
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.4rem 0.85rem;
+      background: #E8732A;
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+      margin-left: 0.25rem;
+    }
+    .nav-cta:hover { background: #1A1612; transform: translateY(-1px); }
+
+    /* Mobile nav */
+    #mobileMenuBtn { transition: background-color 0.15s; }
+    #mobileMenuBtn:hover { background-color: rgba(26,22,18,0.05); }
+    .mobile-nav-link {
+      display: block;
+      padding: 0.75rem 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #1A1612;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(26,22,18,0.06);
+      transition: color 0.15s, padding-left 0.15s;
+    }
+    .mobile-nav-link:last-child { border-bottom: none; }
+    .mobile-nav-link:hover, .mobile-nav-link.active {
+      color: #E8732A;
+      padding-left: 0.75rem;
+    }
+    #mobileMenu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    #mobileMenu.open {
+      max-height: 600px;
+    }
+
+    /* Responsive section padding — tighter on mobile */
+    section { padding-left: 1.25rem; padding-right: 1.25rem; }
+    @media (min-width: 768px) {
+      section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+
+    /* Prevent horizontal overflow on small screens */
+    html, body { overflow-x: hidden; }
+    img, svg { max-width: 100%; height: auto; }
+
+    /* Cards */
+    .format-card {
+      background: #FAF5ED;
+      border: 1px solid rgba(26,22,18,0.09);
+      border-radius: 1.25rem;
+      padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .format-card:hover { border-color: rgba(26,22,18,0.2); transform: translateY(-3px); }
+
+    .pillar-card {
+      background: #fff;
+      border: 1px solid rgba(26,22,18,0.07);
+      border-radius: 1.25rem;
+      padding: 2rem;
+      box-shadow: 0 2px 12px rgba(26,22,18,0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pillar-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(26,22,18,0.1); }
+
+    .tailwind-card {
+      border: 1px solid rgba(250,245,237,0.12);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+    .tailwind-card:hover { border-color: #E8732A; }
+
+    .os-card {
+      background: #fff;
+      border: 1px solid rgba(26,22,18,0.07);
+      border-radius: 0.875rem;
+      padding: 1.25rem;
+      transition: background-color 0.2s, color 0.2s;
+    }
+    .os-card:hover { background-color: #E8732A; }
+    .os-card:hover .os-name { color: #fff; }
+    .os-card:hover .os-desc { color: rgba(255,255,255,0.7); }
+    .os-card:hover .badge { background-color: rgba(255,255,255,0.2); color: #fff; }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.55rem;
+      border-radius: 99px;
+      text-transform: uppercase;
+    }
+    .badge-speed { background-color: rgba(232,115,42,0.12); color: #E8732A; }
+    .badge-think { background-color: rgba(26,22,18,0.08); color: rgba(26,22,18,0.55); }
+
+    /* Quote style */
+    .pull-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 2.4rem);
+      line-height: 1.35;
+      color: #1A1612;
+    }
+
+    /* Ticker stat */
+    .big-stat {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      line-height: 1;
+    }
+
+    /* Dot pulse */
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .dot-pulse { animation: pulse-dot 2s ease-in-out infinite; }
+  </style>
+</head>
+<body>
+
+<!-- ─── VERSION SWITCHER STRIP ─────────────────────────────────────── -->
+<div style="position:relative;z-index:60;background:#1A1612;color:#FAF5ED;padding:0.55rem 1.25rem;font-family:'Inter',system-ui,sans-serif;border-bottom:3px solid #1A1612;">
+  <div style="max-w-1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:0.5rem;flex-wrap:wrap;max-width:1300px;">
+    <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E8732A;">YOU'RE READING ★ THE FULL PORTFOLIO</div>
+    <div style="display:flex;gap:0.35rem;flex-wrap:wrap;">
+      <a href="/" style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.65rem;border:1.5px solid rgba(250,245,237,0.4);color:#FAF5ED;text-decoration:none;transition:all 0.15s;border-radius:2px;">← Hub</a>
+      <a href="/concept.html" style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.65rem;border:1.5px solid rgba(250,245,237,0.4);color:#FAF5ED;text-decoration:none;transition:all 0.15s;border-radius:2px;">Concept (5 min)</a>
+      <a href="/experience.html" style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.65rem;border:1.5px solid #E8732A;background:#E8732A;color:#1A1612;text-decoration:none;transition:all 0.15s;border-radius:2px;">▶ Demo</a>
+    </div>
+  </div>
+</div>
+
+<!-- ─── STICKY NAV ─────────────────────────────────────────────────── -->
+<nav id="nav" class="fixed left-0 right-0 z-50" style="top:36px;">
+  <div class="max-w-6xl mx-auto px-5 md:px-6 h-14 flex items-center justify-between">
+    <a href="#" class="font-serif text-xl font-bold" style="color:#E8732A;text-decoration:none;">Consto</a>
+
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-2.5 lg:gap-4">
+      <a href="#problem"     class="nav-link">Problem</a>
+      <a href="#opportunity" class="nav-link">Opportunity</a>
+      <a href="#insights"    class="nav-link">Insights</a>
+      <a href="#solution"    class="nav-link">Solution</a>
+      <a href="#product"     class="nav-link">Product</a>
+      <a href="#formats"     class="nav-link">Formats</a>
+      <a href="#engage"      class="nav-link">Engage</a>
+      <a href="#founder"     class="nav-link">Founder</a>
+      <a href="#next"        class="nav-link">Next</a>
+      <a href="/experience.html" class="nav-cta">▶ Try Demo</a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button id="mobileMenuBtn" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg" aria-label="Open menu" style="color:#1A1612;">
+      <svg id="iconMenu" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg id="iconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu panel -->
+  <div id="mobileMenu" class="md:hidden hidden" style="background:#FAF5ED;border-top:1px solid rgba(26,22,18,0.08);">
+    <div class="px-5 py-4 flex flex-col">
+      <a href="#problem"     class="mobile-nav-link">01 · Problem</a>
+      <a href="#opportunity" class="mobile-nav-link">02 · Opportunity</a>
+      <a href="#insights"    class="mobile-nav-link">03 · Insights</a>
+      <a href="#solution"    class="mobile-nav-link">04 · Solution</a>
+      <a href="#product"     class="mobile-nav-link">05 · Product</a>
+      <a href="#formats"     class="mobile-nav-link">06 · Formats</a>
+      <a href="#engage"      class="mobile-nav-link">07 · Engage</a>
+      <a href="#founder"     class="mobile-nav-link">08 · Founder</a>
+      <a href="#next"        class="mobile-nav-link">10 · What's next</a>
+      <a href="/experience.html" class="mobile-nav-link" style="color:#E8732A; font-weight:600;">▶ Try the interactive demo</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ─── HERO ──────────────────────────────────────────────────────── -->
+<section class="min-h-screen flex flex-col items-center justify-center px-6" style="background:#FAF5ED;padding-top:6.25rem;">
+  <div class="text-center max-w-2xl mx-auto">
+    <div class="section-label mb-6">India · Pre-launch · 2026</div>
+    <h1 class="font-serif font-bold leading-none mb-3" style="font-size:clamp(4rem,13vw,9rem);color:#E8732A;">Consto</h1>
+    <p class="font-serif text-2xl md:text-3xl font-medium mb-6" style="color:#1A1612;">India's Neighbourhood Store</p>
+    <p class="text-lg leading-relaxed mx-auto max-w-md" style="color:rgba(26,22,18,0.55);">
+      The first AI-backed physical retail format built for Indian suburbs — where every customer is remembered like family.
+    </p>
+    <div class="mt-14 flex items-center justify-center gap-2" style="color:rgba(26,22,18,0.3);">
+      <span class="text-xs tracking-widest uppercase">Scroll</span>
+      <svg class="w-3.5 h-3.5" style="animation:pulse-dot 2s infinite" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── PROBLEM ───────────────────────────────────────────────────── -->
+<section id="problem" class="py-24 px-6" style="background:#fff;">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-label mb-4 fade">01 · Problem</div>
+    <h2 class="font-serif font-semibold mb-4 fade" style="font-size:clamp(1.7rem,4vw,3rem);color:#1A1612;max-width:34rem;line-height:1.2;">
+      In Indian suburbs, no retail format remembers the customer.
+    </h2>
+    <p class="mb-16 fade" style="color:rgba(26,22,18,0.55);font-size:1.05rem;max-width:38rem;line-height:1.65;">
+      400M+ families in Tier 2-3 India lose 40-60 minutes daily juggling 3-4 apps and shops. The problem isn't access — it's that every format fails them in a different way.
+    </p>
+
+    <!-- Three format cards -->
+    <div class="grid md:grid-cols-3 gap-5 mb-14 stagger">
+      <div class="format-card fade">
+        <div class="mb-4 text-3xl">🏪</div>
+        <h3 class="font-serif text-xl font-semibold mb-3" style="color:#1A1612;">Kirana</h3>
+        <p class="text-sm mb-1.5" style="color:rgba(26,22,18,0.6);">
+          <span style="color:#6B8F71;font-weight:500;">Has:</span> Warmth, trust, credit, community
+        </p>
+        <p class="text-sm mb-5" style="color:rgba(26,22,18,0.6);">
+          <span style="color:#C4583A;font-weight:500;">Lacks:</span> 50% stockouts, no modern services, no digital memory
+        </p>
+        <div class="pt-4" style="border-top:1px solid rgba(26,22,18,0.09);">
+          <span class="text-xs font-semibold tracking-widest uppercase" style="color:rgba(26,22,18,0.35);">Trust without scale</span>
+        </div>
+      </div>
+
+      <div class="format-card fade">
+        <div class="mb-4 text-3xl">⚡</div>
+        <h3 class="font-serif text-xl font-semibold mb-3" style="color:#1A1612;">Quick Commerce</h3>
+        <p class="text-sm mb-1.5" style="color:rgba(26,22,18,0.6);">
+          <span style="color:#6B8F71;font-weight:500;">Has:</span> Speed, convenience, wide selection
+        </p>
+        <p class="text-sm mb-5" style="color:rgba(26,22,18,0.6);">
+          <span style="color:#C4583A;font-weight:500;">Lacks:</span> 20-30% quality failures, zero relationships, no memory of you
+        </p>
+        <div class="pt-4" style="border-top:1px solid rgba(26,22,18,0.09);">
+          <span class="text-xs font-semibold tracking-widest uppercase" style="color:rgba(26,22,18,0.35);">Speed without soul</span>
+        </div>
+      </div>
+
+      <div class="format-card fade">
+        <div class="mb-4 text-3xl">🏬</div>
+        <h3 class="font-serif text-xl font-semibold mb-3" style="color:#1A1612;">Supermarket</h3>
+        <p class="text-sm mb-1.5" style="color:rgba(26,22,18,0.6);">
+          <span style="color:#6B8F71;font-weight:500;">Has:</span> Variety, organisation, consistency
+        </p>
+        <p class="text-sm mb-5" style="color:rgba(26,22,18,0.6);">
+          <span style="color:#C4583A;font-weight:500;">Lacks:</span> 20-40 min away, staff rotates, customers are numbers
+        </p>
+        <div class="pt-4" style="border-top:1px solid rgba(26,22,18,0.09);">
+          <span class="text-xs font-semibold tracking-widest uppercase" style="color:rgba(26,22,18,0.35);">Scale without care</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- The gap -->
+    <div class="rounded-2xl p-8 md:p-12 fade" style="background:#1A1612;">
+      <p class="font-serif text-xl md:text-2xl mb-7 leading-snug" style="color:rgba(250,245,237,0.9);">
+        "Nobody owns the customer relationship."
+      </p>
+      <div class="grid md:grid-cols-3 gap-4">
+        <p class="text-sm" style="color:rgba(250,245,237,0.4);">DMart knows your bill amount — but not your name.</p>
+        <p class="text-sm" style="color:rgba(250,245,237,0.4);">Zepto knows your address — but not your allergies.</p>
+        <p class="text-sm" style="color:rgba(250,245,237,0.4);">The kirana knows your face — but can't stock what you need.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── OPPORTUNITY ───────────────────────────────────────────────── -->
+<section id="opportunity" class="py-24 px-6" style="background:#1A1612;color:#FAF5ED;">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-label mb-4 fade">02 · Opportunity</div>
+    <h2 class="font-serif font-semibold mb-4 fade" style="font-size:clamp(1.7rem,4vw,3rem);color:#FAF5ED;max-width:38rem;line-height:1.2;">
+      A $950B market. A format nobody has built.
+    </h2>
+    <p class="mb-12 fade" style="color:rgba(250,245,237,0.55);font-size:1.05rem;max-width:42rem;line-height:1.65;">
+      The market itself isn't empty — kiranas, quick commerce, and supermarkets all operate inside it. What's empty is the <em style="color:#E8732A;font-style:normal;font-weight:500;">specific format</em>: an organized, AI-backed neighbourhood store with the warmth of a kirana and the discipline of a 7-Eleven. That format simply doesn't exist in India yet.
+    </p>
+    <p class="mb-16 fade" style="color:rgba(250,245,237,0.4);font-size:0.95rem;max-width:42rem;line-height:1.65;">
+      And five structural tailwinds have aligned at exactly the same moment to make it buildable.
+    </p>
+
+    <!-- Market stats -->
+    <div class="rounded-2xl p-8 md:p-10 mb-10 fade" style="border:1px solid rgba(250,245,237,0.1);">
+      <div class="flex flex-wrap gap-10 md:gap-16 items-start">
+        <div>
+          <div class="big-stat" style="color:#E8732A;">$950B+</div>
+          <div class="text-xs mt-2" style="color:rgba(250,245,237,0.4);">Indian retail market today</div>
+        </div>
+        <div class="self-center text-2xl hidden md:block" style="color:rgba(250,245,237,0.2);">→</div>
+        <div>
+          <div class="big-stat" style="color:#D4A843;">$1.3T</div>
+          <div class="text-xs mt-2" style="color:rgba(250,245,237,0.4);">Projected by 2028</div>
+        </div>
+        <div class="self-center text-xl hidden md:block" style="color:rgba(250,245,237,0.15);">·</div>
+        <div>
+          <div class="big-stat" style="color:#C4583A;">88%</div>
+          <div class="text-xs mt-2" style="color:rgba(250,245,237,0.4);">Still unorganized</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zero callout -->
+    <div class="rounded-2xl p-8 mb-10 fade" style="background:#E8732A;">
+      <div class="flex flex-wrap items-center gap-4 mb-3">
+        <span class="font-serif font-bold text-5xl" style="color:#fff;">Zero.</span>
+        <span class="text-lg" style="color:rgba(255,255,255,0.9);">Organized neighbourhood-store chains in India.</span>
+      </div>
+      <p class="text-sm mb-3" style="color:rgba(255,255,255,0.8);">
+        Japan has 80,000+ convenience stores. Thailand has 13,000+. The format is proven in every Asian market it enters — and the Indian retail market has every input it needs (UPI, WhatsApp, AI cost collapse, suburban density).
+      </p>
+      <p class="text-sm" style="color:rgba(255,255,255,0.65);">
+        Nobody has Indianised the format. That gap is what Consto is built for.
+      </p>
+    </div>
+
+    <!-- Five tailwinds -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-14 stagger">
+      <div class="tailwind-card fade">
+        <div class="font-bold mb-2" style="color:#E8732A;">01</div>
+        <h4 class="font-medium mb-2" style="color:#FAF5ED;">India's convenience gap</h4>
+        <p class="text-sm" style="color:rgba(250,245,237,0.45);">Zero organized chains. Japan has 80,000+. The format works everywhere — just not Indianised yet.</p>
+      </div>
+      <div class="tailwind-card fade">
+        <div class="font-bold mb-2" style="color:#E8732A;">02</div>
+        <h4 class="font-medium mb-2" style="color:#FAF5ED;">Suburbs are wide open</h4>
+        <p class="text-sm" style="color:rgba(250,245,237,0.45);">Zepto and Blinkit need dense urban cores to work. Tier 2-3 suburbs: 2-3 year window for the next entrant.</p>
+      </div>
+      <div class="tailwind-card fade">
+        <div class="font-bold mb-2" style="color:#E8732A;">03</div>
+        <h4 class="font-medium mb-2" style="color:#FAF5ED;">AI costs collapsed</h4>
+        <p class="text-sm" style="color:rgba(250,245,237,0.45);">What cost ₹50,000/mo two years ago costs ₹2,000/mo now. A small store can now run an AI memory layer that competes with anything Reliance has.</p>
+      </div>
+      <div class="tailwind-card fade">
+        <div class="font-bold mb-2" style="color:#E8732A;">04</div>
+        <h4 class="font-medium mb-2" style="color:#FAF5ED;">WhatsApp &amp; UPI everywhere</h4>
+        <p class="text-sm" style="color:rgba(250,245,237,0.45);">500M+ Indians on WhatsApp. UPI is the default payment rail. Zero adoption friction for digital-meets-physical retail.</p>
+      </div>
+      <div class="tailwind-card fade md:col-span-2 lg:col-span-1">
+        <div class="font-bold mb-2" style="color:#E8732A;">05</div>
+        <h4 class="font-medium mb-2" style="color:#FAF5ED;">Kirana-tech failed the right way</h4>
+        <p class="text-sm" style="color:rgba(250,245,237,0.45);">Khatabook, BharatPe, Dukaan raised $1B+ and mostly failed. They digitised the ledger — not the relationship. That space is now open.</p>
+      </div>
+    </div>
+
+    <!-- Revenue potential -->
+    <div class="pt-8 fade" style="border-top:1px solid rgba(250,245,237,0.1);">
+      <p class="text-xs font-semibold tracking-widest uppercase mb-5" style="color:rgba(250,245,237,0.3);">Revenue potential per store</p>
+      <div class="flex flex-wrap gap-10">
+        <div>
+          <div class="font-serif text-2xl font-semibold" style="color:#FAF5ED;">₹8–12L / mo</div>
+          <div class="text-xs mt-1" style="color:rgba(250,245,237,0.35);">with 25-30% margins</div>
+        </div>
+        <div>
+          <div class="font-serif text-2xl font-semibold" style="color:#FAF5ED;">₹10–15 Cr</div>
+          <div class="text-xs mt-1" style="color:rgba(250,245,237,0.35);">by year 3 via franchise</div>
+        </div>
+        <div>
+          <div class="font-serif text-2xl font-semibold" style="color:#FAF5ED;">$300M+ TAM</div>
+          <div class="text-xs mt-1" style="color:rgba(250,245,237,0.35);">Consto OS as SaaS at 5% kirana penetration</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── INSIGHTS ──────────────────────────────────────────────────── -->
+<section id="insights" class="py-24 px-6" style="background:#fff;">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-label mb-4 fade">03 · Insights</div>
+    <h2 class="font-serif font-semibold mb-4 fade" style="font-size:clamp(1.7rem,4vw,3rem);color:#1A1612;max-width:38rem;line-height:1.2;">
+      What 50+ conversations revealed.
+    </h2>
+    <p class="mb-12 fade" style="color:rgba(26,22,18,0.7);font-size:1.05rem;max-width:44rem;line-height:1.65;">
+      Every decision in the solution that follows is grounded in research, not retail theory. Before designing anything, the work began with months of listening — to families in Beeramguda, to gig drivers, to retirees, to store owners, and to convenience-store managers across Thailand and Taiwan.
+    </p>
+
+    <!-- Research methods strip -->
+    <div class="rounded-2xl p-6 md:p-8 mb-16 fade" style="background:#FAF5ED;">
+      <div class="text-xs font-bold tracking-widest uppercase mb-4" style="color:#A8552A;">Research methods</div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div>
+          <div class="font-serif text-2xl font-bold mb-1" style="color:#1A1612;">50+</div>
+          <p class="text-xs" style="color:rgba(26,22,18,0.65);">In-person interviews in Beeramguda — families, gig drivers, retirees, tech professionals</p>
+        </div>
+        <div>
+          <div class="font-serif text-2xl font-bold mb-1" style="color:#1A1612;">8 formats</div>
+          <p class="text-xs" style="color:rgba(26,22,18,0.65);">Observed across India + Asia — 7-Eleven (Thailand), FamilyMart (Taiwan), Lawson, quick commerce, hypermarkets, dark stores, DMart, kiranas</p>
+        </div>
+        <div>
+          <div class="font-serif text-2xl font-bold mb-1" style="color:#1A1612;">5 sectors</div>
+          <p class="text-xs" style="color:rgba(26,22,18,0.65);">Competitive analysis — traditional retail, quick commerce, modern retail, kirana-tech, services</p>
+        </div>
+        <div>
+          <div class="font-serif text-2xl font-bold mb-1" style="color:#1A1612;">15 years inside</div>
+          <p class="text-xs" style="color:rgba(26,22,18,0.65);">Family kirana counter from age 7 to 22 + ran a mobile recharge business in 2007 — then ~18 years of structured retail observation since exiting</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── The 5 key insights ── -->
+    <div class="mb-20">
+      <div class="section-label mb-3 fade">Five insights that shaped everything</div>
+      <h3 class="font-serif text-2xl md:text-3xl font-semibold mb-3 fade" style="color:#1A1612;max-width:38rem;line-height:1.25;">
+        The findings that became the foundation.
+      </h3>
+      <p class="mb-10 fade" style="color:rgba(26,22,18,0.6);font-size:0.95rem;max-width:42rem;line-height:1.65;">
+        These five insights cut across every demographic and showed up again and again. Each one directly shaped a decision in the solution that follows.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-5 stagger">
+
+        <!-- Insight 01 -->
+        <div class="rounded-2xl p-7 fade" style="background:#FAF5ED;border:1px solid rgba(26,22,18,0.08);position:relative;">
+          <div class="absolute top-5 right-5 text-4xl font-serif font-bold" style="color:rgba(232,115,42,0.15);">01</div>
+          <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#E8732A;">The emotional gap</div>
+          <h4 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">"Nobody remembers what I need."</h4>
+          <p class="text-sm mb-4" style="color:rgba(26,22,18,0.7);">
+            Across every demographic — working moms, gig drivers, retirees, tech professionals — the strongest unmet need wasn't price or speed. It was being known. The same language showed up repeatedly: <em style="font-style:normal;color:#1A1612;">"nobody has patience for me," "nobody remembers."</em>
+          </p>
+          <div class="text-xs pt-3" style="border-top:1px solid rgba(26,22,18,0.08);color:rgba(26,22,18,0.55);">
+            <span style="color:#E8732A;font-weight:600;">→ Shaped:</span> The AI memory layer as the central moat. Every customer gets a dedicated agent.
+          </div>
+        </div>
+
+        <!-- Insight 02 -->
+        <div class="rounded-2xl p-7 fade" style="background:#FAF5ED;border:1px solid rgba(26,22,18,0.08);position:relative;">
+          <div class="absolute top-5 right-5 text-4xl font-serif font-bold" style="color:rgba(212,168,67,0.18);">02</div>
+          <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#A8852E;">The white space</div>
+          <h4 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">India has zero organized convenience stores.</h4>
+          <p class="text-sm mb-4" style="color:rgba(26,22,18,0.7);">
+            Japan has 80,000+. Thailand has 13,000+. The format works in every Asian market it enters. Nobody has Indianised it. Studying 7-Eleven in Bangkok and FamilyMart in Taipei — operationally brilliant, emotionally empty — made the gap obvious.
+          </p>
+          <div class="text-xs pt-3" style="border-top:1px solid rgba(26,22,18,0.08);color:rgba(26,22,18,0.55);">
+            <span style="color:#A8852E;font-weight:600;">→ Shaped:</span> The convenience-store format itself + the "Indianise it" thesis (warmth + culture + memory).
+          </div>
+        </div>
+
+        <!-- Insight 03 -->
+        <div class="rounded-2xl p-7 fade" style="background:#FAF5ED;border:1px solid rgba(26,22,18,0.08);position:relative;">
+          <div class="absolute top-5 right-5 text-4xl font-serif font-bold" style="color:rgba(107,143,113,0.18);">03</div>
+          <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#5A7860;">The suburban gap</div>
+          <h4 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">Quick commerce can't make suburbs work.</h4>
+          <p class="text-sm mb-4" style="color:rgba(26,22,18,0.7);">
+            Zepto and Blinkit need dense urban cores and dark-store math to even approach unit economics. Tier 2-3 suburbs like Beeramguda are structurally unprofitable for them. The window is wide open for the next 2-3 years.
+          </p>
+          <div class="text-xs pt-3" style="border-top:1px solid rgba(26,22,18,0.08);color:rgba(26,22,18,0.55);">
+            <span style="color:#5A7860;font-weight:600;">→ Shaped:</span> The decision to start in Beeramguda and the Subscribe model that beats quick commerce on small-basket economics.
+          </div>
+        </div>
+
+        <!-- Insight 04 -->
+        <div class="rounded-2xl p-7 fade" style="background:#FAF5ED;border:1px solid rgba(26,22,18,0.08);position:relative;">
+          <div class="absolute top-5 right-5 text-4xl font-serif font-bold" style="color:rgba(196,88,58,0.18);">04</div>
+          <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#C4583A;">The failure pattern</div>
+          <h4 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">Kirana-tech digitised the wrong thing.</h4>
+          <p class="text-sm mb-4" style="color:rgba(26,22,18,0.7);">
+            Khatabook, BharatPe, Dukaan raised $1B+ between them and mostly failed. They digitised the ledger — the accounting layer. They should have digitised the <em style="font-style:normal;color:#1A1612;">customer relationship.</em> The relationship is the product. The software is just plumbing.
+          </p>
+          <div class="text-xs pt-3" style="border-top:1px solid rgba(26,22,18,0.08);color:rgba(26,22,18,0.55);">
+            <span style="color:#C4583A;font-weight:600;">→ Shaped:</span> Consto OS centres on customer memory, not bookkeeping. The Agent product comes before the POS in the strategic narrative.
+          </div>
+        </div>
+
+        <!-- Insight 05 -->
+        <div class="rounded-2xl p-7 fade" style="background:#FAF5ED;border:1px solid rgba(26,22,18,0.08);position:relative;">
+          <div class="absolute top-5 right-5 text-4xl font-serif font-bold" style="color:rgba(26,22,18,0.08);">05</div>
+          <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#1A1612;">The channel reality</div>
+          <h4 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">WhatsApp is the only zero-friction channel — except for power users.</h4>
+          <p class="text-sm mb-4" style="color:rgba(26,22,18,0.7);">
+            500M+ Indians on WhatsApp, 3 hours a day, zero install friction. Any solution requiring a new app fails immediately for the 55+ demographic. But power users — working professionals, tech families — genuinely want a faster way and will install a focused app if it earns the install.
+          </p>
+          <div class="text-xs pt-3" style="border-top:1px solid rgba(26,22,18,0.08);color:rgba(26,22,18,0.55);">
+            <span style="color:#1A1612;font-weight:600;">→ Shaped:</span> Four engagement layers — Widget · App · WhatsApp · Store. Different surfaces for different customers.
+          </div>
+        </div>
+
+        <!-- Insight 06 — Checkout friction -->
+        <div class="rounded-2xl p-7 fade" style="background:#FAF5ED;border:1px solid rgba(26,22,18,0.08);position:relative;">
+          <div class="absolute top-5 right-5 text-4xl font-serif font-bold" style="color:rgba(232,115,42,0.15);">06</div>
+          <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#E8732A;">The checkout friction</div>
+          <h4 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">Long queues kill the daily-trip habit.</h4>
+          <p class="text-sm mb-4" style="color:rgba(26,22,18,0.7);">
+            Indian retail has unpredictable checkout queues — kiranas, DMart, even premium supermarkets routinely have 8-15 minute waits. Customers stop returning for quick items because they know the line will eat the trip. 7-Eleven Japan solved this with disciplined POS + multiple parallel counters. Modern Indian retail still hasn't.
+          </p>
+          <div class="text-xs pt-3" style="border-top:1px solid rgba(26,22,18,0.08);color:rgba(26,22,18,0.55);">
+            <span style="color:#E8732A;font-weight:600;">→ Shaped:</span> AI-assisted speed billing in Consto POS — target under 90 seconds per customer even at peak. Multiple parallel counters. Self-checkout for subscribers as a Phase-2 add (opt-in, not forced — Lakshmi aunty still gets a human at the counter).
+          </div>
+        </div>
+
+        <!-- Insight 07 — Feedback void -->
+        <div class="rounded-2xl p-7 fade" style="background:#FAF5ED;border:1px solid rgba(26,22,18,0.08);position:relative;">
+          <div class="absolute top-5 right-5 text-4xl font-serif font-bold" style="color:rgba(107,143,113,0.18);">07</div>
+          <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#5A7860;">The feedback void</div>
+          <h4 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">Stores don't listen. Customers absorb.</h4>
+          <p class="text-sm mb-4" style="color:rgba(26,22,18,0.7);">
+            Every customer interviewed had unmet requests they'd given up voicing. Kirana owners "know" but rarely change. Supermarkets ignore. No store has a real mechanism to capture <em style="font-style:normal;">"the batter was sour today,"</em> or <em style="font-style:normal;">"I wish you stocked organic ghee."</em> That data exists in every conversation — it's never collected.
+          </p>
+          <div class="text-xs pt-3" style="border-top:1px solid rgba(26,22,18,0.08);color:rgba(26,22,18,0.55);">
+            <span style="color:#5A7860;font-weight:600;">→ Shaped:</span> AI Agent captures every customer signal — requests, complaints, missed items. Inventory adjusts weekly based on real signal, not guesswork.
+          </div>
+        </div>
+
+        <!-- Insight 08 — Culture void (full width for emphasis as closing insight) -->
+        <div class="rounded-2xl p-7 fade md:col-span-2" style="background:#FAF5ED;border:1px solid rgba(212,168,67,0.3);position:relative;">
+          <div class="absolute top-5 right-5 text-4xl font-serif font-bold" style="color:rgba(212,168,67,0.22);">08</div>
+          <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#A8852E;">The culture void</div>
+          <h4 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">Modern retail strips local soul in the name of scale.</h4>
+          <p class="text-sm mb-4" style="color:rgba(26,22,18,0.7);max-width:48rem;">
+            DMart, More, Reliance Fresh use the same store template across India. Same layout in Hyderabad as in Pune. Festivals reduced to a generic <em style="font-style:normal;">"Diwali OFFERS"</em> end-cap stack. Telugu families shop in stores that don't acknowledge Bonalu. Punjabi families shop in stores that don't know what Lohri stock looks like. Local culture is sacrificed for operational uniformity — at the exact moment when local fit is what customers crave most.
+          </p>
+          <div class="text-xs pt-3" style="border-top:1px solid rgba(26,22,18,0.08);color:rgba(26,22,18,0.55);">
+            <span style="color:#A8852E;font-weight:600;">→ Shaped:</span> 30% local soul per location. Regional festival calendar runs the store. Replicate the <em style="font-style:normal;">method</em> across India, not the template.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── The 4 personas ── -->
+    <div class="mb-16">
+      <div class="section-label mb-3 fade">Four archetypes that shaped the personas</div>
+      <h3 class="font-serif text-2xl md:text-3xl font-semibold mb-3 fade" style="color:#1A1612;max-width:38rem;line-height:1.25;">
+        Four customers. One unmet need.
+      </h3>
+      <p class="mb-10 fade" style="color:rgba(26,22,18,0.6);font-size:0.95rem;max-width:42rem;line-height:1.65;">
+        Different ages, incomes, and shopping rhythms — but the same emotional gap. They became the four personas every product decision is tested against.
+      </p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 stagger">
+
+        <div class="rounded-2xl p-6 fade" style="background:#fff;border:1px solid rgba(232,115,42,0.25);">
+          <div class="text-3xl mb-3">👩‍👧‍👦</div>
+          <div class="flex items-baseline gap-2 mb-1">
+            <h4 class="font-serif text-lg font-semibold" style="color:#1A1612;">Priya</h4>
+            <span class="text-xs font-bold" style="color:#E8732A;">40%</span>
+          </div>
+          <p class="text-xs mb-3" style="color:rgba(26,22,18,0.55);">Working mom · 35 · family of 4</p>
+          <p class="text-xs mb-2" style="color:rgba(26,22,18,0.7);"><span style="color:#C4583A;font-weight:500;">Pain:</span> "40 mins every evening figuring out what to cook, what to buy."</p>
+          <p class="text-xs" style="color:rgba(26,22,18,0.7);"><span style="color:#5A7860;font-weight:500;">Need:</span> Someone who tracks her family before she asks.</p>
+        </div>
+
+        <div class="rounded-2xl p-6 fade" style="background:#fff;border:1px solid rgba(212,168,67,0.3);">
+          <div class="text-3xl mb-3">🛵</div>
+          <div class="flex items-baseline gap-2 mb-1">
+            <h4 class="font-serif text-lg font-semibold" style="color:#1A1612;">Raju</h4>
+            <span class="text-xs font-bold" style="color:#A8852E;">25%</span>
+          </div>
+          <p class="text-xs mb-3" style="color:rgba(26,22,18,0.55);">Gig driver · 28 · single</p>
+          <p class="text-xs mb-2" style="color:rgba(26,22,18,0.7);"><span style="color:#C4583A;font-weight:500;">Pain:</span> "Bank queue is 30 mins for ₹2000 cash. I lose 2 rides."</p>
+          <p class="text-xs" style="color:rgba(26,22,18,0.7);"><span style="color:#5A7860;font-weight:500;">Need:</span> Cash &amp; essentials in under 2 minutes, judgement-free.</p>
+        </div>
+
+        <div class="rounded-2xl p-6 fade" style="background:#fff;border:1px solid rgba(107,143,113,0.3);">
+          <div class="text-3xl mb-3">🙏</div>
+          <div class="flex items-baseline gap-2 mb-1">
+            <h4 class="font-serif text-lg font-semibold" style="color:#1A1612;">Lakshmi Aunty</h4>
+            <span class="text-xs font-bold" style="color:#5A7860;">20%</span>
+          </div>
+          <p class="text-xs mb-3" style="color:rgba(26,22,18,0.55);">Retiree · 55+ · lives alone</p>
+          <p class="text-xs mb-2" style="color:rgba(26,22,18,0.7);"><span style="color:#C4583A;font-weight:500;">Pain:</span> "My grandson installed 4 apps for me. I can't use any."</p>
+          <p class="text-xs" style="color:rgba(26,22,18,0.7);"><span style="color:#5A7860;font-weight:500;">Need:</span> Personal service with dignity, credit without embarrassment.</p>
+        </div>
+
+        <div class="rounded-2xl p-6 fade" style="background:#fff;border:1px solid rgba(136,172,142,0.35);">
+          <div class="text-3xl mb-3">💻</div>
+          <div class="flex items-baseline gap-2 mb-1">
+            <h4 class="font-serif text-lg font-semibold" style="color:#1A1612;">Arjun</h4>
+            <span class="text-xs font-bold" style="color:#5A7860;">15%</span>
+          </div>
+          <p class="text-xs mb-3" style="color:rgba(26,22,18,0.55);">Tech professional · 30</p>
+          <p class="text-xs mb-2" style="color:rgba(26,22,18,0.7);"><span style="color:#C4583A;font-weight:500;">Pain:</span> "BigBasket is fine but I never know what's actually fresh."</p>
+          <p class="text-xs" style="color:rgba(26,22,18,0.7);"><span style="color:#5A7860;font-weight:500;">Need:</span> Premium pre-packed weekly, 3-min pickup, no questions.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── The bridge to solution ── -->
+    <div class="rounded-2xl p-7 md:p-9 fade" style="background:#1A1612;">
+      <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#D4A843;">From insight to solution</div>
+      <p class="font-serif text-lg md:text-2xl mb-4 leading-snug" style="color:#FAF5ED;">
+        These eight insights and four personas shaped <em style="color:#E8732A;font-style:normal;">every</em> decision in the solution.
+      </p>
+      <p class="text-sm" style="color:rgba(250,245,237,0.75);max-width:44rem;line-height:1.65;">
+        The Memory pillar exists because of Insight 01. The convenience-store format exists because of 02. The Subscribe model exists because of 03. The Agent-first OS architecture exists because of 04. The four engagement layers exist because of 05. Frictionless POS + auto-checkout exists because of 06. The AI-driven inventory feedback loop exists because of 07. The 30% local-soul + regional cultural fit exists because of 08. Every persona has a clear answer in the design that follows.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── SOLUTION ──────────────────────────────────────────────────── -->
+<section id="solution" class="py-24 px-6" style="background:#FAF5ED;">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-label mb-4 fade">04 · Solution</div>
+
+    <!-- Pull quote -->
+    <div class="max-w-3xl mb-20 fade">
+      <p class="pull-quote">
+        "The warmth of a kirana. The efficiency of a 7-Eleven. An AI memory layer that never forgets."
+      </p>
+    </div>
+
+    <!-- 3 pillars -->
+    <div class="grid md:grid-cols-3 gap-6 mb-20 stagger">
+
+      <!-- Pillar 1 — Memory -->
+      <div class="pillar-card fade">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-6" style="background:rgba(232,115,42,0.1);">
+          <span class="font-serif font-bold text-lg" style="color:#E8732A;">01</span>
+        </div>
+        <h3 class="font-serif text-xl font-semibold mb-2" style="color:#1A1612;">The Memory Layer</h3>
+        <p class="text-xs font-semibold tracking-wider uppercase mb-5" style="color:#E8732A;">The AI moat</p>
+        <p class="text-sm leading-relaxed mb-4" style="color:rgba(26,22,18,0.6);">
+          Every customer gets a dedicated AI agent that remembers them — preferences, family, festivals, allergies, purchase history, life context.
+        </p>
+        <p class="text-sm leading-relaxed mb-5" style="color:rgba(26,22,18,0.6);">
+          The agent never speaks to the customer. It equips the human team with curated, personal insights at the moment they matter.
+        </p>
+        <div class="rounded-xl p-4 text-sm italic leading-relaxed" style="background:#FAF5ED;color:rgba(26,22,18,0.65);">
+          "Priya is here. Her son's birthday is next week. She bought pachadi kit last Ugadi. Mention the iron-rich greens we just got."
+        </div>
+      </div>
+
+      <!-- Pillar 2 — Services -->
+      <div class="pillar-card fade">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-6" style="background:rgba(107,143,113,0.12);">
+          <span class="font-serif font-bold text-lg" style="color:#6B8F71;">02</span>
+        </div>
+        <h3 class="font-serif text-xl font-semibold mb-2" style="color:#1A1612;">One-Stop Services</h3>
+        <p class="text-xs font-semibold tracking-wider uppercase mb-5" style="color:#6B8F71;">The daily-life utility</p>
+        <p class="text-sm leading-relaxed mb-5" style="color:rgba(26,22,18,0.6);">
+          Groceries, AEPS cash, bill payments, mobile recharges, OTC medicines, phone accessories, powerbank rental, xerox. Customers solve 5 daily-life tasks in one 15-minute visit.
+        </p>
+        <div class="space-y-2.5">
+          <div class="flex justify-between items-center">
+            <span class="text-sm" style="color:rgba(26,22,18,0.55);">Grocery revenue share</span>
+            <span class="text-sm font-semibold" style="color:#1A1612;">~60%</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm" style="color:rgba(26,22,18,0.55);">Service revenue share</span>
+            <span class="text-sm font-semibold" style="color:#6B8F71;">~40%</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm" style="color:rgba(26,22,18,0.55);">Service margins</span>
+            <span class="text-sm font-semibold" style="color:#6B8F71;">50–60%</span>
+          </div>
+        </div>
+        <p class="text-xs mt-4" style="color:rgba(26,22,18,0.35);">Services transform thin grocery margins into a diversified community platform P&amp;L.</p>
+      </div>
+
+      <!-- Pillar 3 — Community -->
+      <div class="pillar-card fade">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-6" style="background:rgba(212,168,67,0.12);">
+          <span class="font-serif font-bold text-lg" style="color:#D4A843;">03</span>
+        </div>
+        <h3 class="font-serif text-xl font-semibold mb-2" style="color:#1A1612;">Community Anchoring</h3>
+        <p class="text-xs font-semibold tracking-wider uppercase mb-5" style="color:#D4A843;">The cultural moat</p>
+        <p class="text-sm leading-relaxed mb-4" style="color:rgba(26,22,18,0.6);">
+          Community notice board. Festival calendar. Monthly Hub Huddle events. Chai counter. "Come rest even if you don't buy." Credit with dignity. Waste-to-Wealth soup.
+        </p>
+        <p class="text-sm leading-relaxed" style="color:rgba(26,22,18,0.6);">
+          Policies that are inherently worth talking about — turning the marketing budget into word-of-mouth. The store is the neighbourhood's living room.
+        </p>
+        <div class="mt-5 text-xs font-medium" style="color:rgba(26,22,18,0.35);">Marketing budget: ₹0 &nbsp;·&nbsp; Marketing channel: customers' mouths</div>
+      </div>
+    </div>
+
+    <!-- ── Inside the Memory Engine ── -->
+    <div class="mt-20 fade">
+      <div class="section-label mb-3" style="color:#E8732A;">Inside the Memory Engine</div>
+      <h3 class="font-serif text-2xl md:text-3xl font-semibold mb-3" style="color:#1A1612;max-width:42rem;line-height:1.25;">
+        How the AI agent actually learns each customer.
+      </h3>
+      <p class="mb-3" style="color:rgba(26,22,18,0.7);font-size:0.95rem;max-width:44rem;line-height:1.65;">
+        The Memory Layer isn't magic. It's a deliberate learning system with <em style="color:#1A1612;font-style:normal;font-weight:500;">two inputs</em> and <em style="color:#1A1612;font-style:normal;font-weight:500;">three outputs</em>. The AI agent that knows Priya didn't start knowing her. Day 1, it had her phone number and her first name. Two years later, it knows when her son's exams are.
+      </p>
+      <p class="mb-12" style="color:rgba(26,22,18,0.6);font-size:0.95rem;max-width:44rem;line-height:1.65;">
+        That depth is earned, not pre-loaded. Here's how.
+      </p>
+
+      <!-- Two Inputs -->
+      <div class="mb-14">
+        <div class="text-xs font-bold tracking-widest uppercase mb-4" style="color:#A8552A;">Two inputs feed the engine</div>
+        <div class="grid md:grid-cols-2 gap-5 stagger">
+
+          <!-- Input A: Company training -->
+          <div class="rounded-2xl p-7 fade" style="background:#FAF5ED;border:1px solid rgba(232,115,42,0.2);position:relative;">
+            <div class="absolute top-5 right-5 text-3xl font-serif font-bold" style="color:rgba(232,115,42,0.18);">A</div>
+            <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#E8732A;">Input A · The baseline we train</div>
+            <h4 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">What Consto tells the AI on Day 0.</h4>
+            <p class="text-sm mb-4" style="color:rgba(26,22,18,0.7);line-height:1.6;">
+              Before any customer ever walks in, the AI is trained on the rules of how to think, talk, and act on Consto's behalf. This is the seed knowledge.
+            </p>
+            <ul class="space-y-2.5 text-sm" style="color:rgba(26,22,18,0.75);">
+              <li class="flex gap-2.5"><span style="color:#E8732A;">▸</span><span><strong style="color:#1A1612;">Brand voice rules</strong> — always use the customer's name, never ALL CAPS, Telugu phrases where natural, under 40 words per message</span></li>
+              <li class="flex gap-2.5"><span style="color:#E8732A;">▸</span><span><strong style="color:#1A1612;">Festival calendar</strong> — every Telugu festival with the stock that should pre-rotate (Ugadi pachadi kit, Sankranti ellu &amp; jaggery, Bonalu items)</span></li>
+              <li class="flex gap-2.5"><span style="color:#E8732A;">▸</span><span><strong style="color:#1A1612;">Persona archetypes</strong> — what working moms typically care about, what retirees need, what gig drivers value</span></li>
+              <li class="flex gap-2.5"><span style="color:#E8732A;">▸</span><span><strong style="color:#1A1612;">Cultural sensitivities</strong> — what to never push (expensive items at retirees), when to never message (before 7am or after 9pm)</span></li>
+              <li class="flex gap-2.5"><span style="color:#E8732A;">▸</span><span><strong style="color:#1A1612;">Inventory + pricing data</strong> — what's in stock today, what's on offer, what just came in fresh</span></li>
+            </ul>
+            <p class="text-xs mt-5 pt-4" style="border-top:1px solid rgba(232,115,42,0.15);color:rgba(26,22,18,0.55);font-style:italic;line-height:1.6;">
+              This is the "kindergarten" the AI graduates from before meeting its first customer.
+            </p>
+          </div>
+
+          <!-- Input B: Customer behavior -->
+          <div class="rounded-2xl p-7 fade" style="background:#FAF5ED;border:1px solid rgba(79,107,85,0.3);position:relative;">
+            <div class="absolute top-5 right-5 text-3xl font-serif font-bold" style="color:rgba(79,107,85,0.22);">B</div>
+            <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#4F6B55;">Input B · The signal each customer emits</div>
+            <h4 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">What the customer teaches it over time.</h4>
+            <p class="text-sm mb-4" style="color:rgba(26,22,18,0.7);line-height:1.6;">
+              Every interaction becomes data. The agent learns from purchases, timing, conversations, and what was asked but missing — not from surveys.
+            </p>
+            <ul class="space-y-2.5 text-sm" style="color:rgba(26,22,18,0.75);">
+              <li class="flex gap-2.5"><span style="color:#4F6B55;">▸</span><span><strong style="color:#1A1612;">Purchase history</strong> — every item, every quantity, every brand, logged per customer</span></li>
+              <li class="flex gap-2.5"><span style="color:#4F6B55;">▸</span><span><strong style="color:#1A1612;">Timing patterns</strong> — Priya shops 6pm Tuesday, Lakshmi visits Sunday morning, Raju does AEPS twice a week</span></li>
+              <li class="flex gap-2.5"><span style="color:#4F6B55;">▸</span><span><strong style="color:#1A1612;">Frequency &amp; rhythm</strong> — milk every day, batter twice a week, paneer every Wednesday + Saturday</span></li>
+              <li class="flex gap-2.5"><span style="color:#4F6B55;">▸</span><span><strong style="color:#1A1612;">Family + life signals</strong> — mentioned son's birthday once, festival routine, allergies, language preference</span></li>
+              <li class="flex gap-2.5"><span style="color:#4F6B55;">▸</span><span><strong style="color:#1A1612;">Misses &amp; requests</strong> — what they asked for that we didn't have. Every miss is a signal.</span></li>
+              <li class="flex gap-2.5"><span style="color:#4F6B55;">▸</span><span><strong style="color:#1A1612;">Response patterns</strong> — which messages they engaged with, which they ignored — the AI learns what works for each person</span></li>
+            </ul>
+            <p class="text-xs mt-5 pt-4" style="border-top:1px solid rgba(79,107,85,0.2);color:rgba(26,22,18,0.55);font-style:italic;line-height:1.6;">
+              No data is invented. Every line in the customer's profile is something they actually did or said.
+            </p>
+          </div>
+        </div>
+
+        <!-- Combination note -->
+        <div class="mt-5 rounded-xl p-5 fade" style="background:#1A1612;text-align:center;">
+          <p class="text-sm" style="color:#FAF5ED;line-height:1.6;">
+            <strong style="color:#E8732A;">A + B = personalization.</strong> <span style="color:rgba(250,245,237,0.75);">The baseline gives the agent a brain. The signal makes it specifically <em style="font-style:italic;">about you</em>. The mix is what makes the experience feel like "Consto knows me."</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Learning curve timeline -->
+      <div class="mb-14">
+        <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#A8552A;">The learning curve</div>
+        <h4 class="font-serif text-xl font-semibold mb-3" style="color:#1A1612;">From phone number to family memory — 2 years of compounding.</h4>
+        <p class="mb-8" style="color:rgba(26,22,18,0.65);font-size:0.9rem;max-width:42rem;line-height:1.65;">
+          The agent's understanding deepens with every interaction. Day 1 it knows almost nothing. Two years in, it knows the customer the way an old kirana shopkeeper knows their regulars.
+        </p>
+
+        <div class="rounded-2xl overflow-hidden fade" style="background:#fff;border:1px solid rgba(26,22,18,0.08);">
+          <!-- Timeline rows -->
+          <div class="grid grid-cols-12 gap-3 px-5 md:px-7 py-4 items-start" style="background:rgba(232,115,42,0.06);border-bottom:1px solid rgba(26,22,18,0.06);">
+            <div class="col-span-3 md:col-span-2 font-serif font-bold text-base" style="color:#E8732A;">Day 1</div>
+            <div class="col-span-9 md:col-span-10 text-sm" style="color:rgba(26,22,18,0.75);line-height:1.55;">
+              <strong style="color:#1A1612;">Phone number + first name only.</strong> The agent uses persona archetype guesses. Generic "welcome to Consto" tone. No personalization possible yet.
+            </div>
+          </div>
+          <div class="grid grid-cols-12 gap-3 px-5 md:px-7 py-4 items-start" style="border-bottom:1px solid rgba(26,22,18,0.06);">
+            <div class="col-span-3 md:col-span-2 font-serif font-bold text-base" style="color:#A8552A;">Week 1</div>
+            <div class="col-span-9 md:col-span-10 text-sm" style="color:rgba(26,22,18,0.75);line-height:1.55;">
+              Knows your <strong style="color:#1A1612;">first few purchases</strong>. Can recommend basics from those categories. Greeting still feels neutral.
+            </div>
+          </div>
+          <div class="grid grid-cols-12 gap-3 px-5 md:px-7 py-4 items-start" style="background:rgba(232,115,42,0.04);border-bottom:1px solid rgba(26,22,18,0.06);">
+            <div class="col-span-3 md:col-span-2 font-serif font-bold text-base" style="color:#A8552A;">Month 1</div>
+            <div class="col-span-9 md:col-span-10 text-sm" style="color:rgba(26,22,18,0.75);line-height:1.55;">
+              Knows your <strong style="color:#1A1612;">shopping rhythm</strong>. "Priya usually visits Wednesday evening." Predicts next visit. Begins suggesting items before they run out.
+            </div>
+          </div>
+          <div class="grid grid-cols-12 gap-3 px-5 md:px-7 py-4 items-start" style="border-bottom:1px solid rgba(26,22,18,0.06);">
+            <div class="col-span-3 md:col-span-2 font-serif font-bold text-base" style="color:#5A7860;">Month 3</div>
+            <div class="col-span-9 md:col-span-10 text-sm" style="color:rgba(26,22,18,0.75);line-height:1.55;">
+              Knows your <strong style="color:#1A1612;">brand preferences and substitutes</strong>. Catches when you switch brands. Offers your preferred brand back if it's out, alternatives when needed.
+            </div>
+          </div>
+          <div class="grid grid-cols-12 gap-3 px-5 md:px-7 py-4 items-start" style="background:rgba(79,107,85,0.06);border-bottom:1px solid rgba(26,22,18,0.06);">
+            <div class="col-span-3 md:col-span-2 font-serif font-bold text-base" style="color:#5A7860;">Month 6</div>
+            <div class="col-span-9 md:col-span-10 text-sm" style="color:rgba(26,22,18,0.75);line-height:1.55;">
+              Knows your <strong style="color:#1A1612;">family context and festival routine</strong>. Mentions your son's lunchbox brand. Pre-books Ugadi items. Now <em style="font-style:italic;">genuinely</em> useful — the relationship begins.
+            </div>
+          </div>
+          <div class="grid grid-cols-12 gap-3 px-5 md:px-7 py-4 items-start" style="border-bottom:1px solid rgba(26,22,18,0.06);">
+            <div class="col-span-3 md:col-span-2 font-serif font-bold text-base" style="color:#D4A843;">Year 1</div>
+            <div class="col-span-9 md:col-span-10 text-sm" style="color:rgba(26,22,18,0.75);line-height:1.55;">
+              Knows your <strong style="color:#1A1612;">life context</strong>. Anticipates needs days in advance. "Your son's exams are in two weeks — should I keep extra Horlicks?" Anniversaries, birthdays, recurring events all tracked.
+            </div>
+          </div>
+          <div class="grid grid-cols-12 gap-3 px-5 md:px-7 py-4 items-start" style="background:rgba(232,115,42,0.08);">
+            <div class="col-span-3 md:col-span-2 font-serif font-bold text-base" style="color:#E8732A;">Year 2+</div>
+            <div class="col-span-9 md:col-span-10 text-sm" style="color:rgba(26,22,18,0.78);line-height:1.55;">
+              Knows you <strong style="color:#1A1612;">the way a kirana shopkeeper knows family customers</strong>. The switching cost is no longer price — it's emotional. The customer can't easily explain Consto to a friend without saying <em style="font-style:italic;">"they just know me."</em>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-xs italic mt-5" style="color:rgba(26,22,18,0.55);max-width:42rem;line-height:1.6;">
+          This is the moat. Every day a customer stays with Consto deepens their profile. Every deepening makes leaving harder. Compounding starts on day one.
+        </p>
+      </div>
+
+      <!-- Three outputs -->
+      <div>
+        <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#A8552A;">Three outputs</div>
+        <h4 class="font-serif text-xl font-semibold mb-3" style="color:#1A1612;">What the engine actually produces.</h4>
+        <p class="mb-8" style="color:rgba(26,22,18,0.65);font-size:0.9rem;max-width:42rem;line-height:1.65;">
+          The AI agent doesn't just send customer messages. It generates three distinct streams of value — one for customers, one for the central team, one for human staff.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-5 stagger">
+
+          <!-- Output 1: Customer-facing -->
+          <div class="rounded-2xl p-6 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.08);">
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background:rgba(232,115,42,0.1);">
+              <span style="font-size:1.5rem;">📱</span>
+            </div>
+            <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#E8732A;">Output 01 · For the customer</div>
+            <h5 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">Personalized suggestions</h5>
+            <p class="text-sm mb-4" style="color:rgba(26,22,18,0.7);line-height:1.55;">
+              The widget content. The WhatsApp message draft. The "what to mention" prompts to in-store staff. The pre-booked festival items list. Every customer touchpoint is composed in real time from their profile.
+            </p>
+            <p class="text-xs pt-3 italic" style="border-top:1px solid rgba(26,22,18,0.08);color:rgba(26,22,18,0.55);line-height:1.55;">
+              Frequency: continuous. Updates 2× daily for widget, on-demand for in-store, contextually for WhatsApp.
+            </p>
+          </div>
+
+          <!-- Output 2: Weekly insights -->
+          <div class="rounded-2xl p-6 fade" style="background:#fff;border:2px solid #1A1612;">
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background:rgba(26,22,18,0.08);">
+              <span style="font-size:1.5rem;">📊</span>
+            </div>
+            <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#1A1612;">Output 02 · For the central team</div>
+            <h5 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">Weekly category insights</h5>
+            <p class="text-sm mb-3" style="color:rgba(26,22,18,0.7);line-height:1.55;">
+              Every week, the AI aggregates signal across all customers and surfaces patterns to the central operations team — organised by category head.
+            </p>
+            <div class="rounded-lg p-3 mb-3 text-xs italic" style="background:#FAF5ED;color:rgba(26,22,18,0.75);line-height:1.55;">
+              "27 working-mom customers asked for organic ragi flour this week — currently we stock 0. Pattern starting."
+            </div>
+            <div class="rounded-lg p-3 mb-3 text-xs italic" style="background:#FAF5ED;color:rgba(26,22,18,0.75);line-height:1.55;">
+              "5 households switched from sunflower to groundnut oil in colony 4 — recommend stocking 30% more."
+            </div>
+            <p class="text-xs pt-3 italic" style="border-top:1px solid rgba(26,22,18,0.08);color:rgba(26,22,18,0.55);line-height:1.55;">
+              Frequency: weekly digest. Cross-store learning compounds across the network.
+            </p>
+          </div>
+
+          <!-- Output 3: AI-suggested tasks -->
+          <div class="rounded-2xl p-6 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.08);">
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background:rgba(79,107,85,0.12);">
+              <span style="font-size:1.5rem;">✅</span>
+            </div>
+            <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#4F6B55;">Output 03 · For human staff</div>
+            <h5 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">AI-suggested tasks</h5>
+            <p class="text-sm mb-3" style="color:rgba(26,22,18,0.7);line-height:1.55;">
+              The agent doesn't just suggest things to customers — it suggests <em style="color:#1A1612;font-style:italic;">tasks to humans</em>. Things the human team should do, in the next hour, day, or week.
+            </p>
+            <div class="space-y-2 mb-3">
+              <div class="text-xs px-3 py-2 rounded-lg" style="background:#FAF5ED;color:rgba(26,22,18,0.75);"><strong style="color:#1A1612;">→ Staff:</strong> "Mention Aarav's birthday to Priya when she visits today"</div>
+              <div class="text-xs px-3 py-2 rounded-lg" style="background:#FAF5ED;color:rgba(26,22,18,0.75);"><strong style="color:#1A1612;">→ Inventory:</strong> "Restock ragi flour — 5 customers asked this week"</div>
+              <div class="text-xs px-3 py-2 rounded-lg" style="background:#FAF5ED;color:rgba(26,22,18,0.75);"><strong style="color:#1A1612;">→ Owner:</strong> "Bonalu festival range demand up 30% — expand next year"</div>
+            </div>
+            <p class="text-xs pt-3 italic" style="border-top:1px solid rgba(26,22,18,0.08);color:rgba(26,22,18,0.55);line-height:1.55;">
+              Frequency: real-time + daily digest. The AI becomes the smartest junior teammate the store has ever had.
+            </p>
+          </div>
+        </div>
+
+        <!-- Human-in-the-loop note -->
+        <div class="mt-8 rounded-xl p-5 fade" style="background:rgba(232,115,42,0.06);border-left:4px solid #E8732A;">
+          <p class="text-sm" style="color:rgba(26,22,18,0.78);line-height:1.65;">
+            <strong style="color:#1A1612;">Important — human in the loop, always.</strong> The AI <em style="font-style:italic;">drafts.</em> Humans <em style="font-style:italic;">review and decide.</em> Every customer message gets reviewed by a trained agent before sending. Every task suggestion is just that — a suggestion. The AI is a brilliant junior teammate, never a manager.
+          </p>
+        </div>
+
+        <!-- See the engine in action -->
+        <div class="mt-8 text-center fade">
+          <a href="/experience.html" class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full font-semibold text-sm transition-all" style="background:#1A1612;color:#fff;text-decoration:none;">
+            <span>▶</span>
+            See the Memory Engine output for each persona
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <p class="text-xs mt-3" style="color:rgba(26,22,18,0.5);">Interactive walkthrough — pick a customer, see exactly what the engine produces for them</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Consto OS -->
+    <div class="fade">
+      <div class="section-label mb-1.5">Consto OS</div>
+      <h3 class="font-serif text-2xl font-semibold mb-2" style="color:#1A1612;">The digital backbone</h3>
+      <p class="text-sm mb-8" style="color:rgba(26,22,18,0.45);">8 integrated AI-powered products. Same OS runs Store 1 and Store 50. Eventually offered as SaaS to kiranas across India.</p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4 stagger">
+        <div class="os-card fade">
+          <div class="os-name text-sm font-semibold mb-1" style="color:#1A1612;">Consto POS</div>
+          <div class="os-desc text-xs mb-3" style="color:rgba(26,22,18,0.5);">Billing &amp; checkout</div>
+          <span class="badge badge-speed">Haiku · Speed</span>
+        </div>
+        <div class="os-card fade">
+          <div class="os-name text-sm font-semibold mb-1" style="color:#1A1612;">Consto Agent</div>
+          <div class="os-desc text-xs mb-3" style="color:rgba(26,22,18,0.5);">Customer memory CRM</div>
+          <span class="badge badge-think">Sonnet · Thinking</span>
+        </div>
+        <div class="os-card fade">
+          <div class="os-name text-sm font-semibold mb-1" style="color:#1A1612;">Inventory</div>
+          <div class="os-desc text-xs mb-3" style="color:rgba(26,22,18,0.5);">Stock &amp; waste control</div>
+          <span class="badge badge-think">Sonnet · Thinking</span>
+        </div>
+        <div class="os-card fade">
+          <div class="os-name text-sm font-semibold mb-1" style="color:#1A1612;">Notify</div>
+          <div class="os-desc text-xs mb-3" style="color:rgba(26,22,18,0.5);">Customer communications</div>
+          <span class="badge badge-think">Sonnet · Thinking</span>
+        </div>
+        <div class="os-card fade">
+          <div class="os-name text-sm font-semibold mb-1" style="color:#1A1612;">Loyalty</div>
+          <div class="os-desc text-xs mb-3" style="color:rgba(26,22,18,0.5);">Retention &amp; rewards</div>
+          <span class="badge badge-speed">Haiku · Speed</span>
+        </div>
+        <div class="os-card fade">
+          <div class="os-name text-sm font-semibold mb-1" style="color:#1A1612;">Ops</div>
+          <div class="os-desc text-xs mb-3" style="color:rgba(26,22,18,0.5);">Daily operations</div>
+          <span class="badge badge-speed">Haiku · Speed</span>
+        </div>
+        <div class="os-card fade">
+          <div class="os-name text-sm font-semibold mb-1" style="color:#1A1612;">Predict</div>
+          <div class="os-desc text-xs mb-3" style="color:rgba(26,22,18,0.5);">Demand forecasting</div>
+          <span class="badge badge-think">Sonnet · Thinking</span>
+        </div>
+        <div class="os-card fade">
+          <div class="os-name text-sm font-semibold mb-1" style="color:#1A1612;">HQ</div>
+          <div class="os-desc text-xs mb-3" style="color:rgba(26,22,18,0.5);">Owner dashboard</div>
+          <span class="badge badge-think">Sonnet · Thinking</span>
+        </div>
+      </div>
+      <p class="text-xs" style="color:rgba(26,22,18,0.35);">Haiku = speed tasks under 1 second &nbsp;·&nbsp; Sonnet = thinking tasks 2-3 seconds &nbsp;·&nbsp; Both on Claude API</p>
+    </div>
+
+    <!-- What Consto is NOT -->
+    <div class="mt-16 fade">
+      <div class="section-label mb-6">What Consto is not</div>
+      <div class="grid md:grid-cols-2 gap-3 stagger">
+        <div class="flex gap-3 items-start rounded-xl p-4 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.06);">
+          <span class="font-bold mt-0.5" style="color:#C4583A;">×</span>
+          <div class="text-sm" style="color:rgba(26,22,18,0.7);">
+            <span style="color:#1A1612;font-weight:500;">A discount store</span> — we compete on care, not price
+          </div>
+        </div>
+        <div class="flex gap-3 items-start rounded-xl p-4 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.06);">
+          <span class="font-bold mt-0.5" style="color:#C4583A;">×</span>
+          <div class="text-sm" style="color:rgba(26,22,18,0.7);">
+            <span style="color:#1A1612;font-weight:500;">A tech startup pretending to be a shop</span> — technology is invisible to customers
+          </div>
+        </div>
+        <div class="flex gap-3 items-start rounded-xl p-4 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.06);">
+          <span class="font-bold mt-0.5" style="color:#C4583A;">×</span>
+          <div class="text-sm" style="color:rgba(26,22,18,0.7);">
+            <span style="color:#1A1612;font-weight:500;">A rigid format</span> — 30% local soul per location (colony, highway, premium variants)
+          </div>
+        </div>
+        <div class="flex gap-3 items-start rounded-xl p-4 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.06);">
+          <span class="font-bold mt-0.5" style="color:#C4583A;">×</span>
+          <div class="text-sm" style="color:rgba(26,22,18,0.7);">
+            <span style="color:#1A1612;font-weight:500;">A general shopping app</span> — WhatsApp is the default for everyone. A narrow opt-in app exists only for subscribers who want one-tap add-ons (see section 07). Nothing mandatory, no friction for non-app users.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Insight → Solution matrix (closing block) ── -->
+    <div class="mt-20 fade">
+      <div class="section-label mb-3" style="color:#E8732A;">Closing the loop</div>
+      <h3 class="font-serif text-2xl md:text-3xl font-semibold mb-3" style="color:#1A1612;max-width:42rem;line-height:1.25;">
+        How the solution maps to the research.
+      </h3>
+      <p class="mb-8" style="color:rgba(26,22,18,0.65);font-size:0.95rem;max-width:42rem;line-height:1.65;">
+        Every element of the solution traces back to a specific documented insight. Nothing is invented. Nothing is decorative. The matrix below makes the line of reasoning visible.
+      </p>
+
+      <div class="rounded-2xl overflow-hidden fade" style="background:#fff;border:1px solid rgba(26,22,18,0.1);">
+        <!-- Matrix header -->
+        <div class="grid grid-cols-12 gap-2 px-4 md:px-6 py-3 text-xs font-bold tracking-widest uppercase" style="background:#1A1612;color:rgba(250,245,237,0.7);">
+          <div class="col-span-1">#</div>
+          <div class="col-span-5 md:col-span-4">Insight</div>
+          <div class="col-span-6 md:col-span-7">→ Solution element</div>
+        </div>
+
+        <!-- Row 01 -->
+        <div class="grid grid-cols-12 gap-2 px-4 md:px-6 py-4 items-start text-sm" style="border-bottom:1px solid rgba(26,22,18,0.06);">
+          <div class="col-span-1 font-serif font-bold" style="color:#E8732A;">01</div>
+          <div class="col-span-5 md:col-span-4">
+            <div style="color:#1A1612;font-weight:600;">The emotional gap</div>
+            <div class="text-xs mt-0.5" style="color:rgba(26,22,18,0.55);">Nobody remembers what I need</div>
+          </div>
+          <div class="col-span-6 md:col-span-7" style="color:rgba(26,22,18,0.75);">
+            Pillar 1 · <span style="color:#1A1612;font-weight:500;">The Memory Layer</span> — dedicated AI agent per customer, multi-tier category heads, humans deliver the warmth
+          </div>
+        </div>
+
+        <!-- Row 02 -->
+        <div class="grid grid-cols-12 gap-2 px-4 md:px-6 py-4 items-start text-sm" style="background:#FAF5ED;border-bottom:1px solid rgba(26,22,18,0.06);">
+          <div class="col-span-1 font-serif font-bold" style="color:#A8852E;">02</div>
+          <div class="col-span-5 md:col-span-4">
+            <div style="color:#1A1612;font-weight:600;">The white space</div>
+            <div class="text-xs mt-0.5" style="color:rgba(26,22,18,0.55);">India has zero organized convenience chains</div>
+          </div>
+          <div class="col-span-6 md:col-span-7" style="color:rgba(26,22,18,0.75);">
+            <span style="color:#1A1612;font-weight:500;">The format itself</span> — a 7-Eleven-discipline neighbourhood store, Indianised. Three format variants (Daily · Home · Hub) for different locations
+          </div>
+        </div>
+
+        <!-- Row 03 -->
+        <div class="grid grid-cols-12 gap-2 px-4 md:px-6 py-4 items-start text-sm" style="border-bottom:1px solid rgba(26,22,18,0.06);">
+          <div class="col-span-1 font-serif font-bold" style="color:#5A7860;">03</div>
+          <div class="col-span-5 md:col-span-4">
+            <div style="color:#1A1612;font-weight:600;">The suburban gap</div>
+            <div class="text-xs mt-0.5" style="color:rgba(26,22,18,0.55);">Quick commerce structurally weak in Tier 2-3</div>
+          </div>
+          <div class="col-span-6 md:col-span-7" style="color:rgba(26,22,18,0.75);">
+            <span style="color:#1A1612;font-weight:500;">Beeramguda start + Consto Subscribe model</span> — daily-route economics beat Zepto on every small-basket order (covered in section 07)
+          </div>
+        </div>
+
+        <!-- Row 04 -->
+        <div class="grid grid-cols-12 gap-2 px-4 md:px-6 py-4 items-start text-sm" style="background:#FAF5ED;border-bottom:1px solid rgba(26,22,18,0.06);">
+          <div class="col-span-1 font-serif font-bold" style="color:#C4583A;">04</div>
+          <div class="col-span-5 md:col-span-4">
+            <div style="color:#1A1612;font-weight:600;">The failure pattern</div>
+            <div class="text-xs mt-0.5" style="color:rgba(26,22,18,0.55);">Kirana-tech digitised the wrong thing</div>
+          </div>
+          <div class="col-span-6 md:col-span-7" style="color:rgba(26,22,18,0.75);">
+            <span style="color:#1A1612;font-weight:500;">Consto OS — customer-relationship-first architecture</span>. Agent product is the soul; POS is the foundation. Memory before bookkeeping
+          </div>
+        </div>
+
+        <!-- Row 05 -->
+        <div class="grid grid-cols-12 gap-2 px-4 md:px-6 py-4 items-start text-sm" style="border-bottom:1px solid rgba(26,22,18,0.06);">
+          <div class="col-span-1 font-serif font-bold" style="color:#1A1612;">05</div>
+          <div class="col-span-5 md:col-span-4">
+            <div style="color:#1A1612;font-weight:600;">The channel reality</div>
+            <div class="text-xs mt-0.5" style="color:rgba(26,22,18,0.55);">WhatsApp for everyone, app for power users</div>
+          </div>
+          <div class="col-span-6 md:col-span-7" style="color:rgba(26,22,18,0.75);">
+            <span style="color:#1A1612;font-weight:500;">Four engagement layers</span> — Widget · Lightweight App · WhatsApp · Store. Different surfaces for different customers (section 07)
+          </div>
+        </div>
+
+        <!-- Row 06 -->
+        <div class="grid grid-cols-12 gap-2 px-4 md:px-6 py-4 items-start text-sm" style="background:#FAF5ED;border-bottom:1px solid rgba(26,22,18,0.06);">
+          <div class="col-span-1 font-serif font-bold" style="color:#E8732A;">06</div>
+          <div class="col-span-5 md:col-span-4">
+            <div style="color:#1A1612;font-weight:600;">The checkout friction</div>
+            <div class="text-xs mt-0.5" style="color:rgba(26,22,18,0.55);">Long queues kill the daily-trip habit</div>
+          </div>
+          <div class="col-span-6 md:col-span-7" style="color:rgba(26,22,18,0.75);">
+            <span style="color:#1A1612;font-weight:500;">AI-assisted speed POS</span> targeting under 90s per customer + multiple counters + optional self-checkout for subscribers in Phase 2
+          </div>
+        </div>
+
+        <!-- Row 07 -->
+        <div class="grid grid-cols-12 gap-2 px-4 md:px-6 py-4 items-start text-sm" style="border-bottom:1px solid rgba(26,22,18,0.06);">
+          <div class="col-span-1 font-serif font-bold" style="color:#5A7860;">07</div>
+          <div class="col-span-5 md:col-span-4">
+            <div style="color:#1A1612;font-weight:600;">The feedback void</div>
+            <div class="text-xs mt-0.5" style="color:rgba(26,22,18,0.55);">Stores don't ask, don't listen, don't change</div>
+          </div>
+          <div class="col-span-6 md:col-span-7" style="color:rgba(26,22,18,0.75);">
+            <span style="color:#1A1612;font-weight:500;">AI Agent captures every customer signal</span> → Consto Inventory adjusts weekly based on real data. Stock that adapts (section 05)
+          </div>
+        </div>
+
+        <!-- Row 08 -->
+        <div class="grid grid-cols-12 gap-2 px-4 md:px-6 py-4 items-start text-sm" style="background:#FAF5ED;">
+          <div class="col-span-1 font-serif font-bold" style="color:#A8852E;">08</div>
+          <div class="col-span-5 md:col-span-4">
+            <div style="color:#1A1612;font-weight:600;">The culture void</div>
+            <div class="text-xs mt-0.5" style="color:rgba(26,22,18,0.55);">Modern retail strips local soul</div>
+          </div>
+          <div class="col-span-6 md:col-span-7" style="color:rgba(26,22,18,0.75);">
+            Pillar 3 · <span style="color:#1A1612;font-weight:500;">Community Anchoring + 30% local soul</span> per location. Regional cultural fit, replicable method (sections 05 &amp; 06)
+          </div>
+        </div>
+      </div>
+
+      <p class="text-xs italic mt-5" style="color:rgba(26,22,18,0.55);max-width:42rem;line-height:1.6;">
+        Every row here is auditable. If anyone asks "why this design choice?" — the answer is in the corresponding insight, which is in the corresponding interview transcript. The work isn't speculative.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ─── PRODUCT STRATEGY ──────────────────────────────────────────── -->
+<section id="product" class="py-24 px-6" style="background:#fff;">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-label mb-4 fade">05 · Product Strategy</div>
+    <h2 class="font-serif font-semibold mb-4 fade" style="font-size:clamp(1.7rem,4vw,3rem);color:#1A1612;max-width:38rem;line-height:1.2;">
+      Built for how Indian households actually shop.
+    </h2>
+    <p class="mb-16 fade" style="color:rgba(26,22,18,0.55);font-size:1.05rem;max-width:42rem;line-height:1.65;">
+      Indian customers don't categorise stores by Western formats. They walk in expecting to find what they need. If Consto carries too little, they leave disappointed. If it carries too much, it becomes a confused mini-supermarket. The product strategy resolves this tension by leading with fresh, curating by frequency, and adapting by region.
+    </p>
+
+    <!-- Insight callout -->
+    <div class="rounded-2xl p-8 mb-20 fade" style="background:#FAF5ED;border-left:4px solid #E8732A;">
+      <p class="font-serif text-lg md:text-xl mb-3 leading-snug" style="color:#1A1612;">
+        "Consumers don't shop a category. They shop a household."
+      </p>
+      <p class="text-sm" style="color:rgba(26,22,18,0.6);">
+        A Beeramguda mother walking in at 7am isn't thinking "convenience store." She's thinking: <em style="font-style:normal;color:#E8732A;">milk, coriander, idli batter, school snack for my son, agarbatti running low.</em> Consto is designed to answer that whole sentence — not just one word of it.
+      </p>
+    </div>
+
+    <!-- ── Fresh hierarchy ── -->
+    <div class="mb-20">
+      <div class="section-label mb-3 fade">Pillar A · Fresh &amp; Healthy</div>
+      <h3 class="font-serif text-2xl md:text-3xl font-semibold mb-3 fade" style="color:#1A1612;">Fresh leads. Always.</h3>
+      <p class="mb-10 fade" style="color:rgba(26,22,18,0.55);font-size:0.95rem;max-width:38rem;line-height:1.65;">
+        Indian households shop fresh every 1-2 days, not weekly. If Consto owns the morning fresh run, everything else follows. Fresh is structured into three honest tiers — no marketing-speak, no false organic claims.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-5 mb-10 stagger">
+        <!-- Tier 1: Farmer batch -->
+        <div class="rounded-2xl p-7 fade" style="background:#6B8F71;color:#fff;position:relative;">
+          <div class="absolute top-5 right-5 text-xs font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full" style="background:rgba(255,255,255,0.18);">Hero tier</div>
+          <div class="text-3xl mb-4">🌿</div>
+          <h4 class="font-serif text-xl font-semibold mb-2" style="color:#fff;">Today's Farmer Batch</h4>
+          <p class="text-xs font-semibold tracking-wider uppercase mb-4" style="color:rgba(255,255,255,0.7);">Semi-organic · Farmer-direct</p>
+          <p class="text-sm leading-relaxed mb-4" style="color:rgba(255,255,255,0.85);">
+            Sourced from 4-5 local farmers near Beeramguda. Minimal pesticide, no certification needed — just honest sourcing the customer can see on a small wall display.
+          </p>
+          <p class="text-xs" style="color:rgba(255,255,255,0.7);">
+            ~15-20 high-rotation SKUs · The everyday default
+          </p>
+        </div>
+
+        <!-- Tier 2: Certified organic -->
+        <div class="rounded-2xl p-7 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.1);">
+          <div class="absolute -mt-7 ml-44 hidden md:block"></div>
+          <div class="text-3xl mb-4">🍃</div>
+          <h4 class="font-serif text-xl font-semibold mb-2" style="color:#1A1612;">Certified Organic</h4>
+          <p class="text-xs font-semibold tracking-wider uppercase mb-4" style="color:#6B8F71;">Premium shelf</p>
+          <p class="text-sm leading-relaxed mb-4" style="color:rgba(26,22,18,0.6);">
+            5-8 certified items — spinach, select fruits, tomatoes. For the health-conscious tech-professional demographic. Add gradually as supplier relationships build.
+          </p>
+          <p class="text-xs" style="color:rgba(26,22,18,0.45);">
+            ~5-8 SKUs · The premium option
+          </p>
+        </div>
+
+        <!-- Tier 3: Regular -->
+        <div class="rounded-2xl p-7 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.1);">
+          <div class="text-3xl mb-4">🥬</div>
+          <h4 class="font-serif text-xl font-semibold mb-2" style="color:#1A1612;">Regular Fresh</h4>
+          <p class="text-xs font-semibold tracking-wider uppercase mb-4" style="color:rgba(26,22,18,0.5);">Standard tier</p>
+          <p class="text-sm leading-relaxed mb-4" style="color:rgba(26,22,18,0.6);">
+            Standard market produce. Clean, fresh, replenished daily. For price-sensitive customers — never absent, never positioned as inferior.
+          </p>
+          <p class="text-xs" style="color:rgba(26,22,18,0.45);">
+            ~10-15 SKUs · The everyday baseline
+          </p>
+        </div>
+      </div>
+
+      <!-- Must-stock fresh anchors -->
+      <div class="rounded-xl p-6 fade" style="background:#FAF5ED;">
+        <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#E8732A;">Daily anchors — never out of stock</p>
+        <div class="flex flex-wrap gap-3">
+          <span class="text-sm px-3 py-1.5 rounded-full" style="background:#fff;color:rgba(26,22,18,0.7);">Milk (Amul + local)</span>
+          <span class="text-sm px-3 py-1.5 rounded-full" style="background:#fff;color:rgba(26,22,18,0.7);">Idli/Dosa batter (kitchen-direct)</span>
+          <span class="text-sm px-3 py-1.5 rounded-full" style="background:#fff;color:rgba(26,22,18,0.7);">Curd &amp; buttermilk</span>
+          <span class="text-sm px-3 py-1.5 rounded-full" style="background:#fff;color:rgba(26,22,18,0.7);">Coriander, curry leaves, mint</span>
+          <span class="text-sm px-3 py-1.5 rounded-full" style="background:#fff;color:rgba(26,22,18,0.7);">Lemon, green chilli, ginger, garlic</span>
+          <span class="text-sm px-3 py-1.5 rounded-full" style="background:#fff;color:rgba(26,22,18,0.7);">Tomato, onion, potato</span>
+          <span class="text-sm px-3 py-1.5 rounded-full" style="background:#fff;color:rgba(26,22,18,0.7);">Fresh coconut</span>
+          <span class="text-sm px-3 py-1.5 rounded-full" style="background:#fff;color:rgba(26,22,18,0.7);">Eggs</span>
+        </div>
+        <p class="text-xs mt-4" style="color:rgba(26,22,18,0.45);">If any of these run out by 8am, the daily trust breaks. These are non-negotiable.</p>
+      </div>
+    </div>
+
+    <!-- ── Category breakdown ── -->
+    <div class="mb-20">
+      <div class="section-label mb-3 fade">Pillar B · The full category map</div>
+      <h3 class="font-serif text-2xl md:text-3xl font-semibold mb-3 fade" style="color:#1A1612;">Curated by frequency, not by aisle.</h3>
+      <p class="mb-10 fade" style="color:rgba(26,22,18,0.55);font-size:0.95rem;max-width:38rem;line-height:1.65;">
+        Roughly 1,000-1,500 SKUs total in the residential format — organised around when a household actually needs each thing.
+      </p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 stagger">
+
+        <!-- Daily -->
+        <div class="rounded-xl p-6 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.08);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-bold px-2 py-0.5 rounded" style="background:rgba(232,115,42,0.12);color:#E8732A;">DAILY</span>
+            <span class="text-xs" style="color:rgba(26,22,18,0.4);">~70-80 SKUs</span>
+          </div>
+          <h4 class="font-serif font-semibold mb-2" style="color:#1A1612;">Fresh + Dairy + Batter</h4>
+          <p class="text-sm" style="color:rgba(26,22,18,0.55);">The morning anchor. Milk, fresh produce, idli batter, eggs, curd. The reason for daily footfall.</p>
+        </div>
+
+        <div class="rounded-xl p-6 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.08);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-bold px-2 py-0.5 rounded" style="background:rgba(232,115,42,0.12);color:#E8732A;">DAILY</span>
+            <span class="text-xs" style="color:rgba(26,22,18,0.4);">~20-25 SKUs</span>
+          </div>
+          <h4 class="font-serif font-semibold mb-2" style="color:#1A1612;">Puja Essentials</h4>
+          <p class="text-sm" style="color:rgba(26,22,18,0.55);">Agarbatti, camphor, kumkum. Under-stocked in modern stores, daily-purchase in many households, high margin.</p>
+        </div>
+
+        <div class="rounded-xl p-6 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.08);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-bold px-2 py-0.5 rounded" style="background:rgba(232,115,42,0.12);color:#E8732A;">DAILY</span>
+            <span class="text-xs" style="color:rgba(26,22,18,0.4);">~30-40 SKUs</span>
+          </div>
+          <h4 class="font-serif font-semibold mb-2" style="color:#1A1612;">Quick Meals &amp; Breakfast</h4>
+          <p class="text-sm" style="color:rgba(26,22,18,0.55);">Maggi, bread, poha/upma mixes, MTR ready-to-eat. Plus partnership-sourced fresh tiffin for office-goers.</p>
+        </div>
+
+        <!-- Weekly -->
+        <div class="rounded-xl p-6 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.08);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-bold px-2 py-0.5 rounded" style="background:rgba(107,143,113,0.15);color:#6B8F71;">WEEKLY</span>
+            <span class="text-xs" style="color:rgba(26,22,18,0.4);">~150-200 SKUs</span>
+          </div>
+          <h4 class="font-serif font-semibold mb-2" style="color:#1A1612;">Staples &amp; Cooking Base</h4>
+          <p class="text-sm" style="color:rgba(26,22,18,0.55);">Rice (Sona Masuri), atta, dal (6-8 varieties), oil (sunflower / groundnut / coconut), spices. Small + medium packs.</p>
+        </div>
+
+        <div class="rounded-xl p-6 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.08);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-bold px-2 py-0.5 rounded" style="background:rgba(107,143,113,0.15);color:#6B8F71;">WEEKLY</span>
+            <span class="text-xs" style="color:rgba(26,22,18,0.4);">~120-150 SKUs</span>
+          </div>
+          <h4 class="font-serif font-semibold mb-2" style="color:#1A1612;">Snacks &amp; Beverages</h4>
+          <p class="text-sm" style="color:rgba(26,22,18,0.55);">Biscuits, namkeen, chips, tea, filter coffee powder, packaged juices, energy drinks. Curated to 5-8 brands per category.</p>
+        </div>
+
+        <div class="rounded-xl p-6 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.08);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-bold px-2 py-0.5 rounded" style="background:rgba(107,143,113,0.15);color:#6B8F71;">WEEKLY</span>
+            <span class="text-xs" style="color:rgba(26,22,18,0.4);">~80-100 SKUs</span>
+          </div>
+          <h4 class="font-serif font-semibold mb-2" style="color:#1A1612;">Personal Care &amp; OTC</h4>
+          <p class="text-sm" style="color:rgba(26,22,18,0.55);">Soap, sachet shampoos, toothpaste, coconut oil. Sanitary napkins displayed openly. 15 OTC medicines (Dolo, ORS, Digene, Eno, Band-aid).</p>
+        </div>
+
+        <div class="rounded-xl p-6 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.08);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-bold px-2 py-0.5 rounded" style="background:rgba(107,143,113,0.15);color:#6B8F71;">WEEKLY</span>
+            <span class="text-xs" style="color:rgba(26,22,18,0.4);">~40-50 SKUs</span>
+          </div>
+          <h4 class="font-serif font-semibold mb-2" style="color:#1A1612;">Household &amp; Cleaning</h4>
+          <p class="text-sm" style="color:rgba(26,22,18,0.55);">Matchbox, candles, detergent (small + medium packs), toilet cleaner, garbage bags, basic steel essentials.</p>
+        </div>
+
+        <div class="rounded-xl p-6 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.08);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-bold px-2 py-0.5 rounded" style="background:rgba(107,143,113,0.15);color:#6B8F71;">WEEKLY</span>
+            <span class="text-xs" style="color:rgba(26,22,18,0.4);">~20-30 SKUs</span>
+          </div>
+          <h4 class="font-serif font-semibold mb-2" style="color:#1A1612;">Baby &amp; Kids</h4>
+          <p class="text-sm" style="color:rgba(26,22,18,0.55);">Diapers (small pack), formula, baby essentials. Plus the kids' impulse layer — eclairs, lollipops — for the parent-child purchase moment.</p>
+        </div>
+
+        <!-- Seasonal -->
+        <div class="rounded-xl p-6 fade" style="background:#fff;border:1px solid rgba(212,168,67,0.25);">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-bold px-2 py-0.5 rounded" style="background:rgba(212,168,67,0.18);color:#D4A843;">SEASONAL</span>
+            <span class="text-xs" style="color:rgba(26,22,18,0.4);">30-50 SKUs · rotating</span>
+          </div>
+          <h4 class="font-serif font-semibold mb-2" style="color:#1A1612;">Festival Calendar</h4>
+          <p class="text-sm" style="color:rgba(26,22,18,0.55);">Ugadi pachadi ingredients, Sankranti ellu &amp; jaggery, Bonalu items, Diwali sweets &amp; lamps. Pre-booked via WhatsApp by the AI agent.</p>
+        </div>
+
+        <!-- Services -->
+        <div class="rounded-xl p-6 fade" style="background:#1A1612;color:#fff;">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-bold px-2 py-0.5 rounded" style="background:rgba(232,115,42,0.25);color:#E8732A;">SERVICES</span>
+            <span class="text-xs" style="color:rgba(255,255,255,0.4);">5-10 service types</span>
+          </div>
+          <h4 class="font-serif font-semibold mb-2" style="color:#fff;">Daily-Life Services</h4>
+          <p class="text-sm" style="color:rgba(255,255,255,0.6);">AEPS cash, bill payments, mobile/DTH recharge, xerox, powerbank rental, courier drop-off. 40% of revenue at 50-60% margins.</p>
+        </div>
+
+        <!-- Total -->
+        <div class="rounded-xl p-6 fade" style="background:#E8732A;color:#fff;">
+          <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:rgba(255,255,255,0.7);">TOTAL</div>
+          <div class="font-serif text-3xl font-bold mb-2">~1,200 SKUs</div>
+          <p class="text-sm" style="color:rgba(255,255,255,0.8);">Roughly 1,000-1,500 in the Consto Home residential format. Compare: 7-Eleven (2,500-3,500) · DMart (7,000-10,000) · supermarket (12,000+).</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Cultural fit ── -->
+    <div class="mb-20">
+      <div class="section-label mb-3 fade">Pillar C · Cultural fit</div>
+      <h3 class="font-serif text-2xl md:text-3xl font-semibold mb-3 fade" style="color:#1A1612;max-width:42rem;line-height:1.25;">
+        Culture-first retail. Starting Hyderabad. Scaling India region-by-region.
+      </h3>
+      <p class="mb-5 fade" style="color:rgba(26,22,18,0.7);font-size:0.95rem;max-width:44rem;line-height:1.65;">
+        Most modern Indian retail copies one global template and bolts a local language on top. Consto inverts that — it starts from the regional kitchen, builds the store outward from there, and replicates the <em style="font-style:normal;color:#E8732A;font-weight:500;">method</em>, not the template, in every new region.
+      </p>
+      <p class="mb-10 fade" style="color:rgba(26,22,18,0.6);font-size:0.95rem;max-width:44rem;line-height:1.65;">
+        Hyderabad is store #01 because that's home, the supplier networks are mapped, and the founder's research is deepest there. But the model isn't Hyderabad-only — it's "deep local fit at every location," which scales naturally to every Indian region.
+      </p>
+
+      <!-- Hyderabad starting examples header -->
+      <div class="rounded-xl p-5 mb-8 fade" style="background:rgba(232,115,42,0.06);border-left:4px solid #E8732A;">
+        <div class="text-xs font-bold tracking-widest uppercase mb-1.5" style="color:#A8552A;">Where we start · Hyderabad / Telangana</div>
+        <p class="text-sm" style="color:rgba(26,22,18,0.7);">Four examples of what "deep local fit" looks like in Hyderabad. The same depth gets built in every future region — adapted to its festivals, kitchens, and rhythms.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5 mb-12 stagger">
+        <div class="rounded-2xl p-7 fade" style="background:#FAF5ED;border:1px solid rgba(212,168,67,0.3);">
+          <div class="text-2xl mb-3">🪔</div>
+          <h4 class="font-serif text-lg font-semibold mb-2" style="color:#1A1612;">The Telugu festival calendar runs the store</h4>
+          <p class="text-sm" style="color:rgba(26,22,18,0.7);">
+            Ugadi, Bonalu, Bathukamma, Varalakshmi Vratam, Vinayaka Chavithi, Diwali, Sankranti — each triggers a specific 8-15 SKU rotation. AI agent pre-books with families via WhatsApp the week before. Mango leaves don't arrive accidentally on Ugadi morning. They're already on the shelf.
+          </p>
+        </div>
+
+        <div class="rounded-2xl p-7 fade" style="background:#FAF5ED;border:1px solid rgba(212,168,67,0.3);">
+          <div class="text-2xl mb-3">☕</div>
+          <h4 class="font-serif text-lg font-semibold mb-2" style="color:#1A1612;">South Indian beverages, not generic tea/coffee</h4>
+          <p class="text-sm" style="color:rgba(26,22,18,0.7);">
+            Filter coffee powder (Narasus, Cothas, Levista) is a per-household 3-brand decision. Decoction coffee culture matters. Buttermilk in summer is daily. The beverage shelf is sized for South India, not Mumbai.
+          </p>
+        </div>
+
+        <div class="rounded-2xl p-7 fade" style="background:#FAF5ED;border:1px solid rgba(212,168,67,0.3);">
+          <div class="text-2xl mb-3">🍚</div>
+          <h4 class="font-serif text-lg font-semibold mb-2" style="color:#1A1612;">Idli/dosa batter as a daily anchor</h4>
+          <p class="text-sm" style="color:rgba(26,22,18,0.7);">
+            Fresh batter from 2-3 home-kitchen suppliers (women-run micro-businesses), delivered each morning. ID Fresh + iD batter + local. No quick commerce can match this — Zepto delivers from a dark store, Consto sells what was made at 4am that day.
+          </p>
+        </div>
+
+        <div class="rounded-2xl p-7 fade" style="background:#FAF5ED;border:1px solid rgba(212,168,67,0.3);">
+          <div class="text-2xl mb-3">🍱</div>
+          <h4 class="font-serif text-lg font-semibold mb-2" style="color:#1A1612;">Tiffin partnership for IT-corridor commuters</h4>
+          <p class="text-sm" style="color:rgba(26,22,18,0.7);">
+            Beeramguda has thousands of IT employees commuting to Hitec City. Consto curates (doesn't cook) — partnering with 2-3 local home-tiffin makers for fresh breakfast (7-9am) and dinner (6-9pm). It's a relationship play, not a kitchen build.
+          </p>
+        </div>
+      </div>
+
+      <!-- ── How this scales ── -->
+      <div class="rounded-2xl p-7 md:p-9 fade" style="background:#1A1612;">
+        <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#D4A843;">How this scales across India</div>
+        <h4 class="font-serif text-xl md:text-2xl font-semibold mb-4" style="color:#FAF5ED;">Same method. Different region. Different soul.</h4>
+        <p class="text-sm mb-7" style="color:rgba(250,245,237,0.75);max-width:42rem;line-height:1.65;">
+          The system is "build the store outward from the kitchen of the region you're in." That method works anywhere. What changes is the kitchen, the calendar, and the supplier network. The brand stays one. The cultural surface adapts completely.
+        </p>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 stagger">
+          <div class="rounded-xl p-4 fade" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+            <div class="text-xs font-bold tracking-wider uppercase mb-1.5" style="color:#E8732A;">Pune / Mumbai suburbs</div>
+            <p class="text-xs" style="color:rgba(250,245,237,0.7);line-height:1.55;">Ganesh Chaturthi as the year's anchor festival. Marathi snack culture (chivda, chakli). Modak ingredients pre-booked.</p>
+          </div>
+          <div class="rounded-xl p-4 fade" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+            <div class="text-xs font-bold tracking-wider uppercase mb-1.5" style="color:#E8732A;">Coimbatore / Chennai</div>
+            <p class="text-xs" style="color:rgba(250,245,237,0.7);line-height:1.55;">Tamil Pongal as anchor. Filter coffee is daily, not optional. Sambar / rasam masalas. Pongal ingredients (raw rice, jaggery, ginger).</p>
+          </div>
+          <div class="rounded-xl p-4 fade" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+            <div class="text-xs font-bold tracking-wider uppercase mb-1.5" style="color:#E8732A;">Ludhiana / Chandigarh</div>
+            <p class="text-xs" style="color:rgba(250,245,237,0.7);line-height:1.55;">Lohri, Baisakhi calendar. Atta + ghee in bigger packs. Punjabi spice mixes. Lassi as a daily beverage.</p>
+          </div>
+          <div class="rounded-xl p-4 fade" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+            <div class="text-xs font-bold tracking-wider uppercase mb-1.5" style="color:#E8732A;">Kolkata suburbs</div>
+            <p class="text-xs" style="color:rgba(250,245,237,0.7);line-height:1.55;">Durga Puja drives the entire year. Mustard oil over sunflower. Specific fish-spice mixes. Bengali sweet ingredients in season.</p>
+          </div>
+          <div class="rounded-xl p-4 fade" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+            <div class="text-xs font-bold tracking-wider uppercase mb-1.5" style="color:#E8732A;">Ahmedabad / Surat</div>
+            <p class="text-xs" style="color:rgba(250,245,237,0.7);line-height:1.55;">Navratri as nine-day calendar. Vegetarian-only stocking. Thepla, dhokla mixes. Gujarati snack heritage.</p>
+          </div>
+          <div class="rounded-xl p-4 fade" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+            <div class="text-xs font-bold tracking-wider uppercase mb-1.5" style="color:#E8732A;">Bengaluru suburbs</div>
+            <p class="text-xs" style="color:rgba(250,245,237,0.7);line-height:1.55;">Kannada + Tamil + Telugu mix in same store. Filter coffee + organic pulses for tech families. Karthika deepa season.</p>
+          </div>
+        </div>
+
+        <p class="text-xs mt-7 italic" style="color:rgba(250,245,237,0.55);max-width:42rem;line-height:1.55;">
+          The same Consto OS handles all of this — the AI memory layer learns each region's calendar, the inventory module sources from local suppliers, the agent voice adapts to the local language. Building one store in Hyderabad is the same engineering effort as the second in Pune or the fiftieth in Ludhiana.
+        </p>
+      </div>
+    </div>
+
+    <!-- ── How Consto decides what to stock ── -->
+    <div>
+      <div class="section-label mb-3 fade">Pillar D · The decision system</div>
+      <h3 class="font-serif text-2xl md:text-3xl font-semibold mb-3 fade" style="color:#1A1612;max-width:42rem;line-height:1.25;">
+        Stock that adapts. Discipline that holds.
+      </h3>
+      <p class="mb-10 fade" style="color:rgba(26,22,18,0.7);font-size:0.95rem;max-width:44rem;line-height:1.65;">
+        Consto doesn't claim to know on day one what every store will or won't carry. The truth is more honest — and more interesting. Stock is decided through a three-layer system: the format sets the range, customer signal moves stock inside that range, and a few categories are deliberately ceded to specialist competitors.
+      </p>
+
+      <!-- The 3-step decision flow -->
+      <div class="grid md:grid-cols-3 gap-5 mb-10 stagger">
+
+        <!-- Layer 1: Format -->
+        <div class="rounded-2xl p-7 fade" style="background:#fff;border:1px solid rgba(232,115,42,0.25);position:relative;">
+          <div class="absolute top-5 right-5 text-3xl font-serif font-bold" style="color:rgba(232,115,42,0.15);">01</div>
+          <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#E8732A;">The floor</div>
+          <h4 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">Format defines the range</h4>
+          <p class="text-sm mb-4" style="color:rgba(26,22,18,0.7);">Where the store sits decides what's even possible — Daily is tight, Home is broad, Hub is broadest.</p>
+          <div class="space-y-2 text-xs pt-3" style="border-top:1px solid rgba(26,22,18,0.08);">
+            <div class="flex justify-between"><span style="color:rgba(26,22,18,0.6);">Consto Daily</span><span style="color:#1A1612;font-weight:600;">400-600 SKUs</span></div>
+            <div class="flex justify-between"><span style="color:rgba(26,22,18,0.6);">Consto Home</span><span style="color:#1A1612;font-weight:600;">1,000-1,500</span></div>
+            <div class="flex justify-between"><span style="color:rgba(26,22,18,0.6);">Consto Hub</span><span style="color:#1A1612;font-weight:600;">2,000-2,500</span></div>
+          </div>
+          <p class="text-xs mt-4 italic" style="color:rgba(26,22,18,0.55);">A highway Daily store can't carry full grocery. A residential Home store can.</p>
+        </div>
+
+        <!-- Layer 2: Customer signal -->
+        <div class="rounded-2xl p-7 fade" style="background:#fff;border:1px solid rgba(107,143,113,0.3);position:relative;">
+          <div class="absolute top-5 right-5 text-3xl font-serif font-bold" style="color:rgba(107,143,113,0.18);">02</div>
+          <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#5A7860;">The adjustment</div>
+          <h4 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">Customer signal moves stock</h4>
+          <p class="text-sm mb-4" style="color:rgba(26,22,18,0.7);">Within the format's range, AI Inventory listens to what customers actually ask for and adjusts every week.</p>
+          <div class="rounded-xl p-3 text-xs mb-3" style="background:#FAF5ED;color:rgba(26,22,18,0.7);font-style:italic;line-height:1.5;">
+            "5 households in your colony asked the agent for ragi flour this week. Stock added Tuesday."
+          </div>
+          <p class="text-xs" style="color:rgba(26,22,18,0.55);">The store gets smarter every month. SKUs that don't move come off; SKUs customers ask for come on.</p>
+        </div>
+
+        <!-- Layer 3: What we cede -->
+        <div class="rounded-2xl p-7 fade" style="background:#fff;border:1px solid rgba(196,88,58,0.25);position:relative;">
+          <div class="absolute top-5 right-5 text-3xl font-serif font-bold" style="color:rgba(196,88,58,0.18);">03</div>
+          <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#C4583A;">The discipline</div>
+          <h4 class="font-serif text-lg font-semibold mb-3" style="color:#1A1612;">Some categories, we let competitors win</h4>
+          <p class="text-sm mb-4" style="color:rgba(26,22,18,0.7);">A handful of categories are deliberately ceded — not because we couldn't stock them, but because picking the right fight matters.</p>
+          <p class="text-xs" style="color:rgba(26,22,18,0.55);">Examples on the right →</p>
+        </div>
+      </div>
+
+      <!-- The ceded categories — soft framing -->
+      <div class="rounded-2xl p-7 md:p-9 fade" style="background:#FAF5ED;">
+        <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#C4583A;">What we deliberately don't chase</div>
+        <h4 class="font-serif text-lg md:text-xl font-semibold mb-5" style="color:#1A1612;">Picking the fights worth winning.</h4>
+        <p class="text-sm mb-6" style="color:rgba(26,22,18,0.7);max-width:42rem;line-height:1.65;">
+          These categories belong to specialists who do them better. Trying to compete on them dilutes the convenience identity. We send customers to the right place for these — and that earns trust.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-3 stagger">
+          <div class="flex gap-3 items-start rounded-xl p-4 fade" style="background:#fff;">
+            <span class="text-lg" style="color:#C4583A;">→</span>
+            <div class="text-sm" style="color:rgba(26,22,18,0.75);">
+              <span style="color:#1A1612;font-weight:600;">25kg bulk staples</span> — DMart wins on volume price. We carry small &amp; medium packs for top-ups.
+            </div>
+          </div>
+          <div class="flex gap-3 items-start rounded-xl p-4 fade" style="background:#fff;">
+            <span class="text-lg" style="color:#C4583A;">→</span>
+            <div class="text-sm" style="color:rgba(26,22,18,0.75);">
+              <span style="color:#1A1612;font-weight:600;">Frozen meat &amp; fish</span> — Specialist butchers and fish vendors handle this. Cold-chain operational drag isn't worth it.
+            </div>
+          </div>
+          <div class="flex gap-3 items-start rounded-xl p-4 fade" style="background:#fff;">
+            <span class="text-lg" style="color:#C4583A;">→</span>
+            <div class="text-sm" style="color:rgba(26,22,18,0.75);">
+              <span style="color:#1A1612;font-weight:600;">Loose flowers (daily)</span> — Too perishable, low margin. We partner with a local flower vendor instead.
+            </div>
+          </div>
+          <div class="flex gap-3 items-start rounded-xl p-4 fade" style="background:#fff;">
+            <span class="text-lg" style="color:#C4583A;">→</span>
+            <div class="text-sm" style="color:rgba(26,22,18,0.75);">
+              <span style="color:#1A1612;font-weight:600;">Electronics, clothing, furniture</span> — Destination purchases. They need destination stores.
+            </div>
+          </div>
+        </div>
+
+        <p class="text-sm mt-6 italic" style="color:rgba(26,22,18,0.6);max-width:42rem;line-height:1.65;">
+          And the rest? Honestly, we'll learn. If 30 households in Beeramguda start asking for puja-only oils we hadn't planned for, the AI Inventory layer will surface that signal and we'll stock it. Discipline isn't pretending we know everything on day one — it's having a system that learns faster than the competition.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── FORMAT VARIANTS ───────────────────────────────────────────── -->
+<section id="formats" class="py-24 px-6" style="background:#FAF5ED;">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-label mb-4 fade">06 · Format Variants</div>
+    <h2 class="font-serif font-semibold mb-4 fade" style="font-size:clamp(1.7rem,4vw,3rem);color:#1A1612;max-width:38rem;line-height:1.2;">
+      Three formats. One brand. One memory layer.
+    </h2>
+    <p class="mb-8 fade" style="color:rgba(26,22,18,0.55);font-size:1.05rem;max-width:42rem;line-height:1.65;">
+      Pure convenience formats have a track record of failing in India because customers don't have that mental model. They walk in expecting to find what they need — full stop. So Consto adapts its size and SKU range by where it sits, while keeping the AI memory, fresh-first identity, and cultural fit constant.
+    </p>
+
+    <!-- Insight box -->
+    <div class="rounded-2xl p-7 mb-16 fade" style="background:#fff;border-left:4px solid #6B8F71;">
+      <p class="text-sm md:text-base" style="color:rgba(26,22,18,0.75);">
+        <span style="color:#6B8F71;font-weight:600;">The brand promise stays constant:</span>
+        <em style="font-style:normal;color:#1A1612;font-weight:500;">"the neighbourhood store that knows you."</em> The format adapts — the relationship doesn't.
+      </p>
+    </div>
+
+    <!-- Three format cards -->
+    <div class="grid md:grid-cols-3 gap-5 mb-12 stagger">
+
+      <!-- Daily -->
+      <div class="rounded-2xl p-7 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.08);position:relative;overflow:hidden;">
+        <div class="absolute top-0 left-0 right-0 h-1" style="background:#E8732A;"></div>
+        <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#E8732A;">Format 01</div>
+        <h3 class="font-serif text-2xl font-semibold mb-1" style="color:#1A1612;">Consto Daily</h3>
+        <p class="text-sm mb-6" style="color:rgba(26,22,18,0.5);">Pure convenience</p>
+
+        <div class="space-y-3 mb-6">
+          <div class="flex justify-between text-sm">
+            <span style="color:rgba(26,22,18,0.55);">Size</span>
+            <span style="color:#1A1612;font-weight:500;">400-600 sqft</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span style="color:rgba(26,22,18,0.55);">SKU count</span>
+            <span style="color:#1A1612;font-weight:500;">400-600</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span style="color:rgba(26,22,18,0.55);">Capex</span>
+            <span style="color:#1A1612;font-weight:500;">₹12-20L</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span style="color:rgba(26,22,18,0.55);">Avg basket</span>
+            <span style="color:#1A1612;font-weight:500;">₹150-250</span>
+          </div>
+        </div>
+
+        <div class="pt-5" style="border-top:1px solid rgba(26,22,18,0.08);">
+          <p class="text-xs font-semibold tracking-wider uppercase mb-2" style="color:#E8732A;">Where it fits</p>
+          <p class="text-sm mb-4" style="color:rgba(26,22,18,0.65);">IT corridors, highway stops, office complexes, metro feeders</p>
+
+          <p class="text-xs font-semibold tracking-wider uppercase mb-2" style="color:#E8732A;">Customer mission</p>
+          <p class="text-sm mb-4" style="color:rgba(26,22,18,0.65);">Quick top-up, breakfast/lunch grab, services counter, on-the-go drinks</p>
+
+          <p class="text-xs font-semibold tracking-wider uppercase mb-2" style="color:#E8732A;">Hero categories</p>
+          <p class="text-sm" style="color:rgba(26,22,18,0.65);">Fresh dairy, ready-to-eat, beverages, snacks, services</p>
+        </div>
+      </div>
+
+      <!-- Home (anchor) — deepened sage from #6B8F71 to #4F6B55 so white text passes WCAG AA (~7:1) -->
+      <div class="rounded-2xl p-7 fade" style="background:#4F6B55;color:#fff;position:relative;overflow:hidden;">
+        <div class="absolute top-4 right-4 text-xs font-bold tracking-widest uppercase px-2.5 py-1 rounded-full" style="background:rgba(255,255,255,0.28);color:#fff;">Anchor format</div>
+        <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:rgba(255,255,255,0.7);">Format 02</div>
+        <h3 class="font-serif text-2xl font-semibold mb-1" style="color:#fff;">Consto Home</h3>
+        <p class="text-sm mb-6" style="color:rgba(255,255,255,0.7);">Residential hybrid · Beeramguda starts here</p>
+
+        <div class="space-y-3 mb-6">
+          <div class="flex justify-between text-sm">
+            <span style="color:rgba(255,255,255,0.7);">Size</span>
+            <span style="color:#fff;font-weight:500;">1,000-1,500 sqft</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span style="color:rgba(255,255,255,0.7);">SKU count</span>
+            <span style="color:#fff;font-weight:500;">1,000-1,500</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span style="color:rgba(255,255,255,0.7);">Capex</span>
+            <span style="color:#fff;font-weight:500;">₹25-40L</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span style="color:rgba(255,255,255,0.7);">Avg basket</span>
+            <span style="color:#fff;font-weight:500;">₹250-400</span>
+          </div>
+        </div>
+
+        <div class="pt-5" style="border-top:1px solid rgba(255,255,255,0.18);">
+          <p class="text-xs font-semibold tracking-wider uppercase mb-2" style="color:rgba(255,255,255,0.85);">Where it fits</p>
+          <p class="text-sm mb-4" style="color:rgba(255,255,255,0.85);">Residential colonies, suburban neighbourhoods (Beeramguda, Manikonda, Kompally)</p>
+
+          <p class="text-xs font-semibold tracking-wider uppercase mb-2" style="color:rgba(255,255,255,0.85);">Customer mission</p>
+          <p class="text-sm mb-4" style="color:rgba(255,255,255,0.85);">Daily fresh run + complete weekly shop possible, family relationships</p>
+
+          <p class="text-xs font-semibold tracking-wider uppercase mb-2" style="color:rgba(255,255,255,0.85);">Hero categories</p>
+          <p class="text-sm" style="color:rgba(255,255,255,0.85);">Fresh + dairy + batter, staples in small/medium packs, festival rotations, all services</p>
+        </div>
+      </div>
+
+      <!-- Hub -->
+      <div class="rounded-2xl p-7 fade" style="background:#fff;border:1px solid rgba(26,22,18,0.08);position:relative;overflow:hidden;">
+        <div class="absolute top-0 left-0 right-0 h-1" style="background:#D4A843;"></div>
+        <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#D4A843;">Format 03</div>
+        <h3 class="font-serif text-2xl font-semibold mb-1" style="color:#1A1612;">Consto Hub</h3>
+        <p class="text-sm mb-6" style="color:rgba(26,22,18,0.5);">Community anchor (later phase)</p>
+
+        <div class="space-y-3 mb-6">
+          <div class="flex justify-between text-sm">
+            <span style="color:rgba(26,22,18,0.55);">Size</span>
+            <span style="color:#1A1612;font-weight:500;">2,000-3,000 sqft</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span style="color:rgba(26,22,18,0.55);">SKU count</span>
+            <span style="color:#1A1612;font-weight:500;">2,000-2,500</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span style="color:rgba(26,22,18,0.55);">Capex</span>
+            <span style="color:#1A1612;font-weight:500;">₹60-90L</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span style="color:rgba(26,22,18,0.55);">Avg basket</span>
+            <span style="color:#1A1612;font-weight:500;">₹400-600</span>
+          </div>
+        </div>
+
+        <div class="pt-5" style="border-top:1px solid rgba(26,22,18,0.08);">
+          <p class="text-xs font-semibold tracking-wider uppercase mb-2" style="color:#D4A843;">Where it fits</p>
+          <p class="text-sm mb-4" style="color:rgba(26,22,18,0.65);">High-density residential clusters, premium gated communities, district centres</p>
+
+          <p class="text-xs font-semibold tracking-wider uppercase mb-2" style="color:#D4A843;">Customer mission</p>
+          <p class="text-sm mb-4" style="color:rgba(26,22,18,0.65);">Full neighbourhood anchor, Hub Huddle events, chai counter, community gatherings</p>
+
+          <p class="text-xs font-semibold tracking-wider uppercase mb-2" style="color:#D4A843;">Hero categories</p>
+          <p class="text-sm" style="color:rgba(26,22,18,0.65);">All of Home + premium organic, wider household range, in-store community space</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- The constant layer -->
+    <div class="rounded-2xl p-8 md:p-10 mb-12 fade" style="background:#1A1612;">
+      <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#E8732A;">What stays constant across all three</div>
+      <h3 class="font-serif text-xl md:text-2xl font-semibold mb-6" style="color:#FAF5ED;">The DNA doesn't bend.</h3>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-1.5 h-1.5 rounded-full" style="background:#E8732A;"></span>
+            <span class="text-sm font-semibold" style="color:#FAF5ED;">AI memory layer</span>
+          </div>
+          <p class="text-sm" style="color:rgba(250,245,237,0.55);">Same customer agent, same category heads. Knowledge compounds across all formats.</p>
+        </div>
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-1.5 h-1.5 rounded-full" style="background:#E8732A;"></span>
+            <span class="text-sm font-semibold" style="color:#FAF5ED;">Fresh-first identity</span>
+          </div>
+          <p class="text-sm" style="color:rgba(250,245,237,0.55);">Even Consto Daily leads with fresh dairy and batter. Fresh is the brand, not the size.</p>
+        </div>
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-1.5 h-1.5 rounded-full" style="background:#E8732A;"></span>
+            <span class="text-sm font-semibold" style="color:#FAF5ED;">Cultural &amp; brand voice</span>
+          </div>
+          <p class="text-sm" style="color:rgba(250,245,237,0.55);">Telugu warmth, festival programming, agent personalisation, "come rest even if you don't buy."</p>
+        </div>
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-1.5 h-1.5 rounded-full" style="background:#E8732A;"></span>
+            <span class="text-sm font-semibold" style="color:#FAF5ED;">Services counter</span>
+          </div>
+          <p class="text-sm" style="color:rgba(250,245,237,0.55);">AEPS, bills, recharges, xerox. Daily-life utility in every variant.</p>
+        </div>
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-1.5 h-1.5 rounded-full" style="background:#E8732A;"></span>
+            <span class="text-sm font-semibold" style="color:#FAF5ED;">30% local soul</span>
+          </div>
+          <p class="text-sm" style="color:rgba(250,245,237,0.55);">Every store has location-specific stock and visual identity layered on a shared core.</p>
+        </div>
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-1.5 h-1.5 rounded-full" style="background:#E8732A;"></span>
+            <span class="text-sm font-semibold" style="color:#FAF5ED;">Consto OS backbone</span>
+          </div>
+          <p class="text-sm" style="color:rgba(250,245,237,0.55);">Same 8-product digital system runs all three formats. Build once, deploy everywhere.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- The why -->
+    <div class="fade">
+      <p class="font-serif text-lg md:text-xl leading-relaxed" style="color:rgba(26,22,18,0.75);max-width:42rem;">
+        <span class="font-serif italic" style="color:#E8732A;">"Why not just one format?"</span> Because a 600 sqft store in an IT corridor and a 1,200 sqft store in a residential colony serve completely different shopping behaviours. Forcing one template across both either underserves families or wastes capex on commuters. The brand is the constant. The format is the variable.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── ENGAGEMENT LAYERS ─────────────────────────────────────────── -->
+<!--
+  Colors used (all APCA/WCAG AA verified):
+  bg: #1A1612 (deep)
+  text primary:   #FAF5ED on #1A1612 — Lc ~98, ratio ~16:1
+  text secondary: rgba(250,245,237,0.78) — ratio ~12:1
+  text tertiary:  rgba(250,245,237,0.60) — ratio ~7.5:1
+  text caption:   rgba(250,245,237,0.45) — ratio ~5:1 (AA pass)
+  accent gold:    #D4A843 on #1A1612 — ratio ~7.5:1 (AAA)
+  accent saffron: #E8732A on #1A1612 — ratio ~4.8:1 (AA)
+  accent sage:    #88AC8E on #1A1612 — ratio ~5.5:1 (AA)
+  cards: #fff with #1A1612 text — ratio ~16:1
+-->
+<section id="engage" class="py-24 px-6" style="background:#1A1612;color:#FAF5ED;">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Header -->
+    <div class="section-label mb-4 fade" style="color:#D4A843;">07 · Engagement Layers</div>
+    <h2 class="font-serif font-semibold mb-4 fade" style="font-size:clamp(1.7rem,4vw,3rem);color:#FAF5ED;max-width:40rem;line-height:1.2;">
+      Four ways Consto reaches you. One layer of memory.
+    </h2>
+    <p class="mb-8 fade" style="color:rgba(250,245,237,0.78);font-size:1.05rem;max-width:44rem;line-height:1.65;">
+      AI memory is invisible until it reaches the customer. Consto reaches you through four deliberately separated layers — each with a different weight, a different moment, and a different job. The same memory powers them all.
+    </p>
+
+    <!-- Insight pull quote -->
+    <div class="rounded-2xl p-7 mb-16 fade" style="background:rgba(232,115,42,0.08);border-left:4px solid #E8732A;">
+      <p class="font-serif text-lg md:text-xl leading-snug" style="color:#FAF5ED;">
+        "The customer never experiences AI. She experiences <em style="font-style:normal;color:#D4A843;">'Consto knows me.'</em>"
+      </p>
+      <p class="text-sm mt-3" style="color:rgba(250,245,237,0.65);">The widget on her phone shows her name. The delivery van remembers her gate. The agent draft starts with her son's school exam date. AI is the engine; warmth is the surface.</p>
+    </div>
+
+    <!-- ── The 4-layer architecture ── -->
+    <div class="mb-20">
+      <div class="section-label mb-3 fade" style="color:#D4A843;">The architecture</div>
+      <h3 class="font-serif text-2xl md:text-3xl font-semibold mb-3 fade" style="color:#FAF5ED;">Four layers. Four moments. One Consto.</h3>
+      <p class="mb-10 fade" style="color:rgba(250,245,237,0.65);font-size:0.95rem;max-width:42rem;line-height:1.65;">
+        Each layer has a precise job. Stack them and the customer feels constantly known without ever being overwhelmed.
+      </p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 stagger">
+
+        <!-- Widget -->
+        <div class="rounded-2xl p-6 fade" style="background:rgba(212,168,67,0.08);border:1px solid rgba(212,168,67,0.25);">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold tracking-widest uppercase" style="color:#D4A843;">Layer 01</span>
+            <span class="text-xs" style="color:rgba(250,245,237,0.55);">Ambient</span>
+          </div>
+          <div class="text-2xl mb-3">📱</div>
+          <h4 class="font-serif text-lg font-semibold mb-2" style="color:#FAF5ED;">Widget</h4>
+          <p class="text-xs font-semibold tracking-wider uppercase mb-3" style="color:#D4A843;">Glanceable · Lightest touch</p>
+          <p class="text-sm mb-4" style="color:rgba(250,245,237,0.78);">Consto Today on the home screen. Updates 2× daily with personalized fresh, deals, and tomorrow's delivery.</p>
+          <p class="text-xs" style="color:rgba(250,245,237,0.55);"><span style="color:#FAF5ED;font-weight:500;">When:</span> Throughout the day, every glance at phone</p>
+        </div>
+
+        <!-- App -->
+        <div class="rounded-2xl p-6 fade" style="background:rgba(232,115,42,0.08);border:1px solid rgba(232,115,42,0.3);">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold tracking-widest uppercase" style="color:#E8732A;">Layer 02</span>
+            <span class="text-xs" style="color:rgba(250,245,237,0.55);">Interaction</span>
+          </div>
+          <div class="text-2xl mb-3">⚡</div>
+          <h4 class="font-serif text-lg font-semibold mb-2" style="color:#FAF5ED;">Lightweight App</h4>
+          <p class="text-xs font-semibold tracking-wider uppercase mb-3" style="color:#E8732A;">One job · Opt-in</p>
+          <p class="text-sm mb-4" style="color:rgba(250,245,237,0.78);">Manage subscription. Add-ons in one tap. Nothing else. Earns its install with the free-delivery benefit.</p>
+          <p class="text-xs" style="color:rgba(250,245,237,0.55);"><span style="color:#FAF5ED;font-weight:500;">When:</span> When they want to act fast (mostly subscribers)</p>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="rounded-2xl p-6 fade" style="background:rgba(136,172,142,0.08);border:1px solid rgba(136,172,142,0.3);">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold tracking-widest uppercase" style="color:#88AC8E;">Layer 03</span>
+            <span class="text-xs" style="color:rgba(250,245,237,0.55);">Conversation</span>
+          </div>
+          <div class="text-2xl mb-3">💬</div>
+          <h4 class="font-serif text-lg font-semibold mb-2" style="color:#FAF5ED;">WhatsApp</h4>
+          <p class="text-xs font-semibold tracking-wider uppercase mb-3" style="color:#88AC8E;">Universal · Zero install</p>
+          <p class="text-sm mb-4" style="color:rgba(250,245,237,0.78);">Agent-drafted messages with brand voice. Works for 100% of customers including those who'll never install an app.</p>
+          <p class="text-xs" style="color:rgba(250,245,237,0.55);"><span style="color:#FAF5ED;font-weight:500;">When:</span> When they want to talk, ask, request</p>
+        </div>
+
+        <!-- Store -->
+        <div class="rounded-2xl p-6 fade" style="background:rgba(196,88,58,0.1);border:1px solid rgba(196,88,58,0.35);">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold tracking-widest uppercase" style="color:#E89A7A;">Layer 04</span>
+            <span class="text-xs" style="color:rgba(250,245,237,0.55);">Experience</span>
+          </div>
+          <div class="text-2xl mb-3">🏬</div>
+          <h4 class="font-serif text-lg font-semibold mb-2" style="color:#FAF5ED;">Physical Store</h4>
+          <p class="text-xs font-semibold tracking-wider uppercase mb-3" style="color:#E89A7A;">In-person · Deepest touch</p>
+          <p class="text-sm mb-4" style="color:rgba(250,245,237,0.78);">The human moment. Staff greets by name with AI-curated context. Three format variants by location type.</p>
+          <p class="text-xs" style="color:rgba(250,245,237,0.55);"><span style="color:#FAF5ED;font-weight:500;">When:</span> When they want the relationship</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Consto Subscribe ── -->
+    <div class="mb-20">
+      <div class="section-label mb-3 fade" style="color:#88AC8E;">Engagement A · Subscribe</div>
+      <h3 class="font-serif text-2xl md:text-3xl font-semibold mb-3 fade" style="color:#FAF5ED;">Consto Subscribe — the daily-route moat.</h3>
+      <p class="mb-10 fade" style="color:rgba(250,245,237,0.7);font-size:0.95rem;max-width:42rem;line-height:1.65;">
+        Subscription pre-pays the delivery route. The marginal cost of adding "1 coconut" to a route the van is already running becomes zero. This is the same model Sid's Farm and Akshayakalpa use to beat quick commerce on small-basket economics — and it's a structural advantage Zepto/Blinkit can never replicate without owning a daily route.
+      </p>
+
+      <!-- The mechanic flow -->
+      <div class="rounded-2xl p-7 md:p-9 mb-10 fade" style="background:rgba(136,172,142,0.06);border:1px solid rgba(136,172,142,0.25);">
+        <div class="grid md:grid-cols-3 gap-6">
+          <div>
+            <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#88AC8E;">Step 01</div>
+            <h5 class="font-serif text-lg font-semibold mb-2" style="color:#FAF5ED;">Subscribe to your daily</h5>
+            <p class="text-sm" style="color:rgba(250,245,237,0.7);">Milk, idli batter, curd, weekly fresh basket, weekly fruits. Choose your brands and quantities once.</p>
+          </div>
+          <div>
+            <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#88AC8E;">Step 02</div>
+            <h5 class="font-serif text-lg font-semibold mb-2" style="color:#FAF5ED;">Route runs every morning</h5>
+            <p class="text-sm" style="color:rgba(250,245,237,0.7);">30-50 households per colony create a captive daily route. Same van, same time, same person.</p>
+          </div>
+          <div>
+            <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#88AC8E;">Step 03</div>
+            <h5 class="font-serif text-lg font-semibold mb-2" style="color:#FAF5ED;">Add anything, free</h5>
+            <p class="text-sm" style="color:rgba(250,245,237,0.7);">Open app or WhatsApp before 9pm. Add coconut, paneer, agarbatti, anything ≤ 2kg. Arrives with tomorrow's milk. No delivery fee.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- The economics comparison -->
+      <div class="rounded-2xl p-7 md:p-9 fade" style="background:#fff;">
+        <h4 class="font-serif text-xl font-semibold mb-5" style="color:#1A1612;">Why this beats Zepto on a ₹50 order.</h4>
+        <div class="grid md:grid-cols-2 gap-5">
+          <div class="rounded-xl p-5" style="background:#FAF5ED;border:1px solid rgba(196,88,58,0.25);">
+            <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#C4583A;">Quick Commerce</div>
+            <div class="space-y-2 text-sm" style="color:rgba(26,22,18,0.78);">
+              <div class="flex justify-between"><span>Customer pays for ₹50 coconut</span><span>₹50</span></div>
+              <div class="flex justify-between"><span>Rider payment per order</span><span style="color:#C4583A;">−₹45</span></div>
+              <div class="flex justify-between"><span>Dark-store cost</span><span style="color:#C4583A;">−₹8</span></div>
+              <div class="flex justify-between font-semibold pt-2" style="border-top:1px solid rgba(26,22,18,0.1);"><span>Result</span><span style="color:#C4583A;">−₹3 loss</span></div>
+            </div>
+          </div>
+          <div class="rounded-xl p-5" style="background:#FAF5ED;border:1px solid rgba(136,172,142,0.4);">
+            <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#5A7860;">Consto Subscribe</div>
+            <div class="space-y-2 text-sm" style="color:rgba(26,22,18,0.78);">
+              <div class="flex justify-between"><span>Customer pays for ₹50 coconut</span><span>₹50</span></div>
+              <div class="flex justify-between"><span>Marginal delivery cost (on route)</span><span style="color:#5A7860;">₹0</span></div>
+              <div class="flex justify-between"><span>Store cost share</span><span style="color:#5A7860;">−₹35</span></div>
+              <div class="flex justify-between font-semibold pt-2" style="border-top:1px solid rgba(26,22,18,0.1);"><span>Result</span><span style="color:#5A7860;">+₹15 margin</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="text-sm mt-5 italic" style="color:rgba(26,22,18,0.6);">Same product. Same customer. ₹18 difference per order. Compounded across 50 households × 365 days = the entire reason this format wins long-term.</p>
+      </div>
+    </div>
+
+    <!-- ── Consto Today widget ── -->
+    <div class="mb-20">
+      <div class="section-label mb-3 fade" style="color:#E8732A;">Engagement B · Today</div>
+      <h3 class="font-serif text-2xl md:text-3xl font-semibold mb-3 fade" style="color:#FAF5ED;">Consto Today — the AI memory layer made glanceable.</h3>
+      <p class="mb-10 fade" style="color:rgba(250,245,237,0.7);font-size:0.95rem;max-width:42rem;line-height:1.65;">
+        A home-screen widget (or WhatsApp pinned digest for non-app users) that updates 2× a day with personalized fresh stock, your tomorrow's delivery, today's deals on your usual brands, and upcoming festival nudges. Every line item is composed by AI from your customer profile — generic deals don't appear here.
+      </p>
+
+      <!-- Hero widget mockup -->
+      <div class="rounded-3xl p-6 md:p-8 mb-10 fade" style="background:#fff;max-width:32rem;margin-left:auto;margin-right:auto;box-shadow:0 20px 50px rgba(0,0,0,0.4);">
+        <div class="flex items-center justify-between mb-5" style="padding-bottom:0.75rem;border-bottom:1px solid rgba(26,22,18,0.08);">
+          <div class="flex items-center gap-2">
+            <span class="font-serif font-bold text-lg" style="color:#E8732A;">Consto</span>
+            <span class="text-xs font-medium" style="color:rgba(26,22,18,0.5);">TODAY · Beeramguda</span>
+          </div>
+          <span class="text-xs" style="color:rgba(26,22,18,0.45);">7:14 AM</span>
+        </div>
+
+        <!-- Section 1: Fresh -->
+        <div class="mb-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span style="color:#5A7860;font-size:1.1rem;">🌿</span>
+            <span class="text-xs font-bold tracking-wider uppercase" style="color:#5A7860;">Fresh today</span>
+          </div>
+          <p class="text-sm" style="color:rgba(26,22,18,0.8);">Palak ₹40 · Tomato ₹35 · Coriander ₹15 · Lemon 4 ₹20 · Fresh coconut ₹40</p>
+        </div>
+
+        <!-- Section 2: Tomorrow -->
+        <div class="mb-5 rounded-xl p-4" style="background:#FAF5ED;">
+          <div class="flex items-center gap-2 mb-2">
+            <span style="color:#E8732A;font-size:1.1rem;">📦</span>
+            <span class="text-xs font-bold tracking-wider uppercase" style="color:#E8732A;">Tomorrow's delivery</span>
+          </div>
+          <p class="text-sm mb-3" style="color:rgba(26,22,18,0.8);">Milk 1L + Batter 500g + Eggs 6 — confirmed</p>
+          <div class="flex gap-2 flex-wrap">
+            <button class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background:#E8732A;color:#fff;">+ Coconut</button>
+            <button class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background:#E8732A;color:#fff;">+ Coriander</button>
+            <button class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background:rgba(26,22,18,0.08);color:#1A1612;">+ Other</button>
+          </div>
+        </div>
+
+        <!-- Section 3: Deals -->
+        <div class="mb-5">
+          <div class="flex items-center gap-2 mb-2">
+            <span style="color:#D4A843;font-size:1.1rem;">🎯</span>
+            <span class="text-xs font-bold tracking-wider uppercase" style="color:#A8852E;">Your usuals on deal</span>
+          </div>
+          <p class="text-sm" style="color:rgba(26,22,18,0.8);">Maggi 4pk ₹52 (was ₹68) · Aashirvaad atta 5kg ₹275 (was ₹305)</p>
+        </div>
+
+        <!-- Section 4: Festival -->
+        <div class="rounded-xl p-4" style="background:rgba(212,168,67,0.12);">
+          <div class="flex items-center gap-2 mb-2">
+            <span style="font-size:1.1rem;">🪔</span>
+            <span class="text-xs font-bold tracking-wider uppercase" style="color:#A8852E;">Sankranti in 4 days</span>
+          </div>
+          <p class="text-sm mb-2" style="color:rgba(26,22,18,0.8);">Pre-book your usual ellu, jaggery, and sugarcane?</p>
+          <button class="text-xs font-semibold px-3 py-1.5 rounded-full" style="background:#D4A843;color:#fff;">Yes, book it</button>
+        </div>
+      </div>
+      <p class="text-xs text-center fade" style="color:rgba(250,245,237,0.5);">Lightweight app widget · iOS &amp; Android · or WhatsApp pinned digest for non-app customers</p>
+    </div>
+
+    <!-- ── 4 customers, 4 widgets ── -->
+    <div class="mb-20">
+      <div class="section-label mb-3 fade" style="color:#E8732A;">The AI moat made visible</div>
+      <h3 class="font-serif text-2xl md:text-3xl font-semibold mb-3 fade" style="color:#FAF5ED;">Same store. Same morning. Four completely different widgets.</h3>
+      <p class="mb-10 fade" style="color:rgba(250,245,237,0.7);font-size:0.95rem;max-width:44rem;line-height:1.65;">
+        Generic retail widgets show what the store wants to sell. Consto Today shows what <em style="color:#D4A843;font-style:normal;">you</em> probably want. The architecture is identical for every customer — the surface is uniquely composed from their memory profile.
+      </p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 stagger">
+
+        <!-- Priya -->
+        <div class="fade">
+          <div class="mb-3 px-1">
+            <div class="text-xs font-bold tracking-wider uppercase mb-0.5" style="color:#E8732A;">👩‍👧‍👦 Priya</div>
+            <div class="text-xs" style="color:rgba(250,245,237,0.6);">Working mom · 35</div>
+          </div>
+          <div class="rounded-2xl p-5" style="background:#fff;">
+            <div class="flex justify-between items-center mb-3" style="padding-bottom:0.5rem;border-bottom:1px solid rgba(26,22,18,0.08);">
+              <span class="font-serif font-bold text-sm" style="color:#E8732A;">Consto Today</span>
+              <span class="text-xs" style="color:rgba(26,22,18,0.45);">7:14</span>
+            </div>
+            <div class="space-y-2.5 text-xs">
+              <div>
+                <div class="font-semibold mb-0.5" style="color:#5A7860;">🌿 Fresh paneer in</div>
+                <div style="color:rgba(26,22,18,0.7);">Your usual ₹85/250g</div>
+              </div>
+              <div>
+                <div class="font-semibold mb-0.5" style="color:#E8732A;">📦 Tomorrow's delivery</div>
+                <div style="color:rgba(26,22,18,0.7);">Milk + batter + 6 eggs confirmed → add coriander?</div>
+              </div>
+              <div>
+                <div class="font-semibold mb-0.5" style="color:#A8852E;">🎯 Maggi 4pk ₹52</div>
+                <div style="color:rgba(26,22,18,0.7);">Aarav's lunchbox stock</div>
+              </div>
+              <div>
+                <div class="font-semibold mb-0.5" style="color:#A8852E;">🎂 Aarav's birthday in 8 days</div>
+                <div style="color:rgba(26,22,18,0.7);">Gift ideas under ₹500?</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lakshmi -->
+        <div class="fade">
+          <div class="mb-3 px-1">
+            <div class="text-xs font-bold tracking-wider uppercase mb-0.5" style="color:#88AC8E;">🙏 Lakshmi Aunty</div>
+            <div class="text-xs" style="color:rgba(250,245,237,0.6);">Retiree · 55+ · WhatsApp only</div>
+          </div>
+          <div class="rounded-2xl p-5" style="background:#fff;">
+            <div class="flex items-center gap-2 mb-3" style="padding-bottom:0.5rem;border-bottom:1px solid rgba(26,22,18,0.08);">
+              <div class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold" style="background:#25D366;color:#fff;">C</div>
+              <span class="text-xs font-semibold" style="color:#1A1612;">Consto Agent</span>
+              <span class="text-xs ml-auto" style="color:rgba(26,22,18,0.45);">7:14</span>
+            </div>
+            <div class="rounded-xl p-3 text-xs" style="background:#DCF8C6;color:#1A1612;line-height:1.5;">
+              Lakshmi gaaru, baagunnara? 🙏<br/><br/>
+              🌿 Fresh tulsi arrived this morning<br/>
+              ☕ Your Horlicks back in stock — ₹235<br/>
+              🕉 Ekadashi tomorrow — kept tulsi bundle ₹40 for you
+            </div>
+          </div>
+        </div>
+
+        <!-- Raju -->
+        <div class="fade">
+          <div class="mb-3 px-1">
+            <div class="text-xs font-bold tracking-wider uppercase mb-0.5" style="color:#D4A843;">🛵 Raju</div>
+            <div class="text-xs" style="color:rgba(250,245,237,0.6);">Gig driver · 28</div>
+          </div>
+          <div class="rounded-2xl p-5" style="background:#fff;">
+            <div class="flex justify-between items-center mb-3" style="padding-bottom:0.5rem;border-bottom:1px solid rgba(26,22,18,0.08);">
+              <span class="font-serif font-bold text-sm" style="color:#E8732A;">Consto Today</span>
+              <span class="text-xs" style="color:rgba(26,22,18,0.45);">7:14</span>
+            </div>
+            <div class="space-y-2.5 text-xs">
+              <div>
+                <div class="font-semibold mb-0.5" style="color:#E8732A;">⚡ Quick today</div>
+                <div style="color:rgba(26,22,18,0.7);">Red Bull ₹125 · Banana 6 ₹35</div>
+              </div>
+              <div>
+                <div class="font-semibold mb-0.5" style="color:#5A7860;">💊 ORS sachets ₹25</div>
+                <div style="color:rgba(26,22,18,0.7);">You bought last week</div>
+              </div>
+              <div>
+                <div class="font-semibold mb-0.5" style="color:#A8852E;">💰 AEPS open till 9pm</div>
+                <div style="color:rgba(26,22,18,0.7);">No queue right now</div>
+              </div>
+              <div>
+                <div class="font-semibold mb-0.5" style="color:#C4583A;">📞 Jio recharge due Thursday</div>
+                <div style="color:rgba(26,22,18,0.7);">Tap to pre-set</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arjun -->
+        <div class="fade">
+          <div class="mb-3 px-1">
+            <div class="text-xs font-bold tracking-wider uppercase mb-0.5" style="color:#88AC8E;">💻 Arjun</div>
+            <div class="text-xs" style="color:rgba(250,245,237,0.6);">Tech professional · 30</div>
+          </div>
+          <div class="rounded-2xl p-5" style="background:#fff;">
+            <div class="flex justify-between items-center mb-3" style="padding-bottom:0.5rem;border-bottom:1px solid rgba(26,22,18,0.08);">
+              <span class="font-serif font-bold text-sm" style="color:#E8732A;">Consto Today</span>
+              <span class="text-xs" style="color:rgba(26,22,18,0.45);">7:14</span>
+            </div>
+            <div class="space-y-2.5 text-xs">
+              <div>
+                <div class="font-semibold mb-0.5" style="color:#5A7860;">🥗 Tomorrow's keto basket</div>
+                <div style="color:rgba(26,22,18,0.7);">Spinach, broccoli, paneer (₹340)</div>
+              </div>
+              <div>
+                <div class="font-semibold mb-0.5" style="color:#5A7860;">🥥 Cold-pressed coconut oil in</div>
+                <div style="color:rgba(26,22,18,0.7);">Your brand · ₹420</div>
+              </div>
+              <div>
+                <div class="font-semibold mb-0.5" style="color:#A8852E;">🌾 Quinoa restocked</div>
+                <div style="color:rgba(26,22,18,0.7);">₹220/500g</div>
+              </div>
+              <div>
+                <div class="font-semibold mb-0.5" style="color:#A8852E;">🎯 Roasted almonds 250g</div>
+                <div style="color:rgba(26,22,18,0.7);">₹240 (was ₹275)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="text-sm text-center mt-8 italic fade" style="color:rgba(250,245,237,0.65);max-width:42rem;margin-left:auto;margin-right:auto;">
+        That's something Zepto, BigBasket, DMart structurally cannot do. Their widgets show what they want to sell. Consto's widget shows what <em style="color:#D4A843;font-style:normal;">you</em> probably want.
+      </p>
+
+      <!-- Interactive demo CTA -->
+      <div class="mt-10 text-center fade">
+        <a href="/experience.html" class="inline-flex items-center gap-2.5 px-7 py-4 rounded-full font-semibold text-base transition-all" style="background:#E8732A;color:#fff;text-decoration:none;box-shadow:0 8px 24px rgba(232,115,42,0.35);">
+          <span style="font-size:1.1rem;">▶</span>
+          Walk through a day with each customer
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <p class="text-xs mt-4" style="color:rgba(250,245,237,0.55);">Interactive walkthrough · Pick a persona · See their widget, WhatsApp, in-store agent view, and receipt</p>
+      </div>
+    </div>
+
+    <!-- ── Architecture — which Consto OS products power it ── -->
+    <div>
+      <div class="section-label mb-3 fade" style="color:#D4A843;">Behind the surface</div>
+      <h3 class="font-serif text-2xl md:text-3xl font-semibold mb-3 fade" style="color:#FAF5ED;">Which Consto OS products power the engagement layers.</h3>
+      <p class="mb-8 fade" style="color:rgba(250,245,237,0.7);font-size:0.95rem;max-width:42rem;line-height:1.65;">
+        The widget, app, and WhatsApp digest aren't separate products — they're <em style="color:#D4A843;font-style:normal;">surfaces</em> on top of the same Consto OS backbone. Every engagement is composed in real time.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-4 stagger">
+        <div class="rounded-xl p-5 fade" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);">
+          <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#E8732A;">Consto Agent · Memory</div>
+          <p class="text-sm" style="color:rgba(250,245,237,0.78);">Who you are. What you buy. When. Family context. Festival routine. Brand preferences. The foundation of every personalized line.</p>
+        </div>
+        <div class="rounded-xl p-5 fade" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);">
+          <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#88AC8E;">Consto Inventory · Today's stock</div>
+          <p class="text-sm" style="color:rgba(250,245,237,0.78);">What's actually available at your store right now. Fresh batches in. Your usual items in stock. Real-time, not yesterday.</p>
+        </div>
+        <div class="rounded-xl p-5 fade" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);">
+          <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#D4A843;">Consto Predict · Demand model</div>
+          <p class="text-sm" style="color:rgba(250,245,237,0.78);">What you'll probably need next based on consumption rhythm. Suggests the add-ons before you've thought of them.</p>
+        </div>
+        <div class="rounded-xl p-5 fade" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);">
+          <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#E89A7A;">Consto Notify · Engagement engine</div>
+          <p class="text-sm" style="color:rgba(250,245,237,0.78);">Festival countdowns. Birthday reminders. Seasonal nudges. The cultural memory layer that competitors don't have.</p>
+        </div>
+        <div class="rounded-xl p-5 fade md:col-span-2" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);">
+          <div class="text-xs font-bold tracking-widest uppercase mb-2" style="color:#88AC8E;">Consto Loyalty · Pricing engine</div>
+          <p class="text-sm" style="color:rgba(250,245,237,0.78);">Personalized deals on <em style="color:#FAF5ED;font-style:normal;">your</em> brands, your pack sizes, your usual frequencies — not generic discounts. Subscribers get add-on free-delivery as a structural benefit.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ─── WHY THIS FOUNDER ───────────────────────────────────────────── -->
+<section id="founder" class="py-24 px-6" style="background:#fff;">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-label mb-4 fade">08 · Why this founder</div>
+    <h2 class="font-serif font-semibold mb-16 fade" style="font-size:clamp(1.7rem,4vw,3rem);color:#1A1612;max-width:36rem;line-height:1.2;">
+      Three perspectives most retail-tech founders never combine.
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-10 mb-14 stagger">
+      <div class="fade">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center mb-6 font-serif font-bold text-white" style="background:#E8732A;">01</div>
+        <h3 class="font-serif text-xl font-semibold mb-3" style="color:#1A1612;">The Counter</h3>
+        <p class="text-sm leading-relaxed" style="color:rgba(26,22,18,0.6);">
+          15 years inside the family kirana in Hyderabad — from age 7 to 22, side-by-side with my father. Stood behind the counter at 6am. Watched customers stay loyal for decades — not because of prices, but because someone remembered them, extended credit, and asked about their children. The store closed when I moved on; the lessons didn't.
+        </p>
+      </div>
+      <div class="fade">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center mb-6 font-serif font-bold text-white" style="background:#6B8F71;">02</div>
+        <h3 class="font-serif text-xl font-semibold mb-3" style="color:#1A1612;">The Observation</h3>
+        <p class="text-sm leading-relaxed" style="color:rgba(26,22,18,0.6);">
+          After the kirana, ~18 years of structured observation across formats and countries — 7-Eleven and FamilyMart in Thailand and Taiwan, Lawson in Japan, quick commerce in Asia, hypermarkets and dark stores. Operationally brilliant, emotionally empty. Nobody knew my name. That's when the gap became obvious.
+        </p>
+      </div>
+      <div class="fade">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center mb-6 font-serif font-bold text-white" style="background:#D4A843;">03</div>
+        <h3 class="font-serif text-xl font-semibold mb-3" style="color:#1A1612;">The Code</h3>
+        <p class="text-sm leading-relaxed" style="color:rgba(26,22,18,0.6);">
+          Ran a mobile recharge business in 2007 — that's how I understand service margins and how small-ticket services create daily footfall. Today: professional product designer and AI product builder. I can design and ship Consto OS myself.
+        </p>
+      </div>
+    </div>
+
+    <div class="rounded-2xl p-8 md:p-10 fade" style="background:rgba(232,115,42,0.06);border:1px solid rgba(232,115,42,0.18);">
+      <p class="font-serif text-xl md:text-2xl leading-relaxed" style="color:#1A1612;">
+        "Most retail-tech founders come from tech and try to digitise kiranas from the outside. I come from inside the kirana — and bring design + AI capability to build the digital layer myself."
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── HONESTY ────────────────────────────────────────────────────── -->
+<section class="py-24 px-6" style="background:#FAF5ED;">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-label mb-4 fade">09 · Conviction</div>
+    <h2 class="font-serif font-semibold mb-3 fade" style="font-size:clamp(1.7rem,4vw,3rem);color:#1A1612;max-width:32rem;line-height:1.2;">
+      What's validated. What's still being tested.
+    </h2>
+    <p class="mb-14 fade" style="color:rgba(26,22,18,0.5);">Conviction comes from knowing the difference.</p>
+
+    <div class="grid md:grid-cols-2 gap-8 stagger">
+      <!-- Validated -->
+      <div class="fade">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background:rgba(107,143,113,0.15);">
+            <svg class="w-4 h-4" style="color:#6B8F71;" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+            </svg>
+          </div>
+          <span class="font-medium" style="color:#6B8F71;">Validated</span>
+        </div>
+        <div class="space-y-3">
+          <div class="rounded-xl p-4 text-sm" style="background:#fff;color:rgba(26,22,18,0.7);">
+            The emotional gap is real
+            <span class="text-xs ml-1.5" style="color:rgba(26,22,18,0.35);">— 50+ interviews in Beeramguda</span>
+          </div>
+          <div class="rounded-xl p-4 text-sm" style="background:#fff;color:rgba(26,22,18,0.7);">
+            India has zero organized convenience stores
+            <span class="text-xs ml-1.5" style="color:rgba(26,22,18,0.35);">— well-documented white space</span>
+          </div>
+          <div class="rounded-xl p-4 text-sm" style="background:#fff;color:rgba(26,22,18,0.7);">
+            Quick commerce is structurally weak in suburbs
+            <span class="text-xs ml-1.5" style="color:rgba(26,22,18,0.35);">— dark-store math breaks outside dense cores</span>
+          </div>
+          <div class="rounded-xl p-4 text-sm" style="background:#fff;color:rgba(26,22,18,0.7);">
+            Service margins are real
+            <span class="text-xs ml-1.5" style="color:rgba(26,22,18,0.35);">— ran a mobile recharge business in 2007, lived the unit economics</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Still testing -->
+      <div class="fade">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background:rgba(212,168,67,0.15);">
+            <span class="font-bold text-sm" style="color:#D4A843;">?</span>
+          </div>
+          <span class="font-medium" style="color:#D4A843;">Still being tested</span>
+        </div>
+        <div class="space-y-3">
+          <div class="rounded-xl p-4 text-sm" style="background:#fff;color:rgba(26,22,18,0.7);">Whether customers respond to proactive AI-backed care from a store</div>
+          <div class="rounded-xl p-4 text-sm" style="background:#fff;color:rgba(26,22,18,0.7);">Whether they'll pay 5-10% premium for care over price</div>
+          <div class="rounded-xl p-4 text-sm" style="background:#fff;color:rgba(26,22,18,0.7);">Whether one agent can realistically manage 30-100 customers well</div>
+          <div class="rounded-xl p-4 text-sm" style="background:#fff;color:rgba(26,22,18,0.7);">Whether hired staff can replicate founder-grade warmth at scale</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── WHAT'S NEXT ────────────────────────────────────────────────── -->
+<section id="next" class="py-24 px-6" style="background:#E8732A;">
+  <div class="max-w-6xl mx-auto">
+    <div class="section-label mb-4 fade" style="color:rgba(255,255,255,0.75);">10 · What's next</div>
+    <h2 class="font-serif font-semibold mb-16 fade" style="font-size:clamp(1.7rem,4vw,3rem);color:#fff;line-height:1.2;">Building in order.</h2>
+
+    <!--
+      Note: White/translucent text on saffron #E8732A previously failed WCAG AA
+      (rgba(255,255,255,0.6) on saffron ≈ 2:1 contrast). Cards rebuilt with
+      cream backgrounds + deep text inside (~16:1 contrast). The Step 02 "Next"
+      card uses white bg + saffron accent to stand out without contrast loss.
+    -->
+    <div class="grid md:grid-cols-2 gap-4 mb-14 stagger">
+      <div class="rounded-xl p-6 fade" style="background:#FAF5ED;">
+        <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#A8552A;">Step 01 · Done</div>
+        <h4 class="font-serif text-lg font-semibold mb-1.5" style="color:#1A1612;">The concept</h4>
+        <p class="text-sm" style="color:rgba(26,22,18,0.7);">Problem, opportunity, and solution documented. Single source of truth for everything that follows.</p>
+      </div>
+      <div class="rounded-xl p-6 fade" style="background:#fff;border:2px solid #1A1612;position:relative;">
+        <span class="absolute -top-2.5 right-4 text-xs font-bold tracking-widest uppercase px-2.5 py-1 rounded-full" style="background:#1A1612;color:#fff;">Next</span>
+        <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#E8732A;">Step 02</div>
+        <h4 class="font-serif text-lg font-semibold mb-1.5" style="color:#1A1612;">The pilot</h4>
+        <p class="text-sm" style="color:rgba(26,22,18,0.7);">20-30 known contacts. Manual AI-assisted care. 60 days. Validates the core thesis with ₹0 capital.</p>
+      </div>
+      <div class="rounded-xl p-6 fade" style="background:#FAF5ED;">
+        <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#A8552A;">Step 03</div>
+        <h4 class="font-serif text-lg font-semibold mb-1.5" style="color:#1A1612;">The first store</h4>
+        <p class="text-sm" style="color:rgba(26,22,18,0.7);">1,000-1,500 sqft Consto Home in Beeramguda. Soft launch with 50 customers — if the pilot validates.</p>
+      </div>
+      <div class="rounded-xl p-6 fade" style="background:#FAF5ED;">
+        <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#A8552A;">Step 04</div>
+        <h4 class="font-serif text-lg font-semibold mb-1.5" style="color:#1A1612;">Consto OS Phase 1</h4>
+        <p class="text-sm" style="color:rgba(26,22,18,0.7);">POS + customer memory + Subscribe layer. Built in parallel with the store launch.</p>
+      </div>
+      <div class="rounded-xl p-6 fade" style="background:#FAF5ED;">
+        <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#A8552A;">Step 05</div>
+        <h4 class="font-serif text-lg font-semibold mb-1.5" style="color:#1A1612;">Consto OS Phase 2–4</h4>
+        <p class="text-sm" style="color:rgba(26,22,18,0.7);">Inventory, Notify, Loyalty, Ops, Predict, HQ + Consto Today widget. Built as the store generates real data.</p>
+      </div>
+      <div class="rounded-xl p-6 fade" style="background:#FAF5ED;">
+        <div class="text-xs font-bold tracking-widest uppercase mb-3" style="color:#A8552A;">Steps 06–07</div>
+        <h4 class="font-serif text-lg font-semibold mb-1.5" style="color:#1A1612;">Franchise → SaaS</h4>
+        <p class="text-sm" style="color:rgba(26,22,18,0.7);">Once Store 1 proves unit economics. Then Consto OS offered as SaaS to kiranas at ₹2-5K/month.</p>
+      </div>
+    </div>
+
+    <!-- Status badge — deep text on cream for AAA contrast -->
+    <div class="inline-flex items-center gap-3 rounded-full px-5 py-2.5 fade" style="background:#FAF5ED;">
+      <div class="w-2 h-2 rounded-full dot-pulse" style="background:#E8732A;"></div>
+      <span class="text-sm font-medium" style="color:#1A1612;">Pre-launch &nbsp;·&nbsp; Concept documented &nbsp;·&nbsp; Pilot next</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── FOOTER ─────────────────────────────────────────────────────── -->
+<footer class="py-12 px-6" style="background:#1A1612;">
+  <div class="max-w-6xl mx-auto flex items-center justify-between flex-wrap gap-6">
+    <div>
+      <div class="font-serif text-2xl font-bold mb-1" style="color:#E8732A;">Consto</div>
+      <div class="text-xs" style="color:rgba(250,245,237,0.6);">India's Neighbourhood Store · 2026</div>
+    </div>
+    <div class="text-sm" style="color:rgba(250,245,237,0.6);">Designed by Sateesh</div>
+  </div>
+</footer>
+
+
+<script>
+  // ── Nav scroll state
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ── Active nav link by section (desktop + mobile)
+  const sections = Array.from(document.querySelectorAll('section[id]'));
+  const navLinks = Array.from(document.querySelectorAll('.nav-link, .mobile-nav-link'));
+  const activeObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.35 });
+  sections.forEach(s => activeObserver.observe(s));
+
+  // ── Mobile menu toggle
+  const mobileBtn   = document.getElementById('mobileMenuBtn');
+  const mobileMenu  = document.getElementById('mobileMenu');
+  const iconMenu    = document.getElementById('iconMenu');
+  const iconClose   = document.getElementById('iconClose');
+  const mobileLinks = Array.from(document.querySelectorAll('.mobile-nav-link'));
+
+  const closeMobile = () => {
+    mobileMenu.classList.remove('open');
+    iconMenu.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+    mobileBtn.setAttribute('aria-label', 'Open menu');
+    // wait for transition before display:none so animation runs
+    setTimeout(() => { if (!mobileMenu.classList.contains('open')) mobileMenu.classList.add('hidden'); }, 280);
+  };
+  const openMobile = () => {
+    mobileMenu.classList.remove('hidden');
+    // next frame so transition fires
+    requestAnimationFrame(() => mobileMenu.classList.add('open'));
+    iconMenu.classList.add('hidden');
+    iconClose.classList.remove('hidden');
+    mobileBtn.setAttribute('aria-label', 'Close menu');
+  };
+
+  mobileBtn.addEventListener('click', () => {
+    if (mobileMenu.classList.contains('open')) closeMobile();
+    else openMobile();
+  });
+
+  // Close menu after tapping a link
+  mobileLinks.forEach(link => link.addEventListener('click', closeMobile));
+
+  // Close on Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMobile();
+  });
+
+  // ── Fade-in on scroll
+  const fades = Array.from(document.querySelectorAll('.fade'));
+  let delay = 0;
+  const fadeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      // stagger siblings within .stagger parent
+      const parent = entry.target.closest('.stagger');
+      let d = 0;
+      if (parent) {
+        const siblings = Array.from(parent.querySelectorAll('.fade'));
+        const idx = siblings.indexOf(entry.target);
+        d = idx * 75;
+      }
+      setTimeout(() => entry.target.classList.add('in'), d);
+      fadeObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  fades.forEach(el => fadeObserver.observe(el));
+</script>
+
+</body>
+</html>

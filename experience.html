@@ -431,8 +431,20 @@
 </head>
 <body>
 
+<!-- ─── VERSION SWITCHER STRIP ─────────────────────────────────────── -->
+<div style="position:relative;z-index:60;background:#1A1612;color:#FAF5ED;padding:0.55rem 1.25rem;font-family:'Inter',system-ui,sans-serif;border-bottom:3px solid #1A1612;">
+  <div style="margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:0.5rem;flex-wrap:wrap;max-width:1300px;">
+    <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E8732A;">▶ INTERACTIVE WALKTHROUGH</div>
+    <div style="display:flex;gap:0.35rem;flex-wrap:wrap;">
+      <a href="/" style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.65rem;border:1.5px solid rgba(250,245,237,0.4);color:#FAF5ED;text-decoration:none;border-radius:2px;">← Hub</a>
+      <a href="/concept.html" style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.65rem;border:1.5px solid rgba(250,245,237,0.4);color:#FAF5ED;text-decoration:none;border-radius:2px;">Concept (5 min)</a>
+      <a href="/portfolio.html" style="font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.65rem;border:1.5px solid rgba(250,245,237,0.4);color:#FAF5ED;text-decoration:none;border-radius:2px;">Portfolio (15 min)</a>
+    </div>
+  </div>
+</div>
+
 <!-- ─── TOP NAV ──────────────────────────────────────────────────── -->
-<nav class="top-nav">
+<nav class="top-nav" style="position:sticky;top:0;">
   <div class="max-w-6xl mx-auto px-5 md:px-6 h-14 flex items-center justify-between">
     <a href="/" class="back-link">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
