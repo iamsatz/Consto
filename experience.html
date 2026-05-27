@@ -3,29 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consto — Interactive Walkthrough</title>
-  <meta name="description" content="A day with Consto. Pick a customer — Priya, Lakshmi Aunty, Raju, or Arjun. See exactly how Consto's AI memory personalises their widget, WhatsApp, in-store experience, and receipt.">
+  <title>Consto. Interactive Walkthrough</title>
+  <meta name="description" content="A day with Consto. Pick a customer. Priya, Lakshmi Aunty, Raju, or Arjun. See exactly how Consto's AI memory personalises their widget, WhatsApp, in-store experience, and receipt.">
   <meta name="theme-color" content="#E8732A">
   <meta name="author" content="Sateesh">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Consto — Interactive Walkthrough">
+  <meta property="og:title" content="Consto. Interactive Walkthrough">
   <meta property="og:description" content="Pick a customer. See how Consto's AI memory knows them differently. ~3-minute interactive walkthrough.">
   <meta property="og:site_name" content="Consto">
   <meta property="og:locale" content="en_IN">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Consto — Interactive Walkthrough">
+  <meta name="twitter:title" content="Consto. Interactive Walkthrough">
   <meta name="twitter:description" content="Pick a customer. See how Consto knows them. ~3 min interactive.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:wght@500;600;700&family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Playfair Display"', 'Georgia', 'serif'], sans: ['Inter', 'system-ui', 'sans-serif'] } } } }
+    tailwind.config = { theme: { extend: { fontFamily: { serif: ['"Inclusive Sans"', 'system-ui', 'sans-serif'], sans: ['"Inclusive Sans"', 'system-ui', 'sans-serif'] } } } }
   </script>
   <style>
     :root {
@@ -38,12 +38,13 @@
     }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Inclusive Sans', system-ui, sans-serif;
       background: var(--cream);
       color: var(--deep);
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
-    h1, h2, h3, .serif { font-family: 'Playfair Display', Georgia, serif; }
+    h1, h2, h3, .serif { font-family: 'Inclusive Sans', system-ui, sans-serif; font-weight: 600; letter-spacing: -0.02em; }
 
     /* Top nav */
     .top-nav {
@@ -242,7 +243,7 @@
       justify-content: center;
       font-weight: 700;
       font-size: 0.9rem;
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inclusive Sans', system-ui, sans-serif;
     }
     .wa-body {
       background: #E5DDD5;
@@ -336,7 +337,7 @@
       margin-bottom: 0.75rem;
     }
     .receipt-header h4 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inclusive Sans', system-ui, sans-serif;
       font-weight: 700;
       color: var(--saffron);
       font-size: 1.2rem;
@@ -359,7 +360,7 @@
       border-radius: 0.5rem;
       margin-top: 0.75rem;
       font-size: 0.75rem;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inclusive Sans', system-ui, sans-serif;
       font-weight: 500;
       text-align: center;
     }
@@ -372,7 +373,7 @@
       border-left: 4px solid var(--saffron);
     }
     .commentary h4 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Inclusive Sans', system-ui, sans-serif;
       font-size: 1.1rem;
       font-weight: 600;
       margin-bottom: 0.5rem;
@@ -452,7 +453,7 @@
   <div style="max-width:1100px;margin:0 auto;padding:0.7rem clamp(1.5rem, 5vw, 3rem);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;">
     <div style="display:flex;align-items:center;gap:0.55rem;font-size:0.78rem;color:#5A5651;">
       <span style="display:inline-block;width:6px;height:6px;border-radius:999px;background:#C76737;"></span>
-      <span style="font-weight:500;">You're on the <strong style="color:#1A1612;font-weight:600;">interactive walkthrough</strong> — 3 min</span>
+      <span style="font-weight:500;">You're on the <strong style="color:#1A1612;font-weight:600;">interactive walkthrough</strong>. 3 min</span>
     </div>
     <div style="display:flex;gap:1.25rem;font-size:0.825rem;font-weight:500;">
       <a href="/" style="color:#5A5651;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#1A1612'" onmouseout="this.style.color='#5A5651'">← Hub</a>
@@ -490,7 +491,7 @@
         Pick a customer. <br/>See how Consto knows them.
       </h1>
       <p class="mx-auto text-base md:text-lg" style="color: rgba(26, 22, 18, 0.6); max-width: 36rem; line-height: 1.65;">
-        Four people. Same store. Same morning. Four completely different experiences — composed in real time from each customer's memory profile. Tap any persona to walk through their day.
+        Four people. Same store. Same morning. Four completely different experiences. composed in real time from each customer's memory profile. Tap any persona to walk through their day.
       </p>
     </div>
 
@@ -600,14 +601,14 @@ const personas = {
       sections: [
         { icon: '🌿', label: 'Fresh paneer just in', color: '#4F6B55', text: 'Your usual ₹85 for 250g' },
         { icon: '📦', label: "Tomorrow's delivery", color: '#E8732A', text: 'Milk + batter + 6 eggs confirmed', buttons: ['+ Coriander', '+ Tomato', '+ Other'] },
-        { icon: '🎯', label: 'Your usuals on deal', color: '#A8852E', text: 'Maggi 4-pack ₹52 (was ₹68) — Aarav\'s lunchbox' },
+        { icon: '🎯', label: 'Your usuals on deal', color: '#A8852E', text: 'Maggi 4-pack ₹52 (was ₹68). Aarav\'s lunchbox' },
         { icon: '🎂', label: "Aarav's birthday in 8 days", color: '#C4583A', text: 'Gift ideas under ₹500?' }
       ]
     },
     whatsapp: {
       time: '6:30 PM',
       messages: [
-        { text: 'Priya, fresh paneer just came in 🌿 — kept your usual ₹85/250g for tonight\'s paneer butter masala.\n\nTomorrow\'s milk + batter + eggs already confirmed. Want me to add coriander? Iron-rich greens just came in too 🥬' }
+        { text: 'Priya, fresh paneer just came in 🌿. kept your usual ₹85/250g for tonight\'s paneer butter masala.\n\nTomorrow\'s milk + batter + eggs already confirmed. Want me to add coriander? Iron-rich greens just came in too 🥬' }
       ]
     },
     instore: {
@@ -631,7 +632,7 @@ const personas = {
       ],
       total: 340,
       savings: 'Saved ₹22 vs Zepto · Earned 12 loyalty pts',
-      footer: 'Pre-confirmed delivery tomorrow 7am — milk + batter + eggs'
+      footer: 'Pre-confirmed delivery tomorrow 7am. milk + batter + eggs'
     }
   },
 
@@ -641,11 +642,11 @@ const personas = {
     emoji: '🙏',
     color: '#4F6B55',
     memberSince: '8 months',
-    widget: null,  // Doesn't use widget — WhatsApp only
+    widget: null,  // Doesn't use widget. WhatsApp only
     whatsapp: {
       time: '7:02 AM',
       messages: [
-        { text: 'Lakshmi gaaru, baagunnara? 🙏\n\n🌿 Fresh tulsi arrived this morning\n☕ Your Horlicks back in stock — ₹235\n🕉 Ekadashi tomorrow — kept your usual tulsi bundle ₹40\n\nMonth-end ledger ready when you come. Take your time.' }
+        { text: 'Lakshmi gaaru, baagunnara? 🙏\n\n🌿 Fresh tulsi arrived this morning\n☕ Your Horlicks back in stock. ₹235\n🕉 Ekadashi tomorrow. kept your usual tulsi bundle ₹40\n\nMonth-end ledger ready when you come. Take your time.' }
       ]
     },
     instore: {
@@ -668,7 +669,7 @@ const personas = {
       ],
       total: 387,
       savings: 'On credit · Settles 1st of month with pension',
-      footer: 'No follow-up scheduled — Lakshmi prefers minimal contact'
+      footer: 'No follow-up scheduled. Lakshmi prefers minimal contact'
     }
   },
 
@@ -682,15 +683,15 @@ const personas = {
       time: '11:42 AM · between rides',
       sections: [
         { icon: '⚡', label: 'Quick today', color: '#E8732A', text: 'Red Bull ₹125 · Banana 6 ₹35 · Boiled egg 2 ₹40' },
-        { icon: '💊', label: 'ORS sachets ₹25', color: '#4F6B55', text: 'You bought last week — usually need fresh ones now' },
-        { icon: '💰', label: 'AEPS open till 9pm', color: '#A8852E', text: 'No queue right now — 90-second cash out' },
+        { icon: '💊', label: 'ORS sachets ₹25', color: '#4F6B55', text: 'You bought last week. usually need fresh ones now' },
+        { icon: '💰', label: 'AEPS open till 9pm', color: '#A8852E', text: 'No queue right now. 90-second cash out' },
         { icon: '📞', label: 'Jio recharge due Thursday', color: '#C4583A', text: '₹239 plan · Tap to pre-set autopay' }
       ]
     },
     whatsapp: {
       time: 'Yesterday 11pm',
       messages: [
-        { text: 'Bhai, AEPS counter open tomorrow 7am — no queue till 9. ⚡\n\nEnergy drinks restocked (Red Bull, Sting). ORS sachets also in.\n\nStay safe out there 🛵' }
+        { text: 'Bhai, AEPS counter open tomorrow 7am. no queue till 9. ⚡\n\nEnergy drinks restocked (Red Bull, Sting). ORS sachets also in.\n\nStay safe out there 🛵' }
       ]
     },
     instore: {
@@ -701,7 +702,7 @@ const personas = {
         { label: 'Mission', value: 'Wants in/out in under 3 mins. Loses ₹80-100 per ride waiting.' },
         { label: 'Recharge', value: 'Jio ₹239 plan · Due Thursday · No autopay yet' }
       ],
-      nudges: ['Process AEPS first — speed > friendly chat', 'Pre-pack his usual snacks', 'Suggest Jio autopay (one less thing)']
+      nudges: ['Process AEPS first. speed > friendly chat', 'Pre-pack his usual snacks', 'Suggest Jio autopay (one less thing)']
     },
     checkout: {
       items: [
@@ -714,7 +715,7 @@ const personas = {
       ],
       total: 469,
       savings: 'Time at store: 2 min 14 sec · Beat next-ride window',
-      footer: 'No follow-up message — Raju prefers minimal contact'
+      footer: 'No follow-up message. Raju prefers minimal contact'
     }
   },
 
@@ -727,16 +728,16 @@ const personas = {
     widget: {
       time: '6:48 AM · Tuesday',
       sections: [
-        { icon: '🥗', label: "Tomorrow's keto basket ready", color: '#4F6B55', text: 'Spinach, broccoli, paneer, makhana — ₹340 · subscribed' },
+        { icon: '🥗', label: "Tomorrow's keto basket ready", color: '#4F6B55', text: 'Spinach, broccoli, paneer, makhana. ₹340 · subscribed' },
         { icon: '🥥', label: 'Cold-pressed coconut oil in', color: '#E8732A', text: 'Your brand · KCMR farm · ₹420' },
         { icon: '🌾', label: 'Quinoa restocked', color: '#A8852E', text: '₹220 for 500g organic' },
-        { icon: '🎯', label: 'Roasted almonds 250g', color: '#C4583A', text: '₹240 (was ₹275) — your usual brand' }
+        { icon: '🎯', label: 'Roasted almonds 250g', color: '#C4583A', text: '₹240 (was ₹275). your usual brand' }
       ]
     },
     whatsapp: {
       time: '6:00 PM yesterday',
       messages: [
-        { text: 'Arjun, your keto basket ready for tomorrow morning 7-8am pickup window 🥗\n\nCold-pressed coconut oil from KCMR just came in — your brand, ₹420. Want me to add it to tomorrow\'s pickup?' }
+        { text: 'Arjun, your keto basket ready for tomorrow morning 7-8am pickup window 🥗\n\nCold-pressed coconut oil from KCMR just came in. your brand, ₹420. Want me to add it to tomorrow\'s pickup?' }
       ]
     },
     instore: {
@@ -745,7 +746,7 @@ const personas = {
         { label: 'Customer', value: 'Arjun · Tech professional (Hitec City) · Member 3 months' },
         { label: 'Diet', value: 'Keto · prefers organic + cold-pressed · premium brands · health-conscious' },
         { label: 'Recent rhythm', value: 'Weekly subscribed basket · Pickup window 7-8am Mon-Fri · Cancelled BigBasket 2 weeks ago' },
-        { label: 'Subscription', value: 'Weekly keto basket (₹340) — paid this month, eligible for 8% discount on lock-in' }
+        { label: 'Subscription', value: 'Weekly keto basket (₹340). paid this month, eligible for 8% discount on lock-in' }
       ],
       nudges: ['Have basket pre-packed at counter', 'Mention new keto-friendly arrivals', 'Pitch lock-in subscription discount']
     },
@@ -776,7 +777,7 @@ const sceneLabels = {
 const sceneCommentary = {
   widget: {
     title: 'The widget composes itself.',
-    text: "Every line here is generated for this customer alone — from their memory profile, today's store stock, recurring rhythms, and the festival calendar. Generic deals never appear."
+    text: "Every line here is generated for this customer alone. from their memory profile, today's store stock, recurring rhythms, and the festival calendar. Generic deals never appear."
   },
   whatsapp: {
     title: 'Brand voice in their language.',
@@ -784,11 +785,11 @@ const sceneCommentary = {
   },
   instore: {
     title: 'The moment of human magic.',
-    text: 'When the customer walks in, the agent sees their full context on a tablet — what to mention, what just came in, what their family needs. The warmth is human; the memory is AI.'
+    text: 'When the customer walks in, the agent sees their full context on a tablet. what to mention, what just came in, what their family needs. The warmth is human; the memory is AI.'
   },
   checkout: {
     title: 'The transaction is the smallest part.',
-    text: 'POS captures the receipt, but the value was already delivered — the personalized greeting, the items kept aside, the future visit pre-confirmed. The receipt is the closing artefact.'
+    text: 'POS captures the receipt, but the value was already delivered. the personalized greeting, the items kept aside, the future visit pre-confirmed. The receipt is the closing artefact.'
   }
 };
 
@@ -897,7 +898,7 @@ function renderWidget(p) {
     return `
       <div style="text-align:center; padding: 4rem 2rem; color: rgba(26, 22, 18, 0.55);">
         <div class="text-3xl mb-3">🚫📱</div>
-        <p style="font-style: italic; font-size: 0.95rem;">Lakshmi doesn't use a smartphone widget. She gets the same information as a WhatsApp message from her grandson's number — the next scene shows that.</p>
+        <p style="font-style: italic; font-size: 0.95rem;">Lakshmi doesn't use a smartphone widget. She gets the same information as a WhatsApp message from her grandson's number. the next scene shows that.</p>
         <button class="nav-btn mt-5" style="background: var(--saffron);" onclick="nextScene()">See her WhatsApp message →</button>
       </div>
     `;
@@ -994,7 +995,7 @@ function renderCheckout(p) {
         <span>₹${total}</span>
       </div>
       <div class="receipt-savings">${p.checkout.savings}</div>
-      <div style="font-size: 0.7rem; color: rgba(26, 22, 18, 0.55); margin-top: 0.75rem; text-align: center; font-family: 'Inter', sans-serif;">
+      <div style="font-size: 0.7rem; color: rgba(26, 22, 18, 0.55); margin-top: 0.75rem; text-align: center; font-family: 'Inclusive Sans', system-ui, sans-serif;">
         ${p.checkout.footer}
       </div>
     </div>
@@ -1011,7 +1012,7 @@ function nextScene() {
 }
 
 function prevScene() {
-  // Lakshmi skips the widget — don't let her go back to it
+  // Lakshmi skips the widget. don't let her go back to it
   const minIdx = state.persona === 'lakshmi' ? 1 : 0;
   if (state.sceneIdx > minIdx) {
     state.sceneIdx--;

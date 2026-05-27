@@ -3,29 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consto — India's Neighbourhood Store</title>
-  <meta name="description" content="India's first AI-backed neighbourhood store. The warmth of a kirana, the discipline of a 7-Eleven, an AI memory that never forgets.">
+  <title>Consto by Sateesh</title>
+  <meta name="description" content="India's first AI-backed neighbourhood store. Built by Sateesh, who grew up inside a kirana, observed retail across Asia, and interviewed 50+ families in Beeramguda.">
   <meta name="theme-color" content="#F8F5F0">
   <meta name="author" content="Sateesh">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Consto — India's Neighbourhood Store">
-  <meta property="og:description" content="India's first AI-backed neighbourhood store. Pick your path: demo (3 min), concept (5 min), or full portfolio (15 min).">
+  <meta property="og:title" content="Consto by Sateesh">
+  <meta property="og:description" content="India's first AI-backed neighbourhood store. Here is why I am building it.">
   <meta property="og:site_name" content="Consto">
   <meta property="og:locale" content="en_IN">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Consto — India's Neighbourhood Store">
-  <meta name="twitter:description" content="India's first AI-backed neighbourhood store. Pick your path: demo, concept, or full portfolio.">
+  <meta name="twitter:title" content="Consto by Sateesh">
+  <meta name="twitter:description" content="India's first AI-backed neighbourhood store.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
-    /* ─── Reset ───────────────────────────────────────────── */
+    /* ─── Reset & base ───────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -33,16 +33,13 @@
       background: var(--bg);
       color: var(--text);
       font-weight: 400;
-      line-height: 1.55;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
-      font-feature-settings: 'kern' 1, 'liga' 1;
     }
     a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
 
-    /* ─── Tokens ─────────────────────────────────────────── */
     :root {
       --bg:     #F8F5F0;
       --surf:   #FFFFFF;
@@ -51,17 +48,18 @@
       --text-3: #A8A39C;
       --border: #E5E1D9;
       --accent: #C76737;
-      --accent-soft: #F4D9C7;
     }
 
-    /* ─── Container ──────────────────────────────────────── */
     .container {
-      max-width: 1100px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 0 clamp(1.5rem, 5vw, 3rem);
     }
+    .container--narrow {
+      max-width: 720px;
+    }
 
-    /* ─── Nav ────────────────────────────────────────────── */
+    /* ─── Nav (minimal) ──────────────────────────────────── */
     .nav {
       position: sticky;
       top: 0;
@@ -75,15 +73,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-top: 1.1rem;
-      padding-bottom: 1.1rem;
+      padding-top: 1.2rem;
+      padding-bottom: 1.2rem;
       gap: 1.5rem;
     }
     .brand {
       font-size: 1.05rem;
       font-weight: 600;
       letter-spacing: -0.015em;
-      color: var(--text);
     }
     .brand .dot {
       display: inline-block;
@@ -95,34 +92,17 @@
       vertical-align: middle;
       transform: translateY(-2px);
     }
-    .nav-links {
-      display: flex;
-      gap: clamp(1rem, 3vw, 2rem);
-    }
     .nav-link {
       font-size: 0.875rem;
       font-weight: 500;
       color: var(--text-2);
       transition: color 0.2s;
-      position: relative;
     }
     .nav-link:hover { color: var(--text); }
-    .nav-link.is-current {
-      color: var(--text);
-    }
-    .nav-link.is-current::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      right: 0;
-      height: 1.5px;
-      background: var(--accent);
-    }
 
     /* ─── Hero ───────────────────────────────────────────── */
     .hero {
-      padding: clamp(5rem, 11vw, 10rem) 0 clamp(4rem, 8vw, 8rem);
+      padding: clamp(5rem, 10vw, 9rem) 0 clamp(3rem, 5vw, 5rem);
     }
     .eyebrow {
       display: inline-block;
@@ -149,185 +129,351 @@
       50% { opacity: 0.4; }
     }
     .hero-title {
-      font-size: clamp(2.75rem, 8vw, 6.5rem);
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
       font-weight: 500;
-      line-height: 1.02;
-      letter-spacing: -0.035em;
-      margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem);
-      max-width: 18ch;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+      max-width: 22ch;
     }
     .hero-title em {
       font-style: italic;
       font-weight: 400;
       color: var(--accent);
     }
-    .hero-tagline {
-      font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+    .hero-sub {
+      font-size: clamp(1.1rem, 1.6vw, 1.3rem);
       color: var(--text-2);
       line-height: 1.55;
       max-width: 38rem;
-      font-weight: 400;
     }
 
     /* ─── Section base ───────────────────────────────────── */
     section.block {
-      padding: clamp(5rem, 10vw, 9rem) 0;
+      padding: clamp(4rem, 8vw, 7rem) 0;
       border-top: 1px solid var(--border);
     }
-    .section-head {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1.5rem;
-      margin-bottom: clamp(3rem, 5vw, 5rem);
-      flex-wrap: wrap;
-    }
-    .section-title {
-      font-size: clamp(1.85rem, 4vw, 3rem);
-      font-weight: 500;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      max-width: 22ch;
-    }
-    .section-sub {
-      font-size: 0.875rem;
-      color: var(--text-3);
-      font-weight: 500;
-    }
-
-    /* ─── Paths ──────────────────────────────────────────── */
-    .paths {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: clamp(1.25rem, 2vw, 1.75rem);
-    }
-    @media (min-width: 880px) {
-      .paths { grid-template-columns: repeat(3, 1fr); }
-    }
-    .path {
-      background: var(--surf);
-      border: 1px solid var(--border);
-      padding: clamp(2rem, 3vw, 2.75rem);
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      transition: border-color 0.25s, transform 0.25s, background 0.25s;
-      min-height: clamp(20rem, 26vw, 24rem);
-      position: relative;
-    }
-    .path:hover {
-      border-color: var(--text);
-      transform: translateY(-6px);
-    }
-    .path-time {
+    .section-num {
+      display: inline-block;
       font-size: 0.7rem;
       font-weight: 500;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text-3);
+      margin-bottom: 1.5rem;
     }
-    .path-title {
-      font-size: clamp(1.55rem, 2.3vw, 1.95rem);
-      font-weight: 500;
-      letter-spacing: -0.022em;
-      line-height: 1.12;
-    }
-    .path-desc {
-      color: var(--text-2);
-      font-size: 0.975rem;
-      line-height: 1.6;
-      flex-grow: 1;
-    }
-    .path-arrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.875rem;
-      font-weight: 500;
+    .section-num strong {
       color: var(--accent);
-      letter-spacing: -0.005em;
-      margin-top: 0.5rem;
+      font-weight: 600;
+      margin-right: 0.6rem;
     }
-    .path-arrow .glyph {
-      transition: transform 0.25s;
-      font-size: 1.1rem;
-    }
-    .path:hover .path-arrow .glyph { transform: translateX(6px); }
-
-    /* ─── About ──────────────────────────────────────────── */
-    .about-row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: clamp(3rem, 5vw, 5rem);
-      align-items: start;
-    }
-    @media (min-width: 880px) {
-      .about-row { grid-template-columns: 1fr 1fr; }
-    }
-    .about-text {
-      font-size: clamp(1.1rem, 1.6vw, 1.4rem);
-      color: var(--text);
-      line-height: 1.5;
-      font-weight: 400;
-      letter-spacing: -0.012em;
-    }
-    .about-text em {
-      font-style: normal;
-      color: var(--accent);
-    }
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem clamp(1.5rem, 3vw, 2.5rem);
-    }
-    .stat {
-      border-top: 1px solid var(--border);
-      padding-top: 1rem;
-    }
-    .stat-num {
-      font-size: clamp(1.9rem, 3vw, 2.5rem);
+    .section-title {
+      font-size: clamp(1.9rem, 4vw, 3rem);
       font-weight: 500;
-      letter-spacing: -0.025em;
-      line-height: 1.05;
-      margin-bottom: 0.5rem;
+      letter-spacing: -0.028em;
+      line-height: 1.1;
+      max-width: 24ch;
+      margin-bottom: clamp(2rem, 3.5vw, 3rem);
     }
-    .stat-label {
-      font-size: 0.8rem;
-      color: var(--text-3);
-      line-height: 1.5;
-      letter-spacing: 0.01em;
-    }
-
-    /* ─── Quiet quote ────────────────────────────────────── */
-    .pull {
-      max-width: 50rem;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .pull-text {
-      font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-      font-weight: 400;
-      letter-spacing: -0.025em;
-      line-height: 1.25;
-      color: var(--text);
-    }
-    .pull-text em {
+    .section-title em {
       font-style: italic;
       color: var(--accent);
       font-weight: 400;
     }
-    .pull-attr {
-      font-size: 0.8rem;
+    .prose {
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+      color: var(--text);
+      line-height: 1.7;
+      max-width: 38rem;
+    }
+    .prose p {
+      margin-bottom: 1.5rem;
+    }
+    .prose p:last-child {
+      margin-bottom: 0;
+    }
+    .prose em {
+      font-style: italic;
+      color: var(--text-2);
+    }
+    .prose strong {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ─── Tooltips ───────────────────────────────────────── */
+    .tip {
+      position: relative;
+      border-bottom: 1.5px dotted var(--accent);
+      cursor: help;
+      font-style: normal;
+      transition: color 0.2s;
+    }
+    .tip:hover { color: var(--accent); }
+    .tip::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(6px);
+      background: var(--text);
+      color: var(--bg);
+      padding: 0.85rem 1.1rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+      width: max-content;
+      max-width: 300px;
+      white-space: normal;
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      text-align: left;
+    }
+    .tip::before {
+      content: '';
+      position: absolute;
+      bottom: calc(100% + 5px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border: 6px solid transparent;
+      border-top-color: var(--text);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .tip:hover::after,
+    .tip:hover::before {
+      opacity: 1;
+    }
+    .tip:hover::after {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ─── Observations grid (what I have seen) ──────────── */
+    .observations {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    @media (min-width: 800px) {
+      .observations { grid-template-columns: repeat(2, 1fr); }
+    }
+    .obs {
+      padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+      border-top: 1px solid var(--border);
+    }
+    @media (min-width: 800px) {
+      .obs {
+        padding: clamp(1.5rem, 3vw, 2.5rem);
+        border-right: 1px solid var(--border);
+      }
+      .obs:nth-child(2n) { border-right: none; }
+    }
+    .obs-tag {
+      font-size: 0.72rem;
       font-weight: 500;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--text-3);
-      margin-top: 2rem;
+      margin-bottom: 0.85rem;
+    }
+    .obs-text {
+      font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+      color: var(--text);
+      line-height: 1.45;
+      letter-spacing: -0.015em;
+      font-weight: 400;
+    }
+    .obs-text em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    /* ─── Concept summary ────────────────────────────────── */
+    .concept-summary {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+    @media (min-width: 800px) {
+      .concept-summary { grid-template-columns: repeat(3, 1fr); }
+    }
+    .csm {
+      padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+      border-bottom: 1px solid var(--border);
+    }
+    @media (min-width: 800px) {
+      .csm {
+        padding: clamp(1.5rem, 3vw, 2.5rem);
+        border-bottom: none;
+        border-right: 1px solid var(--border);
+      }
+      .csm:last-child { border-right: none; }
+    }
+    .csm-num {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .csm-title {
+      font-size: clamp(1.3rem, 2.2vw, 1.55rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 0.85rem;
+    }
+    .csm-desc {
+      font-size: 0.95rem;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+
+    /* ─── Numbers grid (with tooltips) ───────────────────── */
+    .numbers {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    @media (min-width: 720px) {
+      .numbers { grid-template-columns: repeat(3, 1fr); }
+    }
+    .num {
+      padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+      border-top: 1px solid var(--border);
+    }
+    @media (min-width: 720px) {
+      .num {
+        padding: clamp(1.5rem, 3vw, 2.25rem);
+        border-right: 1px solid var(--border);
+      }
+      .num:nth-child(3n) { border-right: none; }
+    }
+    .num-val {
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+    }
+    .num-label {
+      font-size: 0.875rem;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+    /* ─── Ask block ──────────────────────────────────────── */
+    .ask {
+      background: var(--text);
+      color: var(--bg);
+      padding: clamp(2.5rem, 5vw, 4rem);
+      display: grid;
+      gap: 2rem;
+    }
+    @media (min-width: 760px) {
+      .ask { grid-template-columns: 1fr auto; align-items: center; }
+    }
+    .ask-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .ask-text {
+      font-size: clamp(1.2rem, 2.3vw, 1.65rem);
+      font-weight: 400;
+      letter-spacing: -0.018em;
+      line-height: 1.3;
+      max-width: 38rem;
+    }
+    .ask-text em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    .ask-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 1rem 1.6rem;
+      background: var(--accent);
+      color: var(--text);
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      transition: background 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+    .ask-btn:hover {
+      background: var(--bg);
+      transform: translateY(-2px);
+    }
+
+    /* ─── More links (least-priority section) ────────────── */
+    .more {
+      padding: clamp(3rem, 5vw, 5rem) 0;
+      border-top: 1px solid var(--border);
+    }
+    .more-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 1.5rem;
+    }
+    .more-title {
+      font-size: clamp(1.35rem, 2.3vw, 1.65rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+      color: var(--text);
+    }
+    .more-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .more-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      gap: 1rem;
+      transition: border-color 0.2s;
+    }
+    .more-item:hover { border-bottom-color: var(--text); }
+    .more-item:hover .more-item-name { color: var(--accent); }
+    .more-item-name {
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      transition: color 0.2s;
+    }
+    .more-item-time {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
     }
 
     /* ─── Footer ─────────────────────────────────────────── */
     footer {
-      padding: clamp(4rem, 6vw, 6rem) 0 clamp(2rem, 4vw, 3rem);
+      padding: clamp(3rem, 5vw, 5rem) 0 clamp(2rem, 4vw, 3rem);
       border-top: 1px solid var(--border);
     }
     .footer-row {
@@ -336,10 +482,10 @@
       align-items: flex-end;
       gap: 2rem;
       flex-wrap: wrap;
-      margin-bottom: clamp(3rem, 5vw, 5rem);
+      margin-bottom: clamp(2.5rem, 4vw, 4rem);
     }
     .footer-brand {
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
       font-weight: 500;
       letter-spacing: -0.025em;
       line-height: 1;
@@ -351,14 +497,14 @@
     }
     .footer-links {
       display: flex;
-      gap: clamp(1rem, 2vw, 2rem);
+      gap: clamp(1rem, 2vw, 1.75rem);
       flex-wrap: wrap;
     }
     .footer-link {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
       color: var(--text);
-      padding-bottom: 0.25rem;
+      padding-bottom: 0.2rem;
       border-bottom: 1px solid var(--text);
       transition: color 0.2s, border-color 0.2s;
     }
@@ -378,162 +524,260 @@
       border-top: 1px solid var(--border);
     }
 
-    /* ─── Reveal ──────────────────────────────────────── */
+    /* ─── Reveal ─────────────────────────────────────────── */
     .reveal {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(20px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .reveal.in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-stagger-1 { transition-delay: 0.08s; }
-    .reveal-stagger-2 { transition-delay: 0.16s; }
-    .reveal-stagger-3 { transition-delay: 0.24s; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
-<!-- ─── NAV ──────────────────────────────────────────────────── -->
+<!-- ─── NAV (minimal, no Portfolio/Demo) ──────────────────── -->
 <nav class="nav">
   <div class="container">
     <a href="/" class="brand"><span class="dot"></span>Consto</a>
-    <div class="nav-links">
-      <a href="/concept.html" class="nav-link">Concept</a>
-      <a href="/portfolio.html" class="nav-link">Portfolio</a>
-      <a href="/experience.html" class="nav-link">Demo</a>
-    </div>
+    <a href="/concept.html" class="nav-link">Read the concept</a>
   </div>
 </nav>
 
 
-<!-- ─── HERO ─────────────────────────────────────────────────── -->
+<!-- ─── HERO ────────────────────────────────────────────── -->
 <section class="hero">
   <div class="container">
-    <span class="eyebrow reveal"><span class="pulse"></span>India · Hyderabad · 2026 · Pre-launch</span>
+    <span class="eyebrow reveal"><span class="pulse"></span>Hyderabad, 2026</span>
     <h1 class="hero-title reveal">
-      Building <em>Consto</em> — India's neighbourhood store.
+      Hello. I am Sateesh, and I am building <em>Consto</em>.
     </h1>
-    <p class="hero-tagline reveal">
-      The first AI-backed physical retail format built for Indian suburbs. The warmth of a kirana, the discipline of a 7-Eleven, and an AI memory that never forgets.
+    <p class="hero-sub reveal">
+      India's first AI-backed neighbourhood store. The warmth of a kirana, the discipline of a 7-Eleven, and an AI memory that genuinely remembers each customer over years.
     </p>
   </div>
 </section>
 
 
-<!-- ─── PATHS ────────────────────────────────────────────────── -->
+<!-- ─── 01 · WHERE THIS CAME FROM (founder story) ─────── -->
 <section class="block">
   <div class="container">
-    <div class="section-head reveal">
-      <h2 class="section-title">Three ways to explore.</h2>
-      <span class="section-sub">Pick the one that fits your time.</span>
-    </div>
+    <span class="section-num reveal"><strong>01</strong>Where this idea came from</span>
+    <h2 class="section-title reveal">
+      I spent <em>15 years</em> behind my father's counter.
+    </h2>
 
-    <div class="paths">
-      <a href="/experience.html" class="path reveal reveal-stagger-1">
-        <span class="path-time">3 minutes · Interactive</span>
-        <h3 class="path-title">Try the demo.</h3>
-        <p class="path-desc">
-          Pick a customer — Priya, Lakshmi Aunty, Raju, or Arjun. See exactly how Consto knows them: the widget on their phone, the WhatsApp from the agent, what the in-store staff sees, the receipt.
-        </p>
-        <span class="path-arrow">Open the demo <span class="glyph">→</span></span>
-      </a>
-
-      <a href="/concept.html" class="path reveal reveal-stagger-2">
-        <span class="path-time">5 minutes · Pitch read</span>
-        <h3 class="path-title">Read the concept.</h3>
-        <p class="path-desc">
-          The punch version. Problem, opportunity, solution, founder, ask. Written for investors and partners who need the story in one sitting without 15 minutes of scrolling.
-        </p>
-        <span class="path-arrow">Read the pitch <span class="glyph">→</span></span>
-      </a>
-
-      <a href="/portfolio.html" class="path reveal reveal-stagger-3">
-        <span class="path-time">15 minutes · Deep dive</span>
-        <h3 class="path-title">Explore the portfolio.</h3>
-        <p class="path-desc">
-          Full case study. Research methods, eight insights from 50+ interviews, four personas, three pillars, the AI Memory Engine — every design decision traceable to a documented customer interview.
-        </p>
-        <span class="path-arrow">Open the case study <span class="glyph">→</span></span>
-      </a>
-    </div>
-  </div>
-</section>
-
-
-<!-- ─── ABOUT ────────────────────────────────────────────────── -->
-<section class="block">
-  <div class="container">
-    <div class="section-head reveal">
-      <h2 class="section-title">About this work.</h2>
-      <span class="section-sub">A note before you start reading.</span>
-    </div>
-
-    <div class="about-row">
-      <div class="about-text reveal">
-        Consto is a <em>1,000-1,500 sqft</em> physical neighbourhood store. Three format variants — Daily, Home, Hub — adapt to where each store sits. An <em>AI memory layer</em> at the centre that genuinely remembers each customer's family, festivals, and rhythm over years of compounding interaction.
-        <br/><br/>
-        The work is grounded in <em>15 years</em> inside a family kirana, <em>~18 years</em> of structured retail observation across India and Asia, and <em>50+</em> customer interviews in Beeramguda, Hyderabad. Not theory.
-      </div>
-
-      <div class="stats reveal">
-        <div class="stat">
-          <div class="stat-num">$950B</div>
-          <div class="stat-label">Indian retail market — 88% unorganized</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">Zero</div>
-          <div class="stat-label">Organized neighbourhood-store chains in India today</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">50+</div>
-          <div class="stat-label">In-person customer interviews in Beeramguda</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">15 yrs</div>
-          <div class="stat-label">Inside the family kirana, ages 7 to 22</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ─── PULL QUOTE ───────────────────────────────────────────── -->
-<section class="block">
-  <div class="container">
-    <div class="pull reveal">
-      <p class="pull-text">
-        "Most retail-tech founders come from tech and try to digitise kiranas from the outside.<br/>
-        <em>I come from inside the kirana.</em>"
+    <div class="prose reveal">
+      <p>
+        From the age of seven to twenty-two, I stood inside the family kirana in Hyderabad. I knew every regular customer's children by name. I watched my father extend credit to families who could not pay on time, never with embarrassment. I saw trust compound into loyalty that lasted decades.
       </p>
-      <p class="pull-attr">Sateesh · Founder · Hyderabad</p>
+      <p>
+        Then I left. I travelled to Thailand and Taiwan, and I walked through hundreds of 7-Eleven and FamilyMart stores. Operationally brilliant. Multi-service, fast, well-stocked. But nobody knew my name. Emotionally empty.
+      </p>
+      <p>
+        Back in India, I watched DMart strip the local soul out of retail to scale. I watched Zepto try to win without ever knowing the customer. I watched <span class="tip" data-tip="Indian Express, 2023: roughly 200,000 traditional kirana stores closed between 2021 and 2023 due to quick commerce pressure and rising rents.">200,000 kiranas close in two years</span>.
+      </p>
+      <p>
+        I knew the gap was real. I spent the last year interviewing <span class="tip" data-tip="50+ in-person conversations across families, gig drivers, retirees, and tech professionals in the Beeramguda colony belt of Hyderabad.">50+ families, drivers, retirees, and professionals</span> in Beeramguda. They all said the same thing in different words. <strong>Nobody remembers what I need.</strong>
+      </p>
+      <p>
+        That is the problem Consto solves.
+      </p>
     </div>
   </div>
 </section>
 
 
-<!-- ─── FOOTER ───────────────────────────────────────────────── -->
+<!-- ─── 02 · WHAT I HAVE SEEN (the personas/problems) ─── -->
+<section class="block">
+  <div class="container">
+    <span class="section-num reveal"><strong>02</strong>What I have seen</span>
+    <h2 class="section-title reveal">
+      Four people. <em>One unmet need.</em>
+    </h2>
+    <p class="prose reveal" style="margin-bottom: clamp(2.5rem, 4vw, 4rem);">
+      Across very different lives, the same emotional gap kept showing up. These four people became the personas every product decision is tested against.
+    </p>
+
+    <div class="observations">
+      <div class="obs reveal">
+        <div class="obs-tag">A working mother, 35</div>
+        <p class="obs-text">
+          "I spend <em>forty minutes every evening</em> figuring out what to cook, what to buy, whether the milk is fresh, whether I forgot the electricity bill."
+        </p>
+      </div>
+      <div class="obs reveal">
+        <div class="obs-tag">A gig driver, 28</div>
+        <p class="obs-text">
+          "The bank queue takes thirty minutes for ₹2000 cash. <em>I lose two rides.</em> Every time."
+        </p>
+      </div>
+      <div class="obs reveal">
+        <div class="obs-tag">A retiree, 55+</div>
+        <p class="obs-text">
+          "My grandson installed four apps for me. I cannot use any of them. The kirana boy is rude. Nobody is patient with me."
+        </p>
+      </div>
+      <div class="obs reveal">
+        <div class="obs-tag">A tech professional, 30</div>
+        <p class="obs-text">
+          "BigBasket is fine, but <em>I never know what is actually fresh.</em> And I cannot ask them anything. They do not know me."
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── 03 · WHAT CONSTO IS (brief concept summary) ───── -->
+<section class="block">
+  <div class="container">
+    <span class="section-num reveal"><strong>03</strong>What Consto is</span>
+    <h2 class="section-title reveal">
+      A physical store. <em>Three pillars.</em> One AI memory.
+    </h2>
+    <p class="prose reveal" style="margin-bottom: clamp(2.5rem, 4vw, 4rem);">
+      A <span class="tip" data-tip="Smaller stores cannot carry the daily SKU range that residential households need. Larger stores break the convenience format and the 15-minute visit promise. 1,000 to 1,500 sqft is the proven optimal range for residential Tier 2-3 in India.">1,000 to 1,500 sqft</span> physical neighbourhood store in Beeramguda. Three pillars hold it up. Three format variants adapt it to location. One AI memory layer powers everything.
+    </p>
+
+    <div class="concept-summary">
+      <div class="csm reveal">
+        <div class="csm-num">Pillar 01</div>
+        <h3 class="csm-title">The Memory Layer</h3>
+        <p class="csm-desc">
+          Every customer gets a dedicated AI agent. It learns from purchases, timing, family signals, festival rhythms. The agent never speaks to the customer. It equips human staff with curated insights. Humans deliver warmth. AI scales memory.
+        </p>
+      </div>
+      <div class="csm reveal">
+        <div class="csm-num">Pillar 02</div>
+        <h3 class="csm-title">One-Stop Services</h3>
+        <p class="csm-desc">
+          Groceries, AEPS cash withdrawals, bill payments, mobile recharges, OTC medicines, fresh batter, festival items. Five daily-life tasks in one 15-minute visit. Roughly <span class="tip" data-tip="Services have 50-60% margins versus 10-15% for grocery. This is what transforms the P&L from thin kirana margins to a profitable diversified format.">40% of revenue</span> from services.
+        </p>
+      </div>
+      <div class="csm reveal">
+        <div class="csm-num">Pillar 03</div>
+        <h3 class="csm-title">Community Anchoring</h3>
+        <p class="csm-desc">
+          Festival calendar. Monthly Hub Huddle events. "Come rest even if you do not buy" policy. Credit with dignity. Policies that are inherently worth talking about. Marketing budget becomes word-of-mouth.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── 04 · THE NUMBERS (with tooltips) ─────────────── -->
+<section class="block">
+  <div class="container">
+    <span class="section-num reveal"><strong>04</strong>The numbers</span>
+    <h2 class="section-title reveal">
+      Hover any number to see <em>why it matters</em>.
+    </h2>
+
+    <div class="numbers">
+      <div class="num reveal">
+        <div class="num-val">
+          <span class="tip" data-tip="Indian retail market 2024, projected $1.3T by 2028. Source: BCG Indian retail report and CRISIL projections.">$950B+</span>
+        </div>
+        <div class="num-label">Indian retail market, 88% still unorganized</div>
+      </div>
+      <div class="num reveal">
+        <div class="num-val">
+          <span class="tip" data-tip="Japan has 80,000+ convenience stores (7-Eleven, FamilyMart, Lawson). Thailand has 13,000+. The format is proven in every Asian market it enters. India has none.">Zero</span>
+        </div>
+        <div class="num-label">Organized neighbourhood-store chains in India</div>
+      </div>
+      <div class="num reveal">
+        <div class="num-val">
+          <span class="tip" data-tip="Smaller cannot carry the SKU breadth residential households need daily. Larger breaks the 15-minute visit promise. 1,000-1,500 sqft is optimal for Tier 2-3 residential. Highway and corporate locations use the smaller 400-600 sqft Consto Daily variant.">1,000+</span>
+        </div>
+        <div class="num-label">sqft, the Consto Home format size</div>
+      </div>
+      <div class="num reveal">
+        <div class="num-val">
+          <span class="tip" data-tip="Ages 7 to 22. Behind my father's counter in Hyderabad. The store closed when I moved on, but the lessons about trust, credit, and customer memory shaped the entire Consto thesis.">15 years</span>
+        </div>
+        <div class="num-label">Inside the family kirana, ages 7 to 22</div>
+      </div>
+      <div class="num reveal">
+        <div class="num-val">
+          <span class="tip" data-tip="Across families, gig drivers, retirees, and tech professionals. The same emotional gap, nobody-remembers-me, kept appearing in different language across every demographic.">50+</span>
+        </div>
+        <div class="num-label">In-person customer interviews</div>
+      </div>
+      <div class="num reveal">
+        <div class="num-val">
+          <span class="tip" data-tip="Roughly 200,000 traditional kirana stores closed between 2021 and 2023, mainly due to quick commerce expansion and rising operating costs. The customers, however, did not migrate. They are stuck choosing between formats that all fail them.">200K</span>
+        </div>
+        <div class="num-label">Kiranas closed in two years, 2021 to 2023</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── 05 · THE ASK ────────────────────────────────── -->
+<section class="block">
+  <div class="container">
+    <span class="section-num reveal"><strong>05</strong>What I am asking for</span>
+    <div class="ask reveal">
+      <div>
+        <div class="ask-eyebrow">The Ask</div>
+        <p class="ask-text">
+          Seed <em>₹30 to 50 lakh</em> to open Store 1 in Beeramguda, deploy Consto OS Phase 1, and validate retention plus unit economics across 500 customers in 12 months.
+        </p>
+      </div>
+      <a href="mailto:satishkumar.2163@gmail.com" class="ask-btn">
+        Talk to me →
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── MORE (low priority, just bottom) ─────────────── -->
+<section class="more">
+  <div class="container">
+    <span class="more-eyebrow">More on Consto</span>
+    <h3 class="more-title">If you want to go deeper.</h3>
+    <div class="more-list">
+      <a href="/concept.html" class="more-item">
+        <span class="more-item-name">Read the full concept</span>
+        <span class="more-item-time">5 min read</span>
+      </a>
+      <a href="/portfolio.html" class="more-item">
+        <span class="more-item-name">Open the case study (research, insights, system design)</span>
+        <span class="more-item-time">15 min read</span>
+      </a>
+      <a href="/experience.html" class="more-item">
+        <span class="more-item-name">Try the interactive walkthrough</span>
+        <span class="more-item-time">3 min demo</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── FOOTER ────────────────────────────────────────── -->
 <footer>
   <div class="container">
     <div class="footer-row">
       <div>
         <div class="footer-brand">Consto.</div>
-        <div class="footer-tag">India's Neighbourhood Store · 2026</div>
+        <div class="footer-tag">India's Neighbourhood Store. 2026.</div>
       </div>
       <div class="footer-links">
         <a href="/concept.html" class="footer-link">Concept</a>
-        <a href="/portfolio.html" class="footer-link">Portfolio</a>
+        <a href="/portfolio.html" class="footer-link">Case study</a>
         <a href="/experience.html" class="footer-link">Demo</a>
         <a href="mailto:satishkumar.2163@gmail.com" class="footer-link">Email</a>
         <a href="https://github.com/iamsatz/Consto" target="_blank" rel="noopener" class="footer-link">GitHub</a>
       </div>
     </div>
     <div class="footer-meta">
-      <span>DESIGNED BY SATEESH</span>
-      <span>HYDERABAD · 2026</span>
+      <span>BUILT BY SATEESH</span>
+      <span>HYDERABAD. 2026.</span>
     </div>
   </div>
 </footer>
