@@ -652,6 +652,58 @@
       border-top: 1px solid var(--border);
     }
 
+    /* ─── Tooltips ──────────────────────────────────────── */
+    .tip {
+      position: relative;
+      border-bottom: 1.5px dotted var(--accent);
+      cursor: help;
+      font-style: normal;
+      transition: color 0.2s;
+    }
+    .tip:hover { color: var(--accent); }
+    .tip::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(6px);
+      background: var(--text);
+      color: var(--bg);
+      padding: 0.85rem 1.1rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+      width: max-content;
+      max-width: 300px;
+      white-space: normal;
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      text-align: left;
+    }
+    .tip::before {
+      content: '';
+      position: absolute;
+      bottom: calc(100% + 5px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border: 6px solid transparent;
+      border-top-color: var(--text);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .tip:hover::after,
+    .tip:hover::before {
+      opacity: 1;
+    }
+    .tip:hover::after { transform: translateX(-50%) translateY(0); }
+
     /* ─── Reveal ─────────────────────────────────────────── */
     .reveal {
       opacity: 0;
@@ -757,23 +809,23 @@
 
     <div class="opp-stats reveal">
       <div class="opp-stat">
-        <div class="opp-stat-num">$950B+</div>
+        <div class="opp-stat-num"><span class="tip" data-tip="Indian retail market 2024. 88% unorganized (kiranas). Source: BCG Indian retail report and CRISIL projections.">$950B+</span></div>
         <div class="opp-stat-label">Indian retail market today</div>
       </div>
       <div class="opp-stat">
-        <div class="opp-stat-num"><em>$1.3T</em></div>
+        <div class="opp-stat-num"><em><span class="tip" data-tip="Projected market by 2028. ~6% CAGR. Driven by Tier 2-3 income growth + organized retail penetration moving from 12% to ~20%.">$1.3T</span></em></div>
         <div class="opp-stat-label">Projected market by 2028</div>
       </div>
       <div class="opp-stat">
-        <div class="opp-stat-num">88%</div>
+        <div class="opp-stat-num"><span class="tip" data-tip="88% of Indian retail still operates as traditional unorganized kiranas (12 million stores). Modern retail share is only ~12% versus 60-80% in most developed Asian markets.">88%</span></div>
         <div class="opp-stat-label">Still unorganized today</div>
       </div>
     </div>
 
     <div class="zero-callout reveal">
-      <div class="zero-callout-num">Zero.</div>
+      <div class="zero-callout-num"><span class="tip" data-tip="India has no organized neighbourhood-store / convenience-store chain comparable to 7-Eleven, FamilyMart, or Lawson. 24Seven, In&amp;Out, RPG Spencer's Daily all attempted and failed.">Zero.</span></div>
       <p class="zero-callout-text">
-        Organized neighbourhood-store chains in India. <em>Japan has 80,000+. Thailand has 13,000+.</em> The format is proven everywhere it enters. Nobody has Indianised it.
+        Organized neighbourhood-store chains in India. <em><span class="tip" data-tip="Japan: 80,000+ convenience stores (7-Eleven, FamilyMart, Lawson). Thailand: 13,000+. South Korea: 50,000+. Even Indonesia has 20,000+ Indomaret stores.">Japan has 80,000+. Thailand has 13,000+.</span></em> The format is proven everywhere it enters. Nobody has Indianised it.
       </p>
     </div>
   </div>
@@ -788,7 +840,7 @@
       The warmth of a kirana. The discipline of a <em>7-Eleven.</em> An AI memory that never forgets.
     </h2>
     <p class="section-lead reveal">
-      A 1,000-1,500 sqft physical neighbourhood store. Three pillars hold it up. Three format variants. Daily, Home, Hub. adapt it to location. One AI memory layer powers everything.
+      A <span class="tip" data-tip="Smaller stores cannot carry the daily SKU range residential households need. Larger stores break the 15-minute convenience format. 1,000-1,500 sqft is proven optimal for Tier 2-3 residential locations. Highway and corporate sites use the smaller 400-600 sqft Consto Daily variant.">1,000-1,500 sqft</span> physical neighbourhood store. Three pillars hold it up. Three format variants. Daily, Home, Hub. adapt it to location. One AI memory layer powers everything.
     </p>
 
     <div class="pillars">
@@ -803,7 +855,7 @@
         <div class="pillar-num">Pillar 02</div>
         <h3 class="pillar-title">One-Stop Services</h3>
         <p class="pillar-desc">
-          Groceries, AEPS cash, bill payments, recharges, OTC medicines, fresh batter, festival items. Five daily-life tasks in one 15-minute visit. ~40% of revenue from services at 50-60% margins.
+          Groceries, AEPS cash, bill payments, recharges, OTC medicines, fresh batter, festival items. Five daily-life tasks in one 15-minute visit. <span class="tip" data-tip="Services (AEPS, bills, recharges) have 50-60% margins versus 10-15% for grocery. Service revenue is what transforms the P&amp;L from thin kirana margins to a profitable diversified format.">~40% of revenue</span> from services at 50-60% margins.
         </p>
       </div>
       <div class="pillar reveal reveal-stagger-3">
@@ -855,7 +907,7 @@
         <div class="moat-letter">D</div>
         <div>
           <h4 class="moat-title">Three formats, one OS</h4>
-          <p class="moat-desc">Daily (400-600 sqft, highways). Home (1,000-1,500 sqft, residential). Hub (2,000+ sqft, community). Same OS, different surface.</p>
+          <p class="moat-desc"><span class="tip" data-tip="Format variants by location type. Daily: pure convenience, ~400 SKUs, highways and IT corridors. Home: hybrid format, ~1,000-1,500 SKUs, residential anchor. Hub: community anchor, ~2,000+ SKUs, large clusters.">Daily (400-600 sqft, highways). Home (1,000-1,500 sqft, residential). Hub (2,000+ sqft, community).</span> Same OS, different surface.</p>
         </div>
       </div>
     </div>
@@ -944,7 +996,7 @@
       <div>
         <div class="ask-eyebrow">The ask</div>
         <p class="ask-text">
-          Seed <em>₹30-50L</em> to open Store 1 in Beeramguda, deploy Consto OS Phase 1, and validate retention + unit economics across 500 customers in 12 months.
+          Seed <em><span class="tip" data-tip="₹30-50 lakh covers: 1,000-1,500 sqft Beeramguda store setup, initial inventory (~600-1,000 SKUs), Consto OS Phase 1 build (POS + Agent), staff for 12 months, fresh supplier setup, festival stocking, and 500-customer pilot validation runway.">₹30-50L</span></em> to open Store 1 in Beeramguda, deploy Consto OS Phase 1, and validate retention + unit economics across 500 customers in 12 months.
         </p>
       </div>
       <a href="mailto:satishkumar.2163@gmail.com" class="ask-btn">
