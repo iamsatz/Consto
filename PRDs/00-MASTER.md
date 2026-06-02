@@ -4,7 +4,16 @@
 
 ## What Consto is
 
-Consto is India's first AI-backed neighbourhood store. A 1,000-1,500 sqft physical store in Beeramguda, Hyderabad (Phase 1), with three pillars holding it up: Memory, Services, Community. Three format variants adapt the store to its location: Daily (400-600 sqft for highways and IT corridors), Home (1,000-1,500 sqft for residential, the anchor format), Hub (2,000+ sqft for community clusters, later phase).
+Consto is India's first AI-backed neighbourhood store. A 1,000-1,500 sqft physical store in Beeramguda, Hyderabad (Phase 1), with three pillars holding it up: Memory, Services, Community.
+
+**Four format variants** adapt to where the customer actually is:
+
+- **Daily** (400-600 sqft for highways and IT corridors)
+- **Home** (1,000-1,500 sqft for residential, the anchor format, where Beeramguda starts)
+- **Hub** (2,000-3,000 sqft for community clusters, later phase)
+- **Route** (200-400 sqft packing hub for daily home delivery — subscription-based, Sid's Farm-style economics)
+
+Plus one future concept: **Travel** (Phase 4+). Hygienic home-style food ordered by travellers, picked up from highway/IT-corridor Daily stores or delivered to railway platforms and bus stops. Curated kitchen network of women-led home-cooked food businesses. Currently concept-stage, not in any Phase 1-3 plan.
 
 **Consto OS is the digital backbone.** 8 integrated AI products that together let a small store remember every customer like family, scale across multiple locations without losing local soul, and produce institutional wisdom over years.
 
@@ -154,7 +163,7 @@ stock (
 stores (
   id uuid primary key,
   name text,
-  format text, -- 'daily', 'home', 'hub'
+  format text, -- 'daily', 'home', 'hub', 'route', 'travel' (Phase 4+ concept)
   area text,
   city text,
   state text,
