@@ -17,6 +17,20 @@ Plus one future concept: **Travel** (Phase 4+). Hygienic home-style food ordered
 
 **Consto OS is the digital backbone.** 8 integrated AI products that together let a small store remember every customer like family, scale across multiple locations without losing local soul, and produce institutional wisdom over years.
 
+## Two-sided architecture
+
+What this document describes is not one business but the foundation of two.
+
+**Side A · Consto, the retail brand.** Physical stores. Customers. Beeramguda first, then franchise. The format variants (Daily, Home, Hub, Route) and the in-store experience. This is what shows up in the public portfolio.
+
+**Side B · The product company (name TBD).** A separate design-led software company that takes the 8 Consto OS products and sells them externally as a B2B platform — first to kiranas, then restaurants, clinics, salons, and other Indian SMBs. POS is the flagship. The same memory + knowledge + wisdom architecture, generalised.
+
+**Relationship between the two.** Consto dogfoods the OS. The product company sells the OS. Consto is the showcase, the proof, the brand halo. The product company is the long-term scalable revenue engine. Linear retail scaling on Side A; software scaling on Side B.
+
+**Brand decision.** Consto stays retail-only. The product company gets its own name (TBD). They are operated as related but independent entities. The naming, legal structure, and team split will be decided after Consto Store 1 validates the underlying thesis.
+
+**What this document does.** Continues to describe the Consto build sequence. The 8 PRDs below serve Side A's immediate operational needs. The strategic thinking for Side B (the product company) lives in `Reference/strategy-product-company.md`.
+
 ## The three layers of intelligence
 
 1. **Memory** — what each AI agent remembers about each customer (purchases, timing, family, festival rhythm)
