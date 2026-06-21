@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consto. The Concept (5-min pitch)</title>
+  <meta name="description" content="The 5-minute pitch. Problem, opportunity, solution, founder, ask. India's first AI-backed neighbourhood store.">
+  <meta name="theme-color" content="#F8F5F0">
+  <meta name="author" content="Sateesh">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Consto. The Concept (5-min pitch)">
+  <meta property="og:description" content="The 5-minute pitch. Problem, opportunity, solution, founder, ask. India's first AI-backed neighbourhood store.">
+  <meta property="og:site_name" content="Consto">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Consto. The Concept (5-min pitch)">
+  <meta name="twitter:description" content="The 5-minute pitch. Problem · Opportunity · Solution · Founder · Ask.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inclusive Sans', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-weight: 400;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    :root {
+      --bg:     #F8F5F0;
+      --surf:   #FFFFFF;
+      --text:   #1A1612;
+      --text-2: #5A5651;
+      --text-3: #A8A39C;
+      --border: #E5E1D9;
+      --accent: #C76737;
+      --accent-soft: #F4D9C7;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 3rem);
+    }
+    .container--narrow {
+      max-width: 780px;
+    }
+
+    /* ─── Nav ─────────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(248, 245, 240, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1.1rem;
+      padding-bottom: 1.1rem;
+      gap: 1.5rem;
+    }
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+    }
+    .brand .dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      margin-right: 0.5rem;
+      vertical-align: middle;
+      transform: translateY(-2px);
+    }
+    .nav-tag {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-3);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── Hero ────────────────────────────────────────────── */
+    .hero {
+      padding: clamp(5rem, 10vw, 8rem) 0 clamp(2rem, 4vw, 4rem);
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    }
+    .hero-title {
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      font-weight: 500;
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      max-width: 22ch;
+      margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    .hero-sub {
+      font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+      color: var(--text-2);
+      max-width: 38rem;
+      line-height: 1.55;
+    }
+
+    /* ─── Section base ────────────────────────────────────── */
+    section.block {
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      border-top: 1px solid var(--border);
+    }
+    .section-num {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 1.5rem;
+    }
+    .section-num strong {
+      color: var(--accent);
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+    .section-title {
+      font-size: clamp(1.85rem, 4vw, 3.25rem);
+      font-weight: 500;
+      letter-spacing: -0.028em;
+      line-height: 1.08;
+      max-width: 24ch;
+      margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    .section-lead {
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+      color: var(--text-2);
+      max-width: 42rem;
+      line-height: 1.55;
+      margin-bottom: clamp(2.5rem, 4vw, 4rem);
+    }
+
+    /* ─── Format compare cards (Problem) ──────────────────── */
+    .formats {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-bottom: clamp(2.5rem, 4vw, 4rem);
+    }
+    @media (min-width: 800px) {
+      .formats { grid-template-columns: repeat(3, 1fr); }
+    }
+    .fmt {
+      background: var(--surf);
+      border: 1px solid var(--border);
+      padding: clamp(1.75rem, 2.5vw, 2.5rem);
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .fmt:hover {
+      border-color: var(--text);
+      transform: translateY(-4px);
+    }
+    .fmt-num {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 0.85rem;
+    }
+    .fmt-name {
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .fmt-row {
+      font-size: 0.95rem;
+      color: var(--text-2);
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+    .fmt-row strong { color: var(--text); font-weight: 500; }
+    .fmt-tag {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .gap-statement {
+      padding: clamp(2.5rem, 4vw, 4rem) 0 0;
+      max-width: 36rem;
+    }
+    .gap-statement-text {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 400;
+      letter-spacing: -0.022em;
+      line-height: 1.25;
+      color: var(--text);
+    }
+    .gap-statement-text em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    /* ─── Opportunity ─────────────────────────────────────── */
+    .opp-stats {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      border-top: 1px solid var(--border);
+      margin-bottom: clamp(3rem, 5vw, 5rem);
+    }
+    @media (min-width: 700px) {
+      .opp-stats {
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 1px solid var(--border);
+      }
+    }
+    .opp-stat {
+      padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+      border-bottom: 1px solid var(--border);
+    }
+    @media (min-width: 700px) {
+      .opp-stat {
+        padding: clamp(1.5rem, 3vw, 2.5rem);
+        border-bottom: none;
+        border-right: 1px solid var(--border);
+      }
+      .opp-stat:last-child { border-right: none; }
+    }
+    .opp-stat-num {
+      font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .opp-stat-num em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .opp-stat-label {
+      font-size: 0.9rem;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+    .zero-callout {
+      max-width: 36rem;
+    }
+    .zero-callout-num {
+      font-size: clamp(3.5rem, 7vw, 5.5rem);
+      font-weight: 500;
+      letter-spacing: -0.035em;
+      line-height: 1;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .zero-callout-text {
+      font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+      color: var(--text);
+      line-height: 1.5;
+      font-weight: 400;
+    }
+    .zero-callout-text em {
+      font-style: italic;
+      color: var(--text-2);
+    }
+
+    /* ─── Pillars ─────────────────────────────────────────── */
+    .pillars {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(1.25rem, 2.5vw, 2rem);
+    }
+    @media (min-width: 800px) {
+      .pillars { grid-template-columns: repeat(3, 1fr); }
+    }
+    .pillar {
+      padding: clamp(1.75rem, 2.5vw, 2.5rem) 0;
+      border-top: 1px solid var(--border);
+    }
+    .pillar-num {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .pillar-title {
+      font-size: clamp(1.3rem, 2.2vw, 1.65rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .pillar-desc {
+      color: var(--text-2);
+      font-size: 0.975rem;
+      line-height: 1.6;
+    }
+
+    /* ─── How it wins ─────────────────────────────────────── */
+    .moats {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    @media (min-width: 720px) {
+      .moats { grid-template-columns: 1fr 1fr; }
+    }
+    .moat {
+      padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    @media (min-width: 720px) {
+      .moat { padding: clamp(1.5rem, 3vw, 2.25rem); }
+      .moat:nth-child(odd) { border-right: 1px solid var(--border); }
+    }
+    .moat-letter {
+      font-size: clamp(2rem, 3vw, 2.75rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--accent);
+    }
+    .moat-title {
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+    .moat-desc {
+      color: var(--text-2);
+      font-size: 0.925rem;
+      line-height: 1.55;
+    }
+
+    /* ─── Founder ─────────────────────────────────────────── */
+    .founder {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(2.5rem, 5vw, 4rem);
+      align-items: start;
+    }
+    @media (min-width: 880px) {
+      .founder { grid-template-columns: 1fr 1.4fr; }
+    }
+    .founder-quote {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 400;
+      letter-spacing: -0.022em;
+      line-height: 1.25;
+      color: var(--text);
+    }
+    .founder-quote em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    .founder-attr {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-top: 1.75rem;
+    }
+    .founder-facts {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .ff-row {
+      padding: 1.1rem 0;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 5rem 1fr;
+      gap: 1.25rem;
+      align-items: baseline;
+    }
+    .ff-row:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+    .ff-num {
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1;
+    }
+    .ff-label {
+      font-size: 0.925rem;
+      color: var(--text-2);
+      line-height: 1.4;
+    }
+
+    /* ─── Next ────────────────────────────────────────────── */
+    .next-steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin-bottom: clamp(3rem, 5vw, 5rem);
+    }
+    @media (min-width: 700px) {
+      .next-steps { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 950px) {
+      .next-steps { grid-template-columns: repeat(4, 1fr); }
+    }
+    .step {
+      padding: 1.75rem 0;
+      border-top: 1px solid var(--border);
+    }
+    @media (min-width: 700px) {
+      .step {
+        padding: clamp(1.5rem, 2.5vw, 2rem);
+        border-right: 1px solid var(--border);
+        border-top: 1px solid var(--border);
+      }
+      .step:nth-child(2n):last-child,
+      .step:last-child { border-right: none; }
+    }
+    @media (min-width: 950px) {
+      .step:nth-child(4n) { border-right: none; }
+    }
+    .step.current .step-tag { color: var(--accent); }
+    .step-tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 0.85rem;
+    }
+    .step-title {
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.5rem;
+    }
+    .step-desc {
+      font-size: 0.875rem;
+      color: var(--text-2);
+      line-height: 1.55;
+    }
+
+    /* The ask */
+    .ask {
+      background: var(--text);
+      color: var(--bg);
+      padding: clamp(2.5rem, 5vw, 4rem);
+      display: grid;
+      gap: 2rem;
+    }
+    @media (min-width: 720px) {
+      .ask { grid-template-columns: 1fr auto; align-items: center; }
+    }
+    .ask-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .ask-text {
+      font-size: clamp(1.2rem, 2.3vw, 1.75rem);
+      font-weight: 400;
+      letter-spacing: -0.018em;
+      line-height: 1.3;
+      max-width: 38rem;
+    }
+    .ask-text em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    .ask-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1rem 1.5rem;
+      background: var(--accent);
+      color: var(--text);
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      transition: background 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+    .ask-btn:hover {
+      background: var(--bg);
+      transform: translateY(-2px);
+    }
+
+    /* ─── Footer ───────────────────────────────────────────── */
+    footer {
+      padding: clamp(4rem, 6vw, 6rem) 0 clamp(2rem, 4vw, 3rem);
+      border-top: 1px solid var(--border);
+    }
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: clamp(3rem, 5vw, 5rem);
+    }
+    .footer-brand {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+    .footer-tag {
+      font-size: 0.875rem;
+      color: var(--text-3);
+    }
+    .footer-links {
+      display: flex;
+      gap: clamp(1rem, 2vw, 2rem);
+      flex-wrap: wrap;
+    }
+    .footer-link {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      padding-bottom: 0.25rem;
+      border-bottom: 1px solid var(--text);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .footer-link:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .footer-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+      color: var(--text-3);
+      letter-spacing: 0.05em;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ─── Tooltips ──────────────────────────────────────── */
+    .tip {
+      position: relative;
+      border-bottom: 1.5px dotted var(--accent);
+      cursor: help;
+      font-style: normal;
+      transition: color 0.2s;
+    }
+    .tip:hover { color: var(--accent); }
+    .tip::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(6px);
+      background: var(--text);
+      color: var(--bg);
+      padding: 0.85rem 1.1rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+      width: max-content;
+      max-width: 300px;
+      white-space: normal;
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      text-align: left;
+    }
+    .tip::before {
+      content: '';
+      position: absolute;
+      bottom: calc(100% + 5px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border: 6px solid transparent;
+      border-top-color: var(--text);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .tip:hover::after,
+    .tip:hover::before {
+      opacity: 1;
+    }
+    .tip:hover::after { transform: translateX(-50%) translateY(0); }
+
+    /* ─── Reveal ─────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-stagger-1 { transition-delay: 0.06s; }
+    .reveal-stagger-2 { transition-delay: 0.12s; }
+    .reveal-stagger-3 { transition-delay: 0.18s; }
+    .reveal-stagger-4 { transition-delay: 0.24s; }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="container">
+    <span class="brand"><span class="dot"></span>Consto</span>
+    <span class="nav-tag">Concept · 5-min read</span>
+  </div>
+</nav>
+
+
+<!-- ─── HERO ────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow reveal">The Concept · 5-minute read</span>
+    <h1 class="hero-title reveal">
+      India's first <em>AI-backed</em> neighbourhood store.
+    </h1>
+    <p class="hero-sub reveal">
+      The warmth of a kirana, the discipline of a 7-Eleven, and an AI memory that remembers each customer like family. starting Beeramguda, Hyderabad.
+    </p>
+  </div>
+</section>
+
+
+<!-- ─── 01 · PROBLEM ───────────────────────────────────────── -->
+<section class="block">
+  <div class="container">
+    <span class="section-num reveal"><strong>01</strong>Problem</span>
+    <h2 class="section-title reveal">
+      Indian suburbs have <em>no retail format</em> that remembers the customer.
+    </h2>
+    <p class="section-lead reveal">
+      400M+ families in Tier 2-3 India lose 40-60 minutes daily juggling 3-4 apps and shops. The problem isn't access. It's that every format fails them differently.
+    </p>
+
+    <div class="formats">
+      <div class="fmt reveal reveal-stagger-1">
+        <div class="fmt-num">Format 01</div>
+        <div class="fmt-name">Kirana</div>
+        <p class="fmt-row"><strong>Has:</strong> Warmth, trust, credit, community</p>
+        <p class="fmt-row"><strong>Lacks:</strong> 50% stockouts, no modern services, no digital memory</p>
+        <div class="fmt-tag">Trust without scale</div>
+      </div>
+
+      <div class="fmt reveal reveal-stagger-2">
+        <div class="fmt-num">Format 02</div>
+        <div class="fmt-name">Quick Commerce</div>
+        <p class="fmt-row"><strong>Has:</strong> Speed, convenience, wide selection</p>
+        <p class="fmt-row"><strong>Lacks:</strong> 20-30% quality failures, zero relationships, no memory</p>
+        <div class="fmt-tag">Speed without soul</div>
+      </div>
+
+      <div class="fmt reveal reveal-stagger-3">
+        <div class="fmt-num">Format 03</div>
+        <div class="fmt-name">Supermarket</div>
+        <p class="fmt-row"><strong>Has:</strong> Variety, organisation, consistency</p>
+        <p class="fmt-row"><strong>Lacks:</strong> 20-40 min away, staff rotates, customers are numbers</p>
+        <div class="fmt-tag">Scale without care</div>
+      </div>
+    </div>
+
+    <div class="gap-statement reveal">
+      <p class="gap-statement-text">
+        <em>Nobody owns</em> the customer relationship.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── 02 · OPPORTUNITY ───────────────────────────────────── -->
+<section class="block">
+  <div class="container">
+    <span class="section-num reveal"><strong>02</strong>Opportunity</span>
+    <h2 class="section-title reveal">
+      A $950B market. A <em>format</em> nobody has built.
+    </h2>
+    <p class="section-lead reveal">
+      The market itself isn't empty. kiranas, quick commerce, supermarkets all compete inside it. What's empty is the specific format: an organized, AI-backed neighbourhood store with the warmth of a kirana and the discipline of a 7-Eleven.
+    </p>
+
+    <div class="opp-stats reveal">
+      <div class="opp-stat">
+        <div class="opp-stat-num"><span class="tip" data-tip="Indian retail market 2024. 88% unorganized (kiranas). Source: BCG Indian retail report and CRISIL projections.">$950B+</span></div>
+        <div class="opp-stat-label">Indian retail market today</div>
+      </div>
+      <div class="opp-stat">
+        <div class="opp-stat-num"><em><span class="tip" data-tip="Projected market by 2028. ~6% CAGR. Driven by Tier 2-3 income growth + organized retail penetration moving from 12% to ~20%.">$1.3T</span></em></div>
+        <div class="opp-stat-label">Projected market by 2028</div>
+      </div>
+      <div class="opp-stat">
+        <div class="opp-stat-num"><span class="tip" data-tip="88% of Indian retail still operates as traditional unorganized kiranas (12 million stores). Modern retail share is only ~12% versus 60-80% in most developed Asian markets.">88%</span></div>
+        <div class="opp-stat-label">Still unorganized today</div>
+      </div>
+    </div>
+
+    <div class="zero-callout reveal">
+      <div class="zero-callout-num"><span class="tip" data-tip="India has no organized neighbourhood-store / convenience-store chain comparable to 7-Eleven, FamilyMart, or Lawson. 24Seven, In&amp;Out, RPG Spencer's Daily all attempted and failed.">Zero.</span></div>
+      <p class="zero-callout-text">
+        Organized neighbourhood-store chains in India. <em><span class="tip" data-tip="Japan: 80,000+ convenience stores (7-Eleven, FamilyMart, Lawson). Thailand: 13,000+. South Korea: 50,000+. Even Indonesia has 20,000+ Indomaret stores.">Japan has 80,000+. Thailand has 13,000+.</span></em> The format is proven everywhere it enters. Nobody has Indianised it.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── 03 · SOLUTION ──────────────────────────────────────── -->
+<section class="block">
+  <div class="container">
+    <span class="section-num reveal"><strong>03</strong>Solution</span>
+    <h2 class="section-title reveal">
+      The warmth of a kirana. The discipline of a <em>7-Eleven.</em> An AI memory that never forgets.
+    </h2>
+    <p class="section-lead reveal">
+      A <span class="tip" data-tip="Smaller stores cannot carry the daily SKU range residential households need. Larger stores break the 15-minute convenience format. 1,000-1,500 sqft is proven optimal for Tier 2-3 residential locations. Highway and corporate sites use the smaller 400-600 sqft Consto Daily variant.">1,000-1,500 sqft</span> physical neighbourhood store. Three pillars hold it up. Four format variants. Daily, Home, Hub, Route. Adapt it to wherever the customer is. One AI memory layer powers everything.
+    </p>
+
+    <div class="pillars">
+      <div class="pillar reveal reveal-stagger-1">
+        <div class="pillar-num">Pillar 01</div>
+        <h3 class="pillar-title">Memory, Knowledge, Wisdom</h3>
+        <p class="pillar-desc">
+          Every customer gets a dedicated AI agent that remembers them. Category heads find patterns across customer groups. Across years and stores, the system compounds into <span class="tip" data-tip="Wisdom is the strategic-decision layer that emerges after 2-3 years. The senior AI council plus the central human team synthesise memory + category patterns + outcome data into judgment. Where to open Store 2. What to make a brand feature. What to stop carrying. The kind of judgment a 30-year shopkeeper has, except backed by data across thousands of customers.">institutional wisdom</span>. Humans deliver the warmth. AI scales the memory. Wisdom guides the decisions.
+        </p>
+      </div>
+      <div class="pillar reveal reveal-stagger-2">
+        <div class="pillar-num">Pillar 02</div>
+        <h3 class="pillar-title">One-Stop Services</h3>
+        <p class="pillar-desc">
+          Groceries, AEPS cash, bill payments, recharges, OTC medicines, fresh batter, festival items. Five daily-life tasks in one 15-minute visit. <span class="tip" data-tip="Services (AEPS, bills, recharges) have 50-60% margins versus 10-15% for grocery. Service revenue is what transforms the P&amp;L from thin kirana margins to a profitable diversified format.">~40% of revenue</span> from services at 50-60% margins.
+        </p>
+      </div>
+      <div class="pillar reveal reveal-stagger-3">
+        <div class="pillar-num">Pillar 03</div>
+        <h3 class="pillar-title">Community Anchoring</h3>
+        <p class="pillar-desc">
+          Festival calendar. Monthly Hub Huddle events. "Come rest even if you don't buy." Credit with dignity. Policies that are inherently worth talking about. turning the marketing budget into word-of-mouth.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── 04 · UNFAIR ADVANTAGE ──────────────────────────────── -->
+<section class="block">
+  <div class="container">
+    <span class="section-num reveal"><strong>04</strong>The unfair advantage</span>
+    <h2 class="section-title reveal">
+      Why this <em>structurally wins</em>.
+    </h2>
+    <p class="section-lead reveal">
+      Four mechanisms that compound. and that no competitor can replicate without building the same physical + AI infrastructure from scratch.
+    </p>
+
+    <div class="moats">
+      <div class="moat reveal reveal-stagger-1">
+        <div class="moat-letter">A</div>
+        <div>
+          <h4 class="moat-title">AI memory deepens daily</h4>
+          <p class="moat-desc">Day 1: phone + name only. Year 2: knows when your son's exams are. Every interaction makes leaving harder.</p>
+        </div>
+      </div>
+      <div class="moat reveal reveal-stagger-2">
+        <div class="moat-letter">B</div>
+        <div>
+          <h4 class="moat-title">Daily-route economics</h4>
+          <p class="moat-desc">Subscription pre-pays the delivery route. Free add-ons cost ₹0 marginally. Zepto can't match. they pay ₹45 per order.</p>
+        </div>
+      </div>
+      <div class="moat reveal reveal-stagger-3">
+        <div class="moat-letter">C</div>
+        <div>
+          <h4 class="moat-title">30% local soul</h4>
+          <p class="moat-desc">Telugu festivals run Hyderabad stores. Marathi run Pune. Tamil run Coimbatore. DMart cannot do this. The method scales region-by-region.</p>
+        </div>
+      </div>
+      <div class="moat reveal reveal-stagger-4">
+        <div class="moat-letter">D</div>
+        <div>
+          <h4 class="moat-title">Four formats, one OS</h4>
+          <p class="moat-desc"><span class="tip" data-tip="Format variants by location and delivery mode. Daily: pure convenience, ~400 SKUs, highways and IT corridors. Home: hybrid format, ~1,000-1,500 SKUs, residential anchor. Hub: community anchor, ~2,000+ SKUs, large clusters. Route: daily home delivery, ~50-150 subscription SKUs, no store-front needed.">Daily (highways). Home (residential). Hub (community). Route (daily delivery).</span> Same OS, different surface.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── 05 · FOUNDER ───────────────────────────────────────── -->
+<section class="block">
+  <div class="container">
+    <span class="section-num reveal"><strong>05</strong>Founder</span>
+    <h2 class="section-title reveal">
+      Three perspectives most retail-tech founders <em>never combine</em>.
+    </h2>
+
+    <div class="founder">
+      <div class="reveal">
+        <p class="founder-quote">
+          "Most retail-tech founders come from tech and try to digitise kiranas from the outside. <em>I come from inside the kirana</em>. and bring design + AI capability to build the digital layer myself."
+        </p>
+        <p class="founder-attr">Sateesh · Hyderabad · Founder</p>
+      </div>
+
+      <div class="founder-facts reveal">
+        <div class="ff-row">
+          <div class="ff-num">15 yrs</div>
+          <div class="ff-label">Inside the family kirana in Gadwal, Telangana. Ages 7 to 22.</div>
+        </div>
+        <div class="ff-row">
+          <div class="ff-num">2007</div>
+          <div class="ff-label">Left the kirana. Started a mobile recharge business. First lesson in service margins.</div>
+        </div>
+        <div class="ff-row">
+          <div class="ff-num">18+ yrs</div>
+          <div class="ff-label">Observation of Indian retail since 2007. DMart, quick commerce, kirana closures.</div>
+        </div>
+        <div class="ff-row">
+          <div class="ff-num">Feb-Mar 2026</div>
+          <div class="ff-label">Thailand and Taiwan trip. 7-Eleven, FamilyMart, Lawson observed. The trip where every dot connected.</div>
+        </div>
+        <div class="ff-row">
+          <div class="ff-num">50+</div>
+          <div class="ff-label">In-person customer interviews in Beeramguda, 2026.</div>
+        </div>
+        <div class="ff-row">
+          <div class="ff-num">Today</div>
+          <div class="ff-label">Product designer and AI builder. Can ship Consto OS myself.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── 06 · WHAT'S NEXT + ASK ──────────────────────────── -->
+<section class="block">
+  <div class="container">
+    <span class="section-num reveal"><strong>06</strong>What's next</span>
+    <h2 class="section-title reveal">
+      <em>Building</em> in order.
+    </h2>
+    <p class="section-lead reveal">
+      The path from concept to franchise SaaS. staged so each phase validates before the next. Capital deploys only after the pilot proves the thesis.
+    </p>
+
+    <div class="next-steps reveal">
+      <div class="step">
+        <div class="step-tag">01 · Done</div>
+        <div class="step-title">The concept</div>
+        <p class="step-desc">Documented. Single source of truth for what follows.</p>
+      </div>
+      <div class="step current">
+        <div class="step-tag">02 · Now</div>
+        <div class="step-title">The pilot</div>
+        <p class="step-desc">20-30 known contacts. Manual AI care. 60 days. ₹0 capital.</p>
+      </div>
+      <div class="step">
+        <div class="step-tag">03 · Next</div>
+        <div class="step-title">Store 1</div>
+        <p class="step-desc">Consto Home in Beeramguda. 1,000-1,500 sqft. 50 launch customers.</p>
+      </div>
+      <div class="step">
+        <div class="step-tag">04+</div>
+        <div class="step-title">OS → Franchise → SaaS</div>
+        <p class="step-desc">Consto OS phases 1-4, franchise from Store 1 success, SaaS to kiranas.</p>
+      </div>
+    </div>
+
+    <div class="ask reveal">
+      <div>
+        <div class="ask-eyebrow">The ask</div>
+        <p class="ask-text">
+          Seed <em><span class="tip" data-tip="₹30-50 lakh covers: 1,000-1,500 sqft Beeramguda store setup, initial inventory (~600-1,000 SKUs), Consto OS Phase 1 build (POS + Agent), staff for 12 months, fresh supplier setup, festival stocking, and 500-customer pilot validation runway.">₹30-50L</span></em> to open Store 1 in Beeramguda, deploy Consto OS Phase 1, and validate retention + unit economics across 500 customers in 12 months.
+        </p>
+      </div>
+      <a href="mailto:satishkumar.2163@gmail.com" class="ask-btn">
+        Talk to Sateesh →
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── FOOTER ─────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <div>
+        <div class="footer-brand">Consto.</div>
+        <div class="footer-tag">India's Neighbourhood Store · 2026</div>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:satishkumar.2163@gmail.com" class="footer-link">Email Sateesh</a>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <span>DESIGNED BY SATEESH</span>
+      <span>HYDERABAD · 2026</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
