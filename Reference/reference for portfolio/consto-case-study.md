@@ -53,7 +53,7 @@ Later, I travelled to Thailand and Taiwan. I studied 7-Eleven and FamilyMart —
 
 **Finding 1 — The emotional gap is universal.** Across all demographics, the strongest unmet need wasn't price or speed — it was "someone who knows me." Working moms, gig drivers, and retirees all used the same language: "nobody has patience for me" or "nobody remembers what I need."
 
-**Finding 2 — India has zero organised convenience stores.** Japan has 80,000+. Thailand has 13,000+. India has effectively none. The format works in every Asian market it enters — nobody has adapted it for Indian culture.
+**Finding 2 — India's organised convenience stores are a rounding error.** Japan has ~56,000. Thailand has 13,000+. India has a few small chains (7-Eleven India, Twenty Four Seven, SuperK, Apna Mart). The format works in every Asian market it enters — nobody has adapted it for Indian culture.
 
 **Finding 3 — Quick commerce is structurally weak in suburbs.** Zepto and Blinkit dominate metro cores but are unprofitable outside dense urban areas. Tier 2-3 suburbs are wide open.
 

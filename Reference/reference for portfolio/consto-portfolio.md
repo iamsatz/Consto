@@ -52,7 +52,7 @@ In Indian suburbs and Tier 2-3 towns, daily shopping is broken across every opti
 ### Key Findings
 
 - **400M+ consumers** in Tier 2-3 have smartphones and UPI but still depend on outdated kiranas
-- India has **zero organised convenience store chains** (vs 80K+ in Japan)
+- India's organised convenience chains (7-Eleven India, Twenty Four Seven, SuperK, Apna Mart) are **tiny next to ~56K stores in Japan**
 - Quick commerce is structurally weak in suburbs — coverage gaps are our opportunity
 - **88% of Indian retail** is still unorganised (12M kiranas)
 - Kirana modernisation studies show **135% revenue growth** when tech and services are added

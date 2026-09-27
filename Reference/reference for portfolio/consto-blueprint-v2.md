@@ -194,7 +194,7 @@ In growing suburbs like Beeramguda and small towns across India, families lose s
 | Kirana Closures | 2L+ from quick commerce |
 | Revenue Growth with Tech | 135% (200% profit growth) |
 
-**White space**: Quick commerce weak in suburbs. 400M+ consumers in Tier 2-3 with smartphones + UPI but outdated kiranas. India has zero organised convenience store chains vs 80K+ in Japan, 13K+ in Thailand.
+**White space**: Quick commerce weak in suburbs. 400M+ consumers in Tier 2-3 with smartphones + UPI but outdated kiranas. India has only a few small organised convenience chains (7-Eleven India, Twenty Four Seven, SuperK, Apna Mart) vs ~56K stores in Japan, 13K+ in Thailand.
 
 **Why Hyderabad**: 10M+ population, Beeramguda growing 30% in 5 years, affordable rent (₹10-30k), Vaish trust network, high digital adoption.
 

@@ -68,12 +68,12 @@ Then I travelled to Thailand and Taiwan. I saw 7-Eleven and FamilyMart — conve
 | Indian Retail Market | **$950B+** → $1.3T by 2028 |
 | Unorganised Retail Share | **88%** — 12 million kiranas |
 | Kirana Closures from Quick Commerce | **200,000+** |
-| Organised Convenience Stores in India | **~0** (vs 80K+ Japan, 13K+ Thailand) |
+| Organised Convenience Stores in India | **A few small chains** — 7-Eleven India, Twenty Four Seven, SuperK, Apna Mart (vs ~56K Japan, 13K+ Thailand) |
 | Revenue Growth with Kirana Modernisation | **135%** revenue, **200%** profit |
 
 ### The White Space
 
-Quick commerce dominates metro cores but is structurally unprofitable in suburbs and Tier 2-3 towns. 400M+ consumers have smartphones and UPI but still depend on outdated kiranas. India has zero organised convenience store chains. The format is proven in every Asian market — nobody has Indianised it yet.
+Quick commerce dominates metro cores but is structurally unprofitable in suburbs and Tier 2-3 towns. 400M+ consumers have smartphones and UPI but still depend on outdated kiranas. India's few organised convenience chains are still small and none has Indianised the experience. The format is proven in every Asian market — nobody has Indianised it yet.
 
 ---
 

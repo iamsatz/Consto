@@ -54,7 +54,7 @@ Nobody owns the customer relationship.
 
 A $950B+ market. $1.3T projected by 2028. 88% still unorganised.
 
-India has *zero* organised neighbourhood-store chains. Japan has 80,000+ (7-Eleven, FamilyMart, Lawson). Thailand has 13,000+. South Korea 50,000+. Even Indonesia has 20,000+ Indomaret stores.
+India's organised neighbourhood-store chains are still tiny — 7-Eleven India, Twenty Four Seven, SuperK and Apna Mart exist, but none is the default corner store yet. Japan has ~56,000 (7-Eleven, FamilyMart, Lawson). Thailand has 13,000+. South Korea 50,000+. Even Indonesia has 20,000+ Indomaret stores.
 
 The format is proven in every Asian market it enters. Nobody has Indianised it.
 
