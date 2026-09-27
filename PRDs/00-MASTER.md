@@ -256,7 +256,7 @@ App-specific tables are defined in each product's PRD.
 - Wisdom-layer quarterly recommendations
 - Festival calendar pre-stocking suggestions
 
-**Rule:** Each product PRD specifies which model is used for which feature. Never swap. Sonnet is 8x the cost of Haiku per token — speed tasks must use Haiku.
+**Rule:** Each product PRD specifies which model is used for which feature. Never swap. Sonnet costs roughly 2–3x Haiku per token (Haiku 4.5: $1/$5 per M input/output; Sonnet 5: $2/$10; Sonnet 4.6: $3/$15) and is slower — speed tasks must use Haiku.
 
 ## DPDP Act 2023 compliance (non-negotiable)
 
