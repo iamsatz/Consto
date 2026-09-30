@@ -38,6 +38,8 @@ Status: draft · Owner: Sateesh · Feeds: 60-day memory pilot (`BACKLOG.md`)
 
 ## 4. Research questions
 
+> The full, prioritised list now lives in `docs/question-bank.md`. The list below is the original draft.
+
 ### A. Shoppers — habits
 1. Walk me through the last three times you bought groceries. Where, what, why there?
 2. What do you buy daily vs weekly vs monthly?
