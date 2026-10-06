@@ -29,7 +29,7 @@ What this document describes is not one business but the foundation of two.
 
 **Brand decision.** Consto stays retail-only. The product company gets its own name (TBD). They are operated as related but independent entities. The naming, legal structure, and team split will be decided after Consto Store 1 validates the underlying thesis.
 
-**What this document does.** Continues to describe the Consto build sequence. The 8 PRDs below serve Side A's immediate operational needs. The strategic thinking for Side B (the product company) lives in `Reference/strategy-product-company.md`.
+**What this document does.** Continues to describe the Consto build sequence. The 8 PRDs below serve Side A's immediate operational needs. The strategic thinking for Side B (the product company) lives in `docs/decisions/strategy-product-company.md`.
 
 ## The three layers of intelligence
 
