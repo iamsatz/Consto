@@ -1,6 +1,6 @@
 # What the customers say — four neighbours react to the Consto plan
 
-Written 6 October 2026, in the voices of four people who live within 500 m of the planned store: a growing suburb or district town where new apartment blocks sit next to older independent houses, 5–20 km from the city, with kiranas, two tiffin centres, a medical shop, a bakery and a chicken shop already there, and Blinkit/Zepto absent or unreliable. They have read `Reference/Products.md` and the two notes `06-india-cost-conscious-landscape.md` and `08-organic-natural-healthy-demand.md`. Quotes in Part 2 are from those documents.
+Written 6 October 2026, in the voices of four people who live within 500 m of the planned store: a growing suburb or district town where new apartment blocks sit next to older independent houses, 5–20 km from the city, with kiranas, two tiffin centres, a medical shop, a bakery and a chicken shop already there, and Blinkit/Zepto absent or unreliable. They have read `docs/research/Products.md` and the two notes `06-india-cost-conscious-landscape.md` and `08-organic-natural-healthy-demand.md`. Quotes in Part 2 are from those documents.
 
 Prices are what these four pay in their area today (2026), with the assumptions stated in Part 3. Nothing here is a survey; it is four people talking honestly, and the founder should treat each as one vote, not a majority.
 

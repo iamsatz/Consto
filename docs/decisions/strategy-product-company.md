@@ -8,7 +8,7 @@
 | **Author** | Sateesh |
 | **Last updated** | 2026 |
 | **Confidentiality** | Internal only. Not for the portfolio site. |
-| **Related docs** | `PRDs/00-MASTER.md` (Consto OS architecture), `PRDs/01-08` (the 8 product PRDs that this company will sell) |
+| **Related docs** | `docs/prd/00-MASTER.md` (Consto OS architecture), `docs/prd/01-08` (the 8 product PRDs that this company will sell) |
 
 ---
 
@@ -72,7 +72,7 @@ Three words doing the work:
 
 ## Product portfolio
 
-The 8 products in `PRDs/01-CONSTO-POS.md` through `PRDs/08-CONSTO-HQ.md` ARE the product company's product portfolio. They just happen to also be the operating system of Consto stores.
+The 8 products in `docs/prd/01-CONSTO-POS.md` through `docs/prd/08-CONSTO-HQ.md` ARE the product company's product portfolio. They just happen to also be the operating system of Consto stores.
 
 Reframed as B2B products:
 
@@ -280,7 +280,7 @@ Things to decide later, not now:
 
 - **Update quarterly.** As Consto Store 1 generates real data, refine the thesis here.
 - **Show selectively.** Only to potential co-founders for the product company, trusted advisors, and (much later) potential product-company investors at the seed stage.
-- **Cross-reference.** When `PRDs/00-MASTER.md` is updated, check this doc still aligns. When a PRD changes how a product behaves, note the implication for the product-company sales story here.
+- **Cross-reference.** When `docs/prd/00-MASTER.md` is updated, check this doc still aligns. When a PRD changes how a product behaves, note the implication for the product-company sales story here.
 
 ---
 

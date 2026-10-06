@@ -2,7 +2,7 @@
 
 **Reviewer lens:** builds POS and WhatsApp systems for small Indian retailers (React + Tailwind PWA, Supabase, Claude API, WhatsApp Cloud API, Razorpay UPI, Vercel). Reads every store decision as a data requirement, a software requirement, or a request that software cannot fulfil.
 
-**Inputs read:** `Reference/Products.md` (all 12 sections and the 60 decisions), `02-consto-pos-prd.md`, `01-consto-agent-prd.md`, `CLAUDE.md`, research notes 03 (Tanpin Kanri), 04 (time-stamping, AI ordering), 06 (GST 2.0, MRP), 07 (labelling liability), 09 (hardware capex), and the September session archive.
+**Inputs read:** `docs/research/Products.md` (all 12 sections and the 60 decisions), `02-consto-pos-prd.md`, `01-consto-agent-prd.md`, `CLAUDE.md`, research notes 03 (Tanpin Kanri), 04 (time-stamping, AI ordering), 06 (GST 2.0, MRP), 07 (labelling liability), 09 (hardware capex), and the September session archive.
 
 **Three framing assumptions for everything below**
 

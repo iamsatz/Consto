@@ -1,6 +1,6 @@
 # Persona review: Product / Retail Experience Designer
 
-**Reviewing:** `Reference/Products.md` (6 Oct 2026), with `09-store-space-layout-equipment-capex.md`, `07-food-sourcing-vendor-vs-kitchen.md` and `consto-rulebook.md`.
+**Reviewing:** `docs/research/Products.md` (6 Oct 2026), with `09-store-space-layout-equipment-capex.md`, `07-food-sourcing-vendor-vs-kitchen.md` and `consto-rulebook.md`.
 **Lens:** the customer's journey from the footpath to the till and back home. The store is the product. I judge every recommendation by what a woman in slippers at 6:40am, a scooter rider at 20 km/h, a school-bus mother at 7:45, an auto driver at 3pm and a tired father at 9:15pm actually see, smell, wait for and remember.
 **Ground rule for this note:** Sateesh cannot pilot. So there are no "test it" answers below. Every pick is a stated assumption he can overrule in one line.
 

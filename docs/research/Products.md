@@ -707,7 +707,7 @@ Price each 10–15% below the nearest national brand and still earn 35–40% (ru
 
 ## Decisions for Sateesh
 
-> **Superseded.** This first list of 60 was replaced on 6 Oct 2026 by `Reference/Products-Decisions.md`: 18 big calls debated by six personas with a CEO ruling, 8 open conflicts with the rulebook, and 364 numbered questions with a firm pick each. Answer there, not here. The 60 below are kept only as the original draft.
+> **Superseded.** This first list of 60 was replaced on 6 Oct 2026 by `docs/research/Products-Decisions.md`: 18 big calls debated by six personas with a CEO ruling, 8 open conflicts with the rulebook, and 364 numbered questions with a firm pick each. Answer there, not here. The 60 below are kept only as the original draft.
 
 Answer one at a time. Options in brackets, my pick after each, space for yours.
 
